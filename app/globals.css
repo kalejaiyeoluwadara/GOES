@@ -8,8 +8,17 @@
 .main{
   @apply min-h-screen w-screen sm:px-8 items-center flex justify-center text-black
 }
+.primary{
+  @apply text-[#2B0184]
+}
+.bold{
+  @apply font-[800] 
+}
 h1{
-  @apply text-[60px] font-semibold
+  @apply text-[36px] font-semibold
+}
+.cover{
+  @apply h-full w-full absolute top-0 left-0 object-cover
 }
 *{
   @apply  font-poppins

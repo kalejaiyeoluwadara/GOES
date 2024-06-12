@@ -1,18 +1,163 @@
+"use client";
 import Link from "next/link";
-import React from "react";
-
+import React, { useState } from "react";
+import Button from "./Button";
+import { GoChevronDown, GoChevronUp } from "react-icons/go";
+import { motion, AnimatePresence } from "framer-motion";
+import { GoPersonFill } from "react-icons/go";
+import { RxPerson } from "react-icons/rx";
+import { BsBuildingCheck } from "react-icons/bs";
+import { FaPhone, FaBuildingCircleArrowRight } from "react-icons/fa6";
+import { IoIosPeople } from "react-icons/io";
 function Nav() {
+  const [about, setAbout] = useState(false);
+  const [profiles, setProfiles] = useState(false);
+  const [work, setWork] = useState(false);
   return (
-    <div className="w-screen h-[60px] bg-white ">
+    <div className="w-screen  z-50 absolute top- flex items-center justify-between px-12 h-[70px]  ">
       <div>
-        <h4>Logo</h4>
+        <h3>Logo</h3>
       </div>
       <div>
-        <ul>
-          <li></li>
+        <ul className="flex gap-6 ">
+          <li className="text-[16px] text-[#2B0184] cursor-pointer  ">Home</li>
+          <li
+            onClick={() => {
+              setProfiles(false);
+              setAbout((prev) => !prev);
+            }}
+            className="text-[16px] relative flex items-center gap-1 text-[#2B0184] cursor-pointer  "
+          >
+            About Us
+            {about ? <GoChevronUp size={20} /> : <GoChevronDown size={20} />}
+            <AnimatePresence>
+              {about && (
+                <motion.div
+                  initial={{
+                    opacity: 0,
+                  }}
+                  animate={{
+                    opacity: 1,
+                  }}
+                  exit={{
+                    opacity: 0,
+                  }}
+                  transition={{
+                    duration: 0.5,
+                  }}
+                  className=" px-4 py-2 shadow-sm  w-[200px] absolute -bottom-[110px] bg-white space-y-2 rounded-md  "
+                >
+                  <p className="text-primary flex gap-2 text-[15px] font-[500] ">
+                    <GoPersonFill className="text-blue-600" size={20} />
+                    Director Profile
+                  </p>
+                  <p className="text-primary flex gap-2 text-[15px] font-[500] ">
+                    <IoIosPeople className="text-red-600" size={20} />
+                    Our Staff
+                  </p>
+                  <p className="text-primary flex gap-2 text-[15px] font-[500] ">
+                    <FaPhone className="text-green-600" size={15} />
+                    Contact
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </li>
+          <li
+            onClick={() => {
+              setAbout(false);
+              setWork(false);
+              setProfiles((prev) => !prev);
+            }}
+            className="text-[16px] relative flex items-center gap-1 text-[#2B0184] cursor-pointer  "
+          >
+            Projects
+            {profiles ? <GoChevronUp size={20} /> : <GoChevronDown size={20} />}
+            <AnimatePresence>
+              {profiles && (
+                <motion.div
+                  initial={{
+                    opacity: 0,
+                  }}
+                  animate={{
+                    opacity: 1,
+                  }}
+                  exit={{
+                    opacity: 0,
+                  }}
+                  transition={{
+                    duration: 0.5,
+                  }}
+                  className=" px-4 py-2 shadow-sm  w-[200px] absolute -bottom-[80px] bg-white space-y-2 rounded-md  "
+                >
+                  <p className="text-primary flex gap-2 text-[15px] font-[500] ">
+                    <FaBuildingCircleArrowRight
+                      className="text-violet-600"
+                      size={20}
+                    />
+                    Ongoing Projects
+                  </p>
+                  <p className="text-primary flex gap-2 text-[15px] font-[500] ">
+                    <BsBuildingCheck className="text-green-600" size={20} />
+                    Past Projects
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </li>
+
+          <li className="text-[16px] text-[#2B0184] cursor-pointer  ">
+            Product
+          </li>
+          <li className="text-[16px] text-[#2B0184] cursor-pointer  ">
+            Consultancy
+          </li>
+          <li
+            onClick={() => {
+              setProfiles(false);
+              setAbout(false);
+              setWork((prev) => !prev);
+            }}
+            className="text-[16px] relative flex items-center gap-1 text-[#2B0184] cursor-pointer  "
+          >
+            Work Eperience &Training
+            {work ? <GoChevronUp size={20} /> : <GoChevronDown size={20} />}
+            <AnimatePresence>
+              {work && (
+                <motion.div
+                  initial={{
+                    opacity: 0,
+                  }}
+                  animate={{
+                    opacity: 1,
+                  }}
+                  exit={{
+                    opacity: 0,
+                  }}
+                  transition={{
+                    duration: 0.5,
+                  }}
+                  className=" px-4 py-2 shadow-sm  w-[200px] absolute -bottom-[110px] bg-white space-y-2 rounded-md  "
+                >
+                  <p className="text-primary flex gap-2 text-[15px] font-[500] ">
+                    SIEWS
+                  </p>
+                  <p className="text-primary flex gap-2 text-[15px] font-[500] ">
+                    NYSC
+                  </p>
+                  <p className="text-primary flex gap-2 text-[15px] font-[500] ">
+                    Industrial Training
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </li>
         </ul>
       </div>
-      <div></div>
+      <div className="flex gap-3">
+        <Button otherStyles={"text-primary font-[500] "} title={"Regsiter"} />
+        <Button otherStyles={"bg-[#2B0184] text-white "} title={"Hire"} />
+      </div>
     </div>
   );
 }
