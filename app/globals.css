@@ -6,7 +6,10 @@
   font-family: 'Poppins','sans-serif';
 }
 .main{
-  @apply min-h-screen w-screen sm:px-8 items-center flex justify-center text-black
+  @apply  w-screen sm:px-8 items-center flex justify-center text-black
+}
+.btn{
+  @apply   h-[48px] w-[48px] hover:border-gray-600 transition-all hover:bg-opacity-[0.6]  hover:border-[1px] flex items-center justify-center rounded-full bg-primary text-white
 }
 .primary{
   @apply text-[#2B0184]
@@ -22,4 +25,8 @@ h1{
 }
 *{
   @apply  font-poppins
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

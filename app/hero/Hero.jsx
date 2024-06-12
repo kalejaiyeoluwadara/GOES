@@ -4,10 +4,10 @@ import hero from "../assets/hero.jpeg";
 import Button from "../components/Button";
 function Hero() {
   return (
-    <div className="main relative min-h-[1200px] text-white ">
+    <div className="main relative min-h-[800px] text-white ">
       <Image src={hero} className="cover object-top " alt="" />
       {/* <div className="bg-black cover bg-opacity-[0.2] " /> */}
-      <div className=" h-[full] flex flex-col justify-end pt-40 pb-10 items-start  w-full text-[#2B0184] z-40">
+      <div className=" h-[full] flex flex-col justify-end pt-20 pb-10 items-start  w-full text-[#2B0184] z-40">
         <h3 className="text-black text-[20px] ">Welcome to:</h3>
         <h1 className="font-[700] text-[40px] ">
           GANI-OLA ENGINEERING SERVICES,LTD
