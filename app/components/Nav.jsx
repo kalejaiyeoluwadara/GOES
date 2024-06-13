@@ -90,13 +90,15 @@ function Nav() {
                   }}
                   className=" px-4 py-2 shadow-sm  w-[200px] absolute -bottom-[80px] bg-white space-y-2 rounded-md  "
                 >
-                  <p className="text-primary flex gap-2 text-[15px] font-[500] ">
-                    <FaBuildingCircleArrowRight
-                      className="text-violet-600"
-                      size={20}
-                    />
-                    Ongoing Projects
-                  </p>
+                  <Link href={"/ongoing-projects"}>
+                    <p className="text-primary flex gap-2 text-[15px] font-[500] ">
+                      <FaBuildingCircleArrowRight
+                        className="text-violet-600"
+                        size={20}
+                      />
+                      Ongoing Projects
+                    </p>
+                  </Link>
                   <p className="text-primary flex gap-2 text-[15px] font-[500] ">
                     <BsBuildingCheck className="text-green-600" size={20} />
                     Past Projects
