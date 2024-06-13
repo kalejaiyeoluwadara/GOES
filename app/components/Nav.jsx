@@ -20,7 +20,11 @@ function Nav() {
       </div>
       <div>
         <ul className="flex gap-6 ">
-          <li className="text-[16px] text-[#2B0184] cursor-pointer  ">Home</li>
+          <Link href={"/"}>
+            <li className="text-[16px] text-[#2B0184] cursor-pointer  ">
+              Home
+            </li>
+          </Link>
           <li
             onClick={() => {
               setProfiles(false);
@@ -88,10 +92,10 @@ function Nav() {
                   transition={{
                     duration: 0.5,
                   }}
-                  className=" px-4 py-2 shadow-sm  w-[200px] absolute -bottom-[80px] bg-white space-y-2 rounded-md  "
+                  className=" px-4 py-2 shadow-sm  w-[200px] absolute -bottom-[80px] bg-white space-y-4 rounded-md  "
                 >
                   <Link href={"/ongoing-projects"}>
-                    <p className="text-primary flex gap-2 text-[15px] font-[500] ">
+                    <p className="text-primary flex mb-3 gap-2 text-[15px] font-[500] ">
                       <FaBuildingCircleArrowRight
                         className="text-violet-600"
                         size={20}
@@ -99,10 +103,12 @@ function Nav() {
                       Ongoing Projects
                     </p>
                   </Link>
-                  <p className="text-primary flex gap-2 text-[15px] font-[500] ">
-                    <BsBuildingCheck className="text-green-600" size={20} />
-                    Past Projects
-                  </p>
+                  <Link href={"/past-projects"}>
+                    <p className="text-primary flex gap-2 text-[15px] font-[500] ">
+                      <BsBuildingCheck className="text-green-600" size={20} />
+                      Past Projects
+                    </p>
+                  </Link>
                 </motion.div>
               )}
             </AnimatePresence>
