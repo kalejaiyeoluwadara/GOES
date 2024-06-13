@@ -4,7 +4,7 @@ const AppContext = React.createContext();
 
 function AppProvider({ children }) {
   const [src, setSrc] = useState("");
-  const [state, setState] = useState(false);
+  const [state, setState] = useState(true);
   const [modal, setModal] = useState(false);
   return (
     <AppContext.Provider

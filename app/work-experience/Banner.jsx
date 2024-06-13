@@ -11,7 +11,7 @@ function Banner() {
         src={finished}
       />
       <div className="cover bg-black bg-opacity-15  " />
-      <h1 className="text-[40px] font-600 relative z-40 text-white ">
+      <h1 className="text-[50px] font-bold shadow-md font-600 relative z-40 text-white ">
         Work Experience & Training
       </h1>
     </main>
