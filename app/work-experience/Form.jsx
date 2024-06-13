@@ -106,6 +106,9 @@ function Form() {
             {formData.file ? formData.file.name : "Choose a file"}
           </label>
         </div>
+        <button className=" w-[400px] rounded-md mt-8 h-[50px] flex items-center justify-center text-white bg-primary text-[20px] font-semibold">
+          Submit
+        </button>
       </form>
     </main>
   );
