@@ -120,46 +120,48 @@ function Nav() {
           <li className="text-[16px] text-[#2B0184] cursor-pointer  ">
             Consultancy
           </li>
-          <li
-            onClick={() => {
-              setProfiles(false);
-              setAbout(false);
-              setWork((prev) => !prev);
-            }}
-            className="text-[16px] relative flex items-center gap-1 text-[#2B0184] cursor-pointer  "
-          >
-            Work Eperience &Training
-            {work ? <GoChevronUp size={20} /> : <GoChevronDown size={20} />}
-            <AnimatePresence>
-              {work && (
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                  }}
-                  animate={{
-                    opacity: 1,
-                  }}
-                  exit={{
-                    opacity: 0,
-                  }}
-                  transition={{
-                    duration: 0.5,
-                  }}
-                  className=" px-4 py-2 shadow-sm  w-[200px] absolute -bottom-[110px] bg-white space-y-2 rounded-md  "
-                >
-                  <p className="text-primary flex gap-2 text-[15px] font-[500] ">
-                    SIEWS
-                  </p>
-                  <p className="text-primary flex gap-2 text-[15px] font-[500] ">
-                    NYSC
-                  </p>
-                  <p className="text-primary flex gap-2 text-[15px] font-[500] ">
-                    Industrial Training
-                  </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </li>
+          <Link href={"/work-experience"}>
+            <li
+              // onClick={() => {
+              //   setProfiles(false);
+              //   setAbout(false);
+              //   setWork((prev) => !prev);
+              // }}
+              className="text-[16px] relative flex items-center gap-1 text-[#2B0184] cursor-pointer  "
+            >
+              Work Eperience &Training
+              {/* {work ? <GoChevronUp size={20} /> : <GoChevronDown size={20} />} */}
+              <AnimatePresence>
+                {work && (
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                    }}
+                    animate={{
+                      opacity: 1,
+                    }}
+                    exit={{
+                      opacity: 0,
+                    }}
+                    transition={{
+                      duration: 0.5,
+                    }}
+                    className=" px-4 py-2 shadow-sm  w-[200px] absolute -bottom-[110px] bg-white space-y-2 rounded-md  "
+                  >
+                    <p className="text-primary flex gap-2 text-[15px] font-[500] ">
+                      SIEWS
+                    </p>
+                    <p className="text-primary flex gap-2 text-[15px] font-[500] ">
+                      NYSC
+                    </p>
+                    <p className="text-primary flex gap-2 text-[15px] font-[500] ">
+                      Industrial Training
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </li>
+          </Link>
         </ul>
       </div>
       <div className="flex gap-3">

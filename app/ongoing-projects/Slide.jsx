@@ -2,8 +2,9 @@
 import React, { useState } from "react";
 import Card from "../components/Card";
 import Gallery from "../components/Gallery";
+import { useGlobal } from "../Context";
 function Slide() {
-  const [state, setState] = useState(false);
+  const { state, setState } = useGlobal();
   return (
     <>
       {state ? (

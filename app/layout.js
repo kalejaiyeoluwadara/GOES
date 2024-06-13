@@ -1,5 +1,6 @@
 import "./globals.css";
 import Nav from "./components/Nav";
+import AppProvider from "./Context";
 
 export const metadata = {
   title: "GANI-OLA",
@@ -11,7 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="overflow-x-hidden">
         <Nav />
-        {children}
+        <AppProvider>{children}</AppProvider>
       </body>
     </html>
   );
