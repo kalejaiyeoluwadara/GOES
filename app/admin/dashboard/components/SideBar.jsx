@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React, { useState } from "react";
 import {
   FaTachometerAlt,
@@ -10,7 +11,7 @@ import {
 } from "react-icons/fa"; // Import necessary icons
 
 const routes = [
-  { route: "dashboard", icon: <FaTachometerAlt /> },
+  { route: "", icon: <FaTachometerAlt /> },
   { route: "message", icon: <FaEnvelope /> },
   { route: "users", icon: <FaUsers /> },
   { route: "applications", icon: <FaFileAlt /> },
@@ -18,27 +19,29 @@ const routes = [
   { route: "products", icon: <FaBox /> },
 ];
 function SideBar() {
-  const [active, setActive] = useState("dashboard");
+  const [active, setActive] = useState("");
   return (
     <div className="h-screen flex relative items-start px-4 justify-center gap-2 flex-col bg-primary  top-0 w-[180px]">
       {routes.map((item, id) => {
         return (
-          <div
-            onClick={() => {
-              setActive(item.route);
-            }}
-            key={id}
-            className={`flex cursor-pointer  px-4 py-3 rounded-md ${
-              active === item.route
-                ? "bg-white text-black "
-                : "bg-none text-white "
-            } items-center gap-2`}
-          >
-            {item.icon}
-            <p className=" capitalize text-[16px] font-semibold">
-              {item.route}
-            </p>
-          </div>
+          <Link href={`/admin/dashboard/${item.route}`}>
+            <div
+              onClick={() => {
+                setActive(item.route);
+              }}
+              key={id}
+              className={`flex cursor-pointer  px-4 py-3 rounded-md ${
+                active === item.route
+                  ? "bg-white text-black "
+                  : "bg-none text-white "
+              } items-center gap-2`}
+            >
+              {item.icon}
+              <p className=" capitalize text-[16px] font-semibold">
+                {item.route === "" ? "Dashboard" : item.route}
+              </p>
+            </div>
+          </Link>
         );
       })}
     </div>
