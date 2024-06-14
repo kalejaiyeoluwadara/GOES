@@ -7,10 +7,14 @@ export const metadata = {
 
 export default function Layout({ children }) {
   return (
-    <body className="overflow-x-hidden">
-      <Nav />
-      <SideBar />
-      {children}
+    <body className="overflow-x-hidden flex flex-col relative ">
+      <div>
+        <Nav />
+      </div>
+      <div className="flex">
+        <SideBar />
+        {children}
+      </div>
     </body>
   );
 }

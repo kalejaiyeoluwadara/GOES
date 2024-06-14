@@ -6,7 +6,7 @@ import { BsFillPersonFill } from "react-icons/bs";
 import logo from "../../../assets/logo.svg";
 function Nav() {
   return (
-    <div className="w-screen flex items-center justify-between px-8  h-[80px] bg-white shadow-md fixed z-40 ">
+    <div className="w-screen relative flex items-center justify-between px-8  h-[80px] bg-white shadow-md  z-40 ">
       <Image className=" h-[40px] w-[40px] " src={logo} alt="" />
       <div className="flex gap-8">
         <IoSettingsOutline size={25} className="text-black" />

@@ -9,7 +9,7 @@ export const metadata = {
 export default function Layout({ children }) {
   return (
     <html lang="en">
-      <body className="overflow-x-hidden">
+      <body className="overflow-x-hidden ">
         {/* <Nav /> */}
         {children}
       </body>

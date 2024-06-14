@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import {
   FaTachometerAlt,
   FaEnvelope,
@@ -16,18 +17,30 @@ const routes = [
   { route: "upload", icon: <FaUpload /> },
   { route: "products", icon: <FaBox /> },
 ];
-
 function SideBar() {
+  const [active, setActive] = useState("dashboard");
   return (
-    <div className="h-screen flex items-start px-4 justify-center gap-6 flex-col bg-primary fixed top-0 w-[180px]">
-      {routes.map((item, id) => (
-        <div key={id} className="flex text-white items-center gap-2">
-          {item.icon}
-          <p className="text-white capitalize text-[16px] font-semibold">
-            {item.route}
-          </p>
-        </div>
-      ))}
+    <div className="h-screen flex relative items-start px-4 justify-center gap-2 flex-col bg-primary  top-0 w-[180px]">
+      {routes.map((item, id) => {
+        return (
+          <div
+            onClick={() => {
+              setActive(item.route);
+            }}
+            key={id}
+            className={`flex cursor-pointer  px-4 py-3 rounded-md ${
+              active === item.route
+                ? "bg-white text-black "
+                : "bg-none text-white "
+            } items-center gap-2`}
+          >
+            {item.icon}
+            <p className=" capitalize text-[16px] font-semibold">
+              {item.route}
+            </p>
+          </div>
+        );
+      })}
     </div>
   );
 }
