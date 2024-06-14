@@ -1,7 +1,7 @@
 import React from "react";
 
 function Page() {
-  return <div className="main h-screen">Messages</div>;
+  return <div className="main">Upload page</div>;
 }
 
 export default Page;

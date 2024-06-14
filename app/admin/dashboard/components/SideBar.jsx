@@ -14,14 +14,14 @@ const routes = [
   { route: "", icon: <FaTachometerAlt /> },
   { route: "message", icon: <FaEnvelope /> },
   { route: "users", icon: <FaUsers /> },
-  { route: "applications", icon: <FaFileAlt /> },
+  { route: "applications", icon: <FaFileAlt size={30} /> },
   { route: "upload", icon: <FaUpload /> },
   { route: "products", icon: <FaBox /> },
 ];
 function SideBar() {
   const [active, setActive] = useState("");
   return (
-    <div className="h-screen flex relative items-start px-4 justify-center gap-2 flex-col bg-primary  top-0 w-[180px]">
+    <div className="min-h-screen flex relative items-start px-8 justify-start pt-8 gap-2 flex-col bg-primary  top-0 w-[190px]">
       {routes.map((item, id) => {
         return (
           <Link href={`/admin/dashboard/${item.route}`}>
@@ -30,7 +30,7 @@ function SideBar() {
                 setActive(item.route);
               }}
               key={id}
-              className={`flex cursor-pointer  px-4 py-3 rounded-md ${
+              className={`flex cursor-pointer px-4 w-[150px] items-start justify-start h-[50px]  rounded-md ${
                 active === item.route
                   ? "bg-white text-black "
                   : "bg-none text-white "
