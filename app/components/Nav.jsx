@@ -34,7 +34,7 @@ function Nav() {
             }}
             className="text-[16px] relative flex items-center gap-1 text-[#2B0184] cursor-pointer  "
           >
-            <Link href={"about"}>About Us</Link>
+            <Link href={"/about-us"}>About Us</Link>
           </li>
           <li
             onClick={() => {

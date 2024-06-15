@@ -11,6 +11,9 @@
 .btn{
   @apply   h-[48px] w-[48px] hover:border-gray-600 transition-all hover:bg-opacity-[0.6]  hover:border-[1px] flex items-center justify-center rounded-full bg-primary text-white
 }
+input{
+  @apply rounded-lg
+}
 .flex-center{
   @apply flex items-center justify-center flex-col
 }
