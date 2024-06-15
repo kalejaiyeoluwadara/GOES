@@ -9,6 +9,8 @@ import { RxPerson } from "react-icons/rx";
 import { BsBuildingCheck } from "react-icons/bs";
 import { FaPhone, FaBuildingCircleArrowRight } from "react-icons/fa6";
 import { IoIosPeople } from "react-icons/io";
+import logo from "../assets/logo.svg";
+import Image from "next/image";
 function Nav() {
   const [about, setAbout] = useState(false);
   const [profiles, setProfiles] = useState(false);
@@ -16,7 +18,7 @@ function Nav() {
   return (
     <div className="w-screen  z-50 absolute top- flex items-center justify-between px-12 h-[70px]  ">
       <div>
-        <h3>Logo</h3>
+        <Image className="h-[40px] w-[40px] " src={logo} alt="" />
       </div>
       <div>
         <ul className="flex gap-6 ">
@@ -32,40 +34,7 @@ function Nav() {
             }}
             className="text-[16px] relative flex items-center gap-1 text-[#2B0184] cursor-pointer  "
           >
-            About Us
-            {about ? <GoChevronUp size={20} /> : <GoChevronDown size={20} />}
-            <AnimatePresence>
-              {about && (
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                  }}
-                  animate={{
-                    opacity: 1,
-                  }}
-                  exit={{
-                    opacity: 0,
-                  }}
-                  transition={{
-                    duration: 0.5,
-                  }}
-                  className=" px-4 py-2 shadow-sm  w-[200px] absolute -bottom-[110px] bg-white space-y-2 rounded-md  "
-                >
-                  <p className="text-primary flex gap-2 text-[15px] font-[500] ">
-                    <GoPersonFill className="text-blue-600" size={20} />
-                    Director Profile
-                  </p>
-                  <p className="text-primary flex gap-2 text-[15px] font-[500] ">
-                    <IoIosPeople className="text-red-600" size={20} />
-                    Our Staff
-                  </p>
-                  <p className="text-primary flex gap-2 text-[15px] font-[500] ">
-                    <FaPhone className="text-green-600" size={15} />
-                    Contact
-                  </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <Link href={"about"}>About Us</Link>
           </li>
           <li
             onClick={() => {
