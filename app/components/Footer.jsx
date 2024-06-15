@@ -1,6 +1,8 @@
 import Link from "next/link";
 import React from "react";
-
+import { FaLocationDot } from "react-icons/fa6";
+import { MdCall } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
 function Footer() {
   return (
     <footer>
@@ -34,19 +36,19 @@ function Footer() {
             <h2 className="text-[30px] border-l-2 border-green-400 px-2 font-semibold mb-4 ">
               Contact Info
             </h2>
-            <div>
-              <div className="flex flex-col">
-                <p>icon</p>
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-1 ">
+                <FaLocationDot size={20} />
                 <p>
                   21A, Tunji Bello Street, Ikolaba Estate, Ibadan, Oyo state.
                 </p>
               </div>
-              <div className="flex flex-col">
-                <p>icon</p>
+              <div className="flex flex-col gap-1 ">
+                <MdCall size={20} />
                 <p>(+234) 803 3244 038</p>
               </div>
-              <div className="flex flex-col">
-                <p>icon</p>
+              <div className="flex flex-col gap-1 ">
+                <MdEmail size={20} />
                 <p>goeslimited@gmail.com</p>
               </div>
             </div>
