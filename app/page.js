@@ -5,6 +5,7 @@ import Services from "./hero/Services";
 import Explore from "./hero/Explore";
 import Testimonials from "./hero/Testimonials";
 import Staffs from "./hero/Staffs";
+import Preview from "./hero/Preview";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Services />
       <Explore />
       <Staffs />
+      <Preview />
       <Testimonials />
     </>
   );
