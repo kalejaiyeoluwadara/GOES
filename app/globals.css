@@ -36,3 +36,15 @@ h1{
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+.h3{
+  @apply font-bold text-gray-400
+}
+.h4{
+  @apply font-semibold text-gray-400
+}
+.h5{
+  @apply font-medium text-gray-400
+}
+.h6{
+  @apply font-[400] text-gray-400
+}

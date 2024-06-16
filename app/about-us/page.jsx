@@ -24,7 +24,7 @@ function Page() {
         </p>
 
         <div className="flex w-full my-20 gap-10 justify-center items-center  ">
-          <div className=" h-[600px] flex flex-col gap-8 bg-gray-50 w-[50%]">
+          <div className=" h-[600px] flex flex-col gap-8  w-[50%]">
             <div className=" ">
               <p>icon</p>
               <h2 className=" text-primary font-semibold text-[20px]  ">
