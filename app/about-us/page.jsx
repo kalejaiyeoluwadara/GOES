@@ -1,5 +1,9 @@
 import React from "react";
 import Form from "../components/Form";
+import Map from "../components/Map";
+import { FaLocationDot } from "react-icons/fa6";
+import { MdCall } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
 
 function Page() {
   return (
@@ -26,7 +30,7 @@ function Page() {
         <div className="flex w-full my-20 gap-10 justify-center items-center  ">
           <div className=" h-[600px] flex flex-col gap-8  w-[50%]">
             <div className=" ">
-              <p>icon</p>
+              <FaLocationDot className="text-primary mb-1 " size={25} />
               <h2 className=" text-primary font-semibold text-[20px]  ">
                 Office Address
               </h2>
@@ -36,7 +40,7 @@ function Page() {
             </div>
 
             <div className=" ">
-              <p>icon</p>
+              <MdCall className="text-primary mb-1 " size={25} />
               <h2 className=" text-primary font-semibold text-[20px]  ">
                 Phone
               </h2>
@@ -44,12 +48,14 @@ function Page() {
             </div>
 
             <div className=" ">
-              <p>icon</p>
+              <MdEmail className="text-primary" mb-1 size={25} />
               <h2 className=" text-primary font-semibold text-[20px]  ">
                 e-Mail Address
               </h2>
               <p className="text-gray-500">goeslimited@gmail.com</p>
             </div>
+
+            <Map />
           </div>
 
           <div className="h-[600px] w-[50%] ">
