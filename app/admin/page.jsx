@@ -8,7 +8,7 @@ function Page() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   return (
-    <div className="main min-h-screen relative bg-gray-400  flex items-center justify-center ">
+    <div className="main min-h-screen relative z-40 bg-gray-400  flex items-center justify-center ">
       <Image src={explore} className="cover" alt="" />
       <div className="h-[450px] relative z-40 flex items-center justify-center flex-col gap-1 w-[600px] bg-white rounded-md ">
         <div className="flex-center">

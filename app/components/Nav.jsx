@@ -16,7 +16,7 @@ function Nav() {
   const [profiles, setProfiles] = useState(false);
   const [work, setWork] = useState(false);
   return (
-    <div className="w-screen  z-50 absolute top- flex items-center justify-between px-12 h-[70px]  ">
+    <div className="w-screen  z-30 absolute top- flex items-center justify-between px-12 h-[70px]  ">
       <div>
         <Image className="h-[40px] w-[40px] " src={logo} alt="" />
       </div>
@@ -86,9 +86,11 @@ function Nav() {
           <li className="text-[16px] text-[#2B0184] cursor-pointer  ">
             Product
           </li>
-          <li className="text-[16px] text-[#2B0184] cursor-pointer  ">
-            Consultancy
-          </li>
+          <Link href={"/consultancy"}>
+            <li className="text-[16px] text-[#2B0184] cursor-pointer  ">
+              Consultancy
+            </li>
+          </Link>
           <Link href={"/work-experience"}>
             <li
               // onClick={() => {

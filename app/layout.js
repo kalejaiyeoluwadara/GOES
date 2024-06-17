@@ -8,13 +8,12 @@ export const metadata = {
   description: "GANI-OLA ENGINEERING SERVICES LTD",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children, sho }) {
   return (
     <html lang="en">
-      <body className="overflow-x-hidden">
+      <body className="overflow-x-hidden relative ">
         <Nav />
         <AppProvider>{children}</AppProvider>
-        <Footer />
       </body>
     </html>
   );

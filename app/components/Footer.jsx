@@ -7,7 +7,7 @@ import logo from "../assets/logo.svg";
 import Image from "next/image";
 function Footer() {
   return (
-    <footer>
+    <footer className=" ">
       <section className="h-[300px]  w-screen bg-primary  ">
         <section className="flex justify-between px-8 p-10 text-white ">
           <Image alt="" className="h-[90px] bg-white w-[90px] " src={logo} />

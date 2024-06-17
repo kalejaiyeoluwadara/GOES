@@ -2,7 +2,7 @@ import React from "react";
 import { IoSend } from "react-icons/io5";
 function Form() {
   return (
-    <div className="min-w-[400px]  h-[700px] px-8 py-4 border border-gray-600 ">
+    <div className="min-w-[400px] bg-white  h-auto px-8 py-4 border border-gray-600 ">
       <h2 className="text-[22px] flex flex-col  font-[400] mb-8 ">
         Send us a message
       </h2>
@@ -31,6 +31,7 @@ function Form() {
         <button className="w-[200px] flex items-center gap-2 justify-center h-[60px] mt-4 rounded-md bg-primary text-white ">
           Send Message <IoSend size={20} />
         </button>
+        <p className="h6 mb-2">We'll respond as soon as possible</p>
       </div>
     </div>
   );

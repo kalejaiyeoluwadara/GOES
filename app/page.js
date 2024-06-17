@@ -6,7 +6,7 @@ import Explore from "./hero/Explore";
 import Testimonials from "./hero/Testimonials";
 import Staffs from "./hero/Staffs";
 import Preview from "./hero/Preview";
-
+import Footer from "./components/Footer";
 export default function Home() {
   return (
     <>
@@ -17,6 +17,7 @@ export default function Home() {
       <Staffs />
       <Preview />
       <Testimonials />
+      <Footer />
     </>
   );
 }
