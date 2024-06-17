@@ -3,17 +3,20 @@ import { BsCopy } from "react-icons/bs";
 
 function Page() {
   return (
-    <div className=" h-screen flex items-center justify-center w-screen flex-col py-10 px-8 gap-12">
-      <div className="bg-blue-50 w-[600px] h-[700px] flex items-center justify-center ">
+    <div className=" min-h-screen flex items-center justify-center w-screen flex-col py-10 px-8 gap-12">
+      <div className="bg-blue-50 sm:w-[90%] h-[300px] flex items-center justify-center ">
         <p className="text-primary">Drag and drop file or click to pick file</p>
       </div>
-      <textarea
-        className="h-[300px] w-[300px] border border-primary "
-        name=""
-        id=""
-      ></textarea>
+      <div className="h-[300px] p-4 w-[90%]  ">
+        <p className="text-primary  mb-2 ">Description</p>
+        <textarea
+          className="h-full border p-4 rounded-md border-primary w-full"
+          name=""
+          id=""
+        ></textarea>
+      </div>
       <div></div>
-      <button className=" w-[400px] h-[60px] flex items-center justify-center text-[20px] font-semibold ">
+      <button className=" bg-primary text-white sm:w-[90%] rounded-xl h-[70px] flex items-center justify-center text-[20px] font-semibold ">
         Upload
       </button>
     </div>
