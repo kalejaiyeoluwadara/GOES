@@ -27,7 +27,7 @@ function Form() {
 
   return (
     <main className="min-h-screen py-20">
-      <h2 className="text-center text-primary font-[500] text-[20px] py-[80px]">
+      <h2 className="text-center text-primary font-[500] text-[20px] py-[20px]">
         Official page for NYSC, SIWES, IT (Industrial Training) Application
       </h2>
       <form className="w-full flex gap-5 flex-col items-center justify-center">

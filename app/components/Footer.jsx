@@ -3,12 +3,14 @@ import React from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdCall } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
+import logo from "../assets/logo.svg";
+import Image from "next/image";
 function Footer() {
   return (
     <footer>
       <section className="h-[300px]  w-screen bg-primary  ">
         <section className="flex justify-between px-8 p-10 text-white ">
-          <h1>Logo</h1>
+          <Image alt="" className="h-[90px] bg-white w-[90px] " src={logo} />
           <div>
             <h2 className="text-[30px] border-l-2 mb-4 border-green-400 px-2 font-semibold ">
               Quick Links
@@ -16,11 +18,11 @@ function Footer() {
             <div className=" flex flex-col mt-2 text-gray-100 gap-1 ">
               <p>
                 {" "}
-                <Link href={""}>{"> "}About Us</Link>
+                <Link href={"/about-us"}>{"> "}About Us</Link>
               </p>
               <p>
                 {" "}
-                <Link href={""}>{"> "}Projects</Link>
+                <Link href={"/ongoing-projects"}>{"> "}Projects</Link>
               </p>
               <p>
                 {" "}
@@ -28,7 +30,7 @@ function Footer() {
               </p>
               <p>
                 {" "}
-                <Link href={""}>{"> "}Work Experience</Link>
+                <Link href={"/work-experience"}>{"> "}Work Experience</Link>
               </p>
             </div>
           </div>
