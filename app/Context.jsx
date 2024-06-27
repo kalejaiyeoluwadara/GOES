@@ -6,11 +6,15 @@ function AppProvider({ children }) {
   const [src, setSrc] = useState("");
   const [state, setState] = useState(true);
   const [modal, setModal] = useState(false);
+  const [item, setItem] = useState("Register");
+
   return (
     <AppContext.Provider
       value={{
         state,
         setState,
+        item,
+        setItem,
       }}
     >
       {children}

@@ -12,8 +12,10 @@ export default function RootLayout({ children, sho }) {
   return (
     <html lang="en">
       <body className="overflow-x-hidden relative ">
-        <Nav />
-        <AppProvider>{children}</AppProvider>
+        <AppProvider>
+          <Nav />
+          {children}
+        </AppProvider>
       </body>
     </html>
   );
