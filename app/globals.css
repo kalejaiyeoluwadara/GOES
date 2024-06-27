@@ -39,6 +39,9 @@ h1{
 .h3{
   @apply font-bold text-gray-400
 }
+.pointer{
+  @apply cursor-pointer transition-all
+}
 .h4{
   @apply font-semibold text-gray-400
 }

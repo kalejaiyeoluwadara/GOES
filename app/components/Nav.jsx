@@ -9,16 +9,20 @@ import { RxPerson } from "react-icons/rx";
 import { BsBuildingCheck } from "react-icons/bs";
 import { FaPhone, FaBuildingCircleArrowRight } from "react-icons/fa6";
 import { IoIosPeople } from "react-icons/io";
-import logo from "../assets/logo.svg";
+import logo from "../assets/foot.png";
 import Image from "next/image";
 function Nav() {
   const [about, setAbout] = useState(false);
   const [profiles, setProfiles] = useState(false);
   const [work, setWork] = useState(false);
   return (
-    <div className="w-screen  z-30 absolute top- flex items-center justify-between px-12 h-[70px]  ">
+    <div className="w-screen  z-30 absolute top-2 flex items-center justify-between px-12 h-[70px]  ">
       <div>
-        <Image className="h-[40px] w-[40px] " src={logo} alt="" />
+        <Image
+          className="h-[70px] object-cover  w-[180px] "
+          src={logo}
+          alt=""
+        />
       </div>
       <div>
         <ul className="flex gap-6 ">
@@ -36,56 +40,11 @@ function Nav() {
           >
             <Link href={"/about-us"}>About Us</Link>
           </li>
-          <li
-            onClick={() => {
-              setAbout(false);
-              setWork(false);
-              setProfiles((prev) => !prev);
-            }}
-            className="text-[16px] relative flex items-center gap-1 text-[#2B0184] cursor-pointer  "
-          >
-            Projects
-            {profiles ? <GoChevronUp size={20} /> : <GoChevronDown size={20} />}
-            <AnimatePresence>
-              {profiles && (
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                  }}
-                  animate={{
-                    opacity: 1,
-                  }}
-                  exit={{
-                    opacity: 0,
-                  }}
-                  transition={{
-                    duration: 0.5,
-                  }}
-                  className=" px-4 py-2 shadow-sm  w-[200px] absolute -bottom-[80px] bg-white space-y-4 rounded-md  "
-                >
-                  <Link href={"/ongoing-projects"}>
-                    <p className="text-primary flex mb-3 gap-2 text-[15px] font-[500] ">
-                      <FaBuildingCircleArrowRight
-                        className="text-violet-600"
-                        size={20}
-                      />
-                      Ongoing Projects
-                    </p>
-                  </Link>
-                  <Link href={"/past-projects"}>
-                    <p className="text-primary flex gap-2 text-[15px] font-[500] ">
-                      <BsBuildingCheck className="text-green-600" size={20} />
-                      Past Projects
-                    </p>
-                  </Link>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </li>
-
-          <li className="text-[16px] text-[#2B0184] cursor-pointer  ">
-            Product
-          </li>
+          <Link href={"/projects"}>
+            <li className="text-[16px] relative flex items-center gap-1 text-[#2B0184] cursor-pointer ">
+              Projects
+            </li>
+          </Link>
           <Link href={"/consultancy"}>
             <li className="text-[16px] text-[#2B0184] cursor-pointer  ">
               Consultancy

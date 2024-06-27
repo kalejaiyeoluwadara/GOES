@@ -4,7 +4,7 @@ import AppProvider from "./Context";
 import Footer from "./components/Footer";
 
 export const metadata = {
-  title: "GANI-OLA",
+  title: "GOES LTD",
   description: "GANI-OLA ENGINEERING SERVICES LTD",
 };
 

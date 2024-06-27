@@ -3,14 +3,18 @@ import React from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdCall } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
-import logo from "../assets/logo.svg";
+import logo from "../assets/head.png";
 import Image from "next/image";
 function Footer() {
   return (
     <footer className=" ">
       <section className="h-[300px]  w-screen bg-primary  ">
         <section className="flex justify-between px-8 p-10 text-white ">
-          <Image alt="" className="h-[90px] bg-white w-[90px] " src={logo} />
+          <Image
+            alt=""
+            className="h-[90px] object-cover bg-white w-[210px] "
+            src={logo}
+          />
           <div>
             <h2 className="text-[30px] border-l-2 mb-4 border-green-400 px-2 font-semibold ">
               Quick Links
