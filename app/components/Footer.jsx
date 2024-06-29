@@ -3,7 +3,7 @@ import React from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdCall } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
-import logo from "../assets/head.png";
+import logo from "../assets/foot.png";
 import Image from "next/image";
 function Footer() {
   return (

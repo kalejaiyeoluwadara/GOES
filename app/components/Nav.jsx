@@ -9,7 +9,7 @@ import { RxPerson } from "react-icons/rx";
 import { BsBuildingCheck } from "react-icons/bs";
 import { FaPhone, FaBuildingCircleArrowRight } from "react-icons/fa6";
 import { IoIosPeople } from "react-icons/io";
-import logo from "../assets/foot.png";
+import logo from "../assets/head.png";
 import Image from "next/image";
 import { useGlobal } from "../Context";
 function Nav() {
