@@ -16,7 +16,6 @@ const routes = [
   { route: "users", icon: <FaUsers /> },
   { route: "applications", icon: <FaFileAlt size={30} /> },
   { route: "upload", icon: <FaUpload /> },
-  { route: "products", icon: <FaBox /> },
 ];
 function SideBar() {
   const [active, setActive] = useState("");
