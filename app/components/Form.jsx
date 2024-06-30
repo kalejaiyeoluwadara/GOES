@@ -52,6 +52,7 @@ function Form() {
         <input
           name="phoneNumber"
           placeholder="Phone Number"
+          type="tel"
           className="border w-full h-[60px] bg-gray-100 px-4 "
           value={formData.phoneNumber}
           onChange={handleChange}
@@ -60,6 +61,7 @@ function Form() {
         <input
           name="subject"
           placeholder="Subject"
+          type="text"
           className="border w-full h-[60px] bg-gray-100 px-4 "
           value={formData.subject}
           onChange={handleChange}
