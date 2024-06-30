@@ -1,5 +1,6 @@
 import React from "react";
-import finished from "@/app/assets/finished.webp";
+import finished from "@/app/assets/ongoing.jpg";
+import past from "@/app/assets/past.jpg";
 import Image from "next/image";
 import Link from "next/link";
 function Page() {
@@ -26,7 +27,7 @@ function Page() {
       </div>
 
       <div className="w-[90%] flex-center relative h-[400px] bg-gray-900  ">
-        <Image className=" cover " src={finished} alt="" />
+        <Image className=" cover " src={past} alt="" />
         <div className="z-40 text-center text-white">
           <h1>Past Projects</h1>
           <Link href={"/past-projects"}>

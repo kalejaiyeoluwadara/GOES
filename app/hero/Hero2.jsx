@@ -1,5 +1,6 @@
+import Image from "next/image";
 import React from "react";
-
+import ab from "@/app/assets/ab.png";
 function Hero2() {
   return (
     <div className="main flex-col items-center justify-center py-[100px] min-h-[300px] ">
@@ -20,7 +21,9 @@ function Hero2() {
           ea voluptate velit esse quam nihil molestiae consequatur, vel illum
           qui dolorem eum fugiat quo voluptas nulla pariatur?
         </p>
-        <div className="h-[400px] w-auto rounded-[20px] bg-gray-100 "></div>
+        <div className="h-[400px] overflow-hidden w-auto rounded-[20px] bg-gray-100 relative ">
+          <Image src={ab} className="cover" alt="" />
+        </div>
       </div>
     </div>
   );

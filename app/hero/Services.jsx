@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
+import ongoing from "@/app/assets/ongoing.jpg";
 import { motion } from "framer-motion";
 import { HiOutlineChevronLeft, HiChevronRight } from "react-icons/hi";
 function Services() {
@@ -43,12 +44,16 @@ function Services() {
       >
         {[1, 2, 3, 4].map((d, id) => {
           return (
-            <div className="h-[300px] flex-shrink-0 text-white flex items-center justify-center flex-col bg-gray-500  w-[500px] px-6 ">
-              <h2 className="text-[30px] font-medium ">Service</h2>
-              <p className="text-center">
+            <div className="h-[300px] flex-shrink-0 text-white flex items-center justify-center flex-col relative  w-[500px] px-6 ">
+              <h2 className="text-[30px] relative z-30 font-medium ">
+                Service
+              </h2>
+              <p className="text-center relative z-30">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
+              <div className="cover bg-black z-20 bg-opacity-60 " />
+              <Image className="cover z-10 " alt="" src={ongoing} />
             </div>
           );
         })}

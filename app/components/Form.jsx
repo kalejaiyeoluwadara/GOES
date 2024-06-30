@@ -3,7 +3,9 @@ import React, { useState } from "react";
 import { IoSend } from "react-icons/io5";
 import { db } from "@/utils/firebase"; // Adjust the path as necessary
 import { collection, addDoc } from "firebase/firestore";
-
+import { FaCheckCircle } from "react-icons/fa";
+import { useGlobal } from "../Context";
+// import { Router } from "next/navigation";
 function Form() {
   const [formData, setFormData] = useState({
     name: "",
@@ -12,7 +14,8 @@ function Form() {
     subject: "",
     message: "",
   });
-
+  const { modal, setModal } = useGlobal();
+  // const router = Router();
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -22,8 +25,18 @@ function Form() {
     try {
       await addDoc(collection(db, "messages"), formData);
       console.log("Message submitted: ", formData);
+      setModal("Message Submitted successfuly");
+      setFormData({
+        name: "",
+        email: "",
+        phoneNumber: "",
+        subject: "",
+        message: "",
+      });
+      // router.route("/");
     } catch (error) {
       console.error("Error submitting message: ", error);
+      setModal("Error encountered, try again");
     }
   };
 
@@ -81,7 +94,9 @@ function Form() {
         >
           Send Message <IoSend size={20} />
         </button>
-        <p className="h6 mb-2">We'll respond as soon as possible</p>
+        <p className="h6 mb-2">
+          {modal === "" ? "We'll respond as soon as possible" : modal}
+        </p>
       </form>
     </div>
   );

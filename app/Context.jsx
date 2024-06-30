@@ -5,7 +5,7 @@ const AppContext = React.createContext();
 function AppProvider({ children }) {
   const [src, setSrc] = useState("");
   const [state, setState] = useState(true);
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState("");
   const [item, setItem] = useState("Register");
 
   return (
@@ -15,6 +15,8 @@ function AppProvider({ children }) {
         setState,
         item,
         setItem,
+        modal,
+        setModal,
       }}
     >
       {children}

@@ -2,6 +2,10 @@
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import test1 from "@/app/assets/test1.jpg";
+import prof from "@/app/assets/prof.png";
+import test2 from "@/app/assets/test2.jpg";
+import test3 from "@/app/assets/test3.jpg";
 import { HiOutlineChevronLeft, HiChevronRight } from "react-icons/hi";
 function Testimonials() {
   const scrollRef = useRef(null);
@@ -41,21 +45,43 @@ function Testimonials() {
         ref={scrollRef}
         className="flex  overflow-x-scroll py-[50px] no-scrollbar  gap-4 w-full h-auto  "
       >
-        {[1, 2, 3, 4].map((d, id) => {
+        {[
+          {
+            name: "Ferdinard Nwachukwu",
+            role: "CEO, FIDELITY CO.",
+            test: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+            img: prof,
+          },
+          {
+            name: "Ali Badmus",
+            role: "MD, Mathan Nigeria",
+            test: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+            img: test2,
+          },
+          {
+            name: "Hon. Justice Ngozi Priscillia Emehelu",
+            role: "FMR. CHIEF JUDGE,  Enugu State High Court.",
+            test: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+            img: test3,
+          },
+        ].map((d, id) => {
+          const { name, role, test, img } = d;
           return (
-            <div className="h-[300px] relative overflow-visible flex-shrink-0 text-white flex items-center justify-center flex-col bg-slate-300  w-[500px] px-6 ">
+            <div className="h-[300px] relative overflow-visible flex-shrink-0 text-white flex items-center justify-center flex-col bg-slate-100  w-[500px] px-6 ">
               <div className="absolute z-40 -top-[50px] flex items-center justify-center flex-col gap-2 ">
-                <div className="h-[100px] w-[100px] rounded-full bg-gray-500 "></div>
+                <div className="h-[100px] overflow-hidden flex- w-[100px] relative rounded-full bg-gray-200 ">
+                  <Image className="cover" src={img} alt="" />
+                </div>
                 <h3 className="text-[17px] font-[500] text-primary  ">
-                  Ali Badmus
+                  {name}
                 </h3>
-                <p className="text-[14px] mb-1 text-gray-400 ">
-                  MD, Mathan Nigeria
-                </p>
+                <p className="text-[14px] mb-1 text-gray-600 ">{role}</p>
               </div>
-              <p className="text-center mt-12 text-[20px] text-gray-400 ">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              <p className="text-center mt-12 text-[20px] text-gray-600 ">
+                {test}
               </p>
             </div>
           );

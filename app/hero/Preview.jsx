@@ -1,8 +1,9 @@
 import Image from "next/image";
 import React from "react";
-import explore from "../assets/explore.webp";
+import explore from "../assets/past.jpg";
 import Button from "../components/Button";
 import { FaArrowRightLong } from "react-icons/fa6";
+import Link from "next/link";
 function Preview() {
   return (
     <main className="py-20 w-screen ">
@@ -15,9 +16,12 @@ function Preview() {
             Seeing is believing, explore the project preview page and see our
             ongoing and past projects and be the judge.
           </p>
-          <button className="px-8 flex gap-2 text-[20px] py-3 rounded-md text-primary font-medium bg-white ">
-            Explore <FaArrowRightLong size={30} />
-          </button>
+          <Link href={"/projects"}>
+            {" "}
+            <button className="px-8 flex gap-2 text-[20px] py-3 rounded-md text-primary font-medium bg-white ">
+              Explore <FaArrowRightLong size={30} />
+            </button>
+          </Link>
         </div>
       </div>
     </main>
