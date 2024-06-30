@@ -27,12 +27,22 @@ function Nav() {
   }, []); // Runs only once when the component mounts
 
   return (
-    <div className="w-screen bg-white z-30 absolute top-0  flex items-center justify-between px-12 h-[100px]">
+    <div
+      className={`w-screen bg-white z-30 absolute top-0  flex items-center justify-between px-12 h-[100px] ${
+        active === "/admin/dashboard" ||
+        active === "/admin/dashboard/message" ||
+        active === "/admin/dashboard/users" ||
+        active === "/admin/dashboard/applications" ||
+        active === "/admin/dashboard/upload"
+          ? "invisible"
+          : " visible "
+      } `}
+    >
       <div>
         <Image className="h-full object-cover w-[220px]" src={logo} alt="" />
       </div>
       <div>
-        <ul className="flex gap-6">
+        <ul className="flex gap-2 items-center ">
           <Link href={"/"}>
             <li
               className={`text-[16px] text-primary   px-2 cursor-pointer ${
@@ -55,6 +65,19 @@ function Nav() {
           >
             <Link href={"/about-us"}>About Us</Link>
           </li>
+          <Link href={"/director"}>
+            <li
+              className={`text-[16px] text-primary relative flex items-center gap-1  ${
+                active === "/our-staffs" ||
+                active === "/staffs" ||
+                active === "/director"
+                  ? "border-b-2 border-primary font-semibold "
+                  : ""
+              }  b  px-2 cursor-pointer`}
+            >
+              Our Staffs
+            </li>
+          </Link>
           <Link href={"/projects"}>
             <li
               className={`text-[16px] text-primary relative flex items-center gap-1  ${
@@ -88,27 +111,6 @@ function Nav() {
               }  text-primary px-2 cursor-pointer`}
             >
               Work Experience & Training
-              <AnimatePresence>
-                {work && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="px-4 py-2 shadow-sm w-[200px] absolute -bottom-[110px] bg-white space-y-2 rounded-md"
-                  >
-                    <p className="text-primary flex gap-2 text-[15px] font-[500]">
-                      SIEWS
-                    </p>
-                    <p className="text-primary flex gap-2 text-[15px] font-[500]">
-                      NYSC
-                    </p>
-                    <p className="text-primary flex gap-2 text-[15px] font-[500]">
-                      Industrial Training
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </li>
           </Link>
         </ul>

@@ -1,10 +1,13 @@
 import React from "react";
-
+import Image from "next/image";
+import prof from "@/app/assets/test2.jpg";
 function Page() {
   return (
     <div className="px-20 flex flex-col items-center justify-center py-40 ">
       <h1 className="text-primary mb-12 font-medium ">Director Profile</h1>
-      <div className="bg-gray-100 h-[300px] w-[300px] rounded-full "></div>
+      <div className="bg-gray-100 h-[300px] relative overflow-hidden w-[300px] rounded-full ">
+        <Image className="cover" src={prof} alt="" />
+      </div>
       <h1 className="text-primary mt-2 font-medium ">
         Mr. Jimoh Ganiyu Olalekan
       </h1>
@@ -26,11 +29,6 @@ function Page() {
             Certifications and Qualifications:
           </h3>
           <ul className=" space-y-4 list-disc mt-4   ">
-            <li className="h6">
-              <span className="h4">ND (National Diploma):</span> The Director
-              holds a National Diploma in Building Technology, providing a solid
-              foundation in the technical and practical aspects of construction.
-            </li>
             <li className="h6">
               <span className="h4">HND (Higher National Diploma):</span> He
               furthered his education with a Higher National Diploma in Building

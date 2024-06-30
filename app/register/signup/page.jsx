@@ -2,11 +2,13 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { auth } from "@/utils/firebase";
+import { auth, db } from "@/utils/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { collection, addDoc } from "firebase/firestore";
 import Link from "next/link";
 import Modal from "./Modal";
 import { useGlobal } from "@/app/Context";
+
 export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,14 +18,31 @@ export default function Signup() {
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
   const { item, setItem } = useGlobal();
+
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      setMessage("SignUp successfull");
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+
+      // Save user details to Firestore
+      await addDoc(collection(db, "users"), {
+        uid: user.uid,
+        email,
+        username,
+        phone,
+        createdAt: new Date(),
+      });
+
+      setMessage("SignUp successful");
       localStorage.setItem("log", "true");
       setShowModal(true);
       setItem("Log Out");
+
       setTimeout(() => {
         router.push("/");
       }, 3000);
@@ -41,7 +60,7 @@ export default function Signup() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white py-2">
       {showModal && <Modal message={message} onClose={closeModal} />}
-      <div className="bg-white border w-[400px] rounded-md mb-10 h-[480px] py-6 px-10 relative mt-40 ">
+      <div className="bg-white border w-[400px] rounded-md mb-10 h-[480px] py-6 px-10 relative mt-40">
         <h1 className="text-4xl text-center text-primary font-bold mb-8">
           Sign Up
         </h1>
@@ -84,11 +103,11 @@ export default function Signup() {
           >
             Sign Up
           </button>
-          <p className="text-center text-gray-500 text-[13px] ">
-            are you new here{" "}
-            <Link href={"/register/login"} className="text-primary underline ">
+          <p className="text-center text-gray-500 text-[13px]">
+            Are you new here?{" "}
+            <Link href={"/register/login"} className="text-primary underline">
               Login
-            </Link>{" "}
+            </Link>
           </p>
         </form>
       </div>
