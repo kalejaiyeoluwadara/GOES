@@ -38,9 +38,9 @@ export default function Login() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-blue-500 py-2">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-white py-2">
       {showModal && <Modal message={message} onClose={closeModal} />}
-      <div className="bg-white w-[400px] rounded-md mb-10 h-[350px] py-6 px-10 relative mt-40 ">
+      <div className="bg-white border w-[400px] rounded-md mb-10 h-[350px] py-6 px-10 relative mt-40 ">
         <h1 className="text-4xl text-center text-primary font-bold mb-8">
           Welcome back!
         </h1>

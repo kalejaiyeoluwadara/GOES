@@ -25,9 +25,9 @@ function Nav() {
   }, []); // Runs only once when the component mounts
 
   return (
-    <div className="w-screen z-30 absolute top-2 flex items-center justify-between px-12 h-[70px]">
+    <div className="w-screen bg-white z-30 absolute top-0  flex items-center justify-between px-12 h-[100px]">
       <div>
-        <Image className="h-[70px] object-cover w-[180px]" src={logo} alt="" />
+        <Image className="h-full object-cover w-[220px]" src={logo} alt="" />
       </div>
       <div>
         <ul className="flex gap-6">
