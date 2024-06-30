@@ -9,6 +9,7 @@ import { RxPerson } from "react-icons/rx";
 import { BsBuildingCheck } from "react-icons/bs";
 import { FaPhone, FaBuildingCircleArrowRight } from "react-icons/fa6";
 import { IoIosPeople } from "react-icons/io";
+import { useParams } from "@/utils/params";
 import logo from "../assets/head.png";
 import Image from "next/image";
 import { useGlobal } from "../Context";
@@ -17,6 +18,7 @@ function Nav() {
   const [profiles, setProfiles] = useState(false);
   const [work, setWork] = useState(false);
   const { item, setItem } = useGlobal();
+  const active = useParams();
   useEffect(() => {
     const logStatus = localStorage.getItem("log");
     if (logStatus === "true") {
@@ -32,29 +34,59 @@ function Nav() {
       <div>
         <ul className="flex gap-6">
           <Link href={"/"}>
-            <li className="text-[16px] text-[#2B0184] cursor-pointer">Home</li>
+            <li
+              className={`text-[16px] text-primary   px-2 cursor-pointer ${
+                active === "/" ? "border-b-2 border-primary font-semibold " : ""
+              } `}
+            >
+              Home
+            </li>
           </Link>
           <li
             onClick={() => {
               setProfiles(false);
               setAbout((prev) => !prev);
             }}
-            className="text-[16px] relative flex items-center gap-1 text-[#2B0184] cursor-pointer"
+            className={`"tex-[16px] relative flex items-center gap-1 ${
+              active === "/about-us"
+                ? "border-b-2 border-primary font-semibold "
+                : ""
+            }    px-2 cursor-pointer text-primary`}
           >
             <Link href={"/about-us"}>About Us</Link>
           </li>
           <Link href={"/projects"}>
-            <li className="text-[16px] relative flex items-center gap-1 text-[#2B0184] cursor-pointer">
+            <li
+              className={`text-[16px] text-primary relative flex items-center gap-1  ${
+                active === "/projects" ||
+                active === "/ongoing-projects" ||
+                active === "/past-projects"
+                  ? "border-b-2 border-primary font-semibold "
+                  : ""
+              }  b  px-2 cursor-pointer`}
+            >
               Projects
             </li>
           </Link>
           <Link href={"/consultancy"}>
-            <li className="text-[16px] text-[#2B0184] cursor-pointer">
+            <li
+              className={`text-[16px] text-primary ${
+                active === "/consultancy"
+                  ? "border-b-2 border-primary font-semibold "
+                  : ""
+              } cursor-pointer`}
+            >
               Consultancy
             </li>
           </Link>
           <Link href={"/work-experience"}>
-            <li className="text-[16px] relative flex items-center gap-1 text-[#2B0184] cursor-pointer">
+            <li
+              className={`text-[16px] relative flex items-center gap-1  ${
+                active === "/work-experience"
+                  ? "border-b-2 border-primary font-semibold "
+                  : ""
+              }  text-primary px-2 cursor-pointer`}
+            >
               Work Experience & Training
               <AnimatePresence>
                 {work && (
