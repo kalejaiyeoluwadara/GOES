@@ -29,7 +29,7 @@ function Nav() {
 
   return (
     <div
-      className={`w-screen bg-white z-30 absolute top-0  flex items-center justify-between px-4 sm:px-12 h-[80px] sm:h-[100px] ${
+      className={`w-screen bg-white sm:z-30 fixed z-50 sm:absolute top-0  flex items-center justify-between px-4 sm:px-12 h-[80px] sm:h-[100px] ${
         active === "/admin/dashboard" ||
         active === "/admin/dashboard/message" ||
         active === "/admin/dashboard/users" ||
