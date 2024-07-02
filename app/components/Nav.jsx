@@ -18,7 +18,8 @@ function Nav() {
   const [about, setAbout] = useState(false);
   const [profiles, setProfiles] = useState(false);
   const [work, setWork] = useState(false);
-  const { item, setItem } = useGlobal();
+  const { item, setItem, isMenuOpen, setIsMenuOpen } = useGlobal();
+
   const active = useParams();
   useEffect(() => {
     const logStatus = localStorage.getItem("log");
@@ -29,7 +30,7 @@ function Nav() {
 
   return (
     <div
-      className={`w-screen bg-white sm:z-30 fixed z-50 sm:absolute top-0  flex items-center justify-between px-4 sm:px-12 h-[80px] sm:h-[100px] ${
+      className={`w-screen bg-white sm:z-30 fixed z-40 sm:absolute top-0  flex items-center justify-between px-4 sm:px-12 h-[80px] sm:h-[100px] ${
         active === "/admin/dashboard" ||
         active === "/admin/dashboard/message" ||
         active === "/admin/dashboard/users" ||
@@ -140,7 +141,12 @@ function Nav() {
       </div>
       <div className="sm:hidden block ">
         {" "}
-        <RiMenu2Fill size={30} />
+        <RiMenu2Fill
+          onClick={() => {
+            setIsMenuOpen(true);
+          }}
+          size={30}
+        />
       </div>
     </div>
   );

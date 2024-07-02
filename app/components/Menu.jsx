@@ -1,7 +1,36 @@
+"use client";
+import Link from "next/link";
 import React from "react";
-
+import { LiaTimesSolid } from "react-icons/lia";
+import { useGlobal } from "../Context";
 function Menu() {
-  return <div>Menu</div>;
+  const { isMenuOpen, setIsMenuOpen } = useGlobal();
+  return (
+    <>
+      {isMenuOpen && (
+        <div className="fixed top-0 z-50 left-0 h-full w-full bg-black bg-opacity-65 flex-center  ">
+          <div className="h-[400px] w-[400px] bg-white p-6 rounded-xl ">
+            <div
+              onClick={() => {
+                setIsMenuOpen(false);
+              }}
+              className="flex cursor-pointer items-end justify-end "
+            >
+              <LiaTimesSolid size={30} />
+            </div>
+            <div className="flex mt-10 flex-col items-center gap-4 justify-center  text-black ">
+              <Link href={"/"}>Home</Link>
+              <Link href={"/about-us"}>About Us</Link>
+              <Link href={"/our-staffs"}>Our Staffs</Link>
+              <Link href={"/projects"}>Projects</Link>
+              <Link href={"/consultancy"}>Consultancy</Link>
+              <Link href={"/work-experience"}>Work Experience & Training</Link>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
 }
 
 export default Menu;

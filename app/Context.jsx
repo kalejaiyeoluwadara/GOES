@@ -7,7 +7,7 @@ function AppProvider({ children }) {
   const [state, setState] = useState(true);
   const [modal, setModal] = useState("");
   const [item, setItem] = useState("Register");
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <AppContext.Provider
       value={{
@@ -17,6 +17,8 @@ function AppProvider({ children }) {
         setItem,
         modal,
         setModal,
+        isMenuOpen,
+        setIsMenuOpen,
       }}
     >
       {children}
