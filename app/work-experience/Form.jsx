@@ -72,12 +72,12 @@ function Form() {
   };
 
   return (
-    <main className="min-h-screen py-20">
+    <main className="min-h-screen  py-20">
       <h2 className="text-center text-primary font-[500] text-[20px] py-[20px]">
         Official page for NYSC, SIWES, IT (Industrial Training) Application
       </h2>
       <form
-        className="w-full flex gap-5 flex-col items-center justify-center"
+        className="w-full flex sm:px-0 px-12 gap-5  flex-col items-center justify-center"
         onSubmit={handleSubmit}
       >
         <div className="flex flex-col gap-2">
@@ -86,7 +86,7 @@ function Form() {
             name="firstName"
             value={formData.firstName}
             onChange={handleChange}
-            className="w-[400px] rounded-md px-2 h-[50px] border-[1px] border-primary bg-blue-100"
+            className="sm:w-[400px] w-[300px] rounded-md px-2 h-[50px] border-[1px] border-primary bg-blue-100"
             type="text"
             required
           />
@@ -98,7 +98,7 @@ function Form() {
             name="lastName"
             value={formData.lastName}
             onChange={handleChange}
-            className="w-[400px] rounded-md px-2 h-[50px] border-[1px] border-primary bg-blue-100"
+            className="sm:w-[400px] w-[300px] rounded-md px-2 h-[50px] border-[1px] border-primary bg-blue-100"
             type="text"
             required
           />
@@ -110,7 +110,7 @@ function Form() {
             name="institution"
             value={formData.institution}
             onChange={handleChange}
-            className="w-[400px] rounded-md px-2 h-[50px] border-[1px] border-primary bg-blue-100"
+            className="sm:w-[400px] w-[300px] rounded-md px-2 h-[50px] border-[1px] border-primary bg-blue-100"
             type="text"
             required
           />
@@ -122,7 +122,7 @@ function Form() {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-[400px] rounded-md px-2 h-[50px] border-[1px] border-primary bg-blue-100"
+            className="sm:w-[400px] w-[300px] rounded-md px-2 h-[50px] border-[1px] border-primary bg-blue-100"
             type="email"
             required
           />
@@ -134,7 +134,7 @@ function Form() {
             name="option"
             value={formData.option}
             onChange={handleChange}
-            className="w-[400px] rounded-md px-2 h-[50px] border-[1px] border-primary bg-blue-100"
+            className="sm:w-[400px] w-[300px] rounded-md px-2 h-[50px] border-[1px] border-primary bg-blue-100"
           >
             <option value="">Select an option</option>
             <option value="NYSC">NYSC</option>
@@ -148,7 +148,7 @@ function Form() {
 
           <div
             onClick={handleClick}
-            className="w-[400px] rounded-md px-6 text-center gap-2 h-[300px] border-[2px] border-dashed border-primary bg-blue-100 flex flex-col items-center justify-center cursor-pointer"
+            className="sm:w-[400px] w-[300px] rounded-md px-6 text-center gap-2 h-[300px] border-[2px] border-dashed border-primary bg-blue-100 flex flex-col items-center justify-center cursor-pointer"
           >
             <IoCloudUploadOutline size={50} />
             <p>
@@ -168,7 +168,7 @@ function Form() {
         </div>
         <button
           type="submit"
-          className="w-[400px] rounded-md mt-8 h-[50px] flex items-center justify-center text-white bg-primary text-[20px] font-semibold"
+          className="sm:w-[400px] w-[300px] rounded-md mt-8 h-[50px] flex items-center justify-center text-white bg-primary text-[20px] font-semibold"
         >
           Submit
         </button>

@@ -6,12 +6,12 @@ function Banner() {
     <main className="h-[300px] relative main  ">
       <Image
         placeholder="blur"
-        className="cover object-top blur-[2px] "
+        className="cover object-top  "
         alt=""
         src={finished}
       />
       <div className="cover bg-black bg-opacity-15  " />
-      <h1 className="text-[50px] font-bold font-600 relative z-40 text-white ">
+      <h1 className="sm:text-[50px] sm:mt-0 mt-12 text-[30px] text-center font-bold font-600 relative z-40 text-white ">
         Work Experience & Training
       </h1>
     </main>

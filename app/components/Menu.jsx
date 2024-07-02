@@ -18,7 +18,12 @@ function Menu() {
             >
               <LiaTimesSolid size={30} />
             </div>
-            <div className="flex mt-10 flex-col items-center gap-4 justify-center  text-black ">
+            <div
+              onClick={() => {
+                setIsMenuOpen(false);
+              }}
+              className="flex mt-10 flex-col items-center gap-4 justify-center  text-black "
+            >
               <Link href={"/"}>Home</Link>
               <Link href={"/about-us"}>About Us</Link>
               <Link href={"/our-staffs"}>Our Staffs</Link>
