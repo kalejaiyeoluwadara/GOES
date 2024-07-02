@@ -3,10 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 .font-poppins{
-  font-family: 'Poppins','sans-serif';
+   font-family: "Poppins", sans-serif;
 }
 .main{
-  @apply  w-screen sm:px-8 items-center flex justify-center text-black
+  @apply  w-full sm:px-8 items-center flex justify-center text-black
 }
 .btn{
   @apply   h-[48px] w-[48px] hover:border-gray-600 transition-all hover:bg-opacity-[0.6]  hover:border-[1px] flex items-center justify-center rounded-full bg-primary text-white
@@ -24,13 +24,13 @@ input{
   @apply font-[800] 
 }
 h1{
-  @apply text-[36px] font-semibold
+  @apply sm:text-[36px] text-[20px] font-poppins font-semibold
 }
 .cover{
   @apply h-full w-full absolute top-0 left-0 object-cover
 }
 *{
-  font-family: 'Poppins','sans-serif';
+  font-family: 'Poppins',sans-serif;
 }
 .no-scrollbar {
   -ms-overflow-style: none;  /* IE and Edge */

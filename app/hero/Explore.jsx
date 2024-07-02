@@ -10,8 +10,10 @@ function Explore() {
       <Image src={explore} alt="" className="cover  " placeholder="blur" />
       <div className="cover bg-black bg-opacity-40" />
       <div className="relative flex flex-col gap-2 items-center z-40 ">
-        <h1 className="text-[40px] text-white font-bold ">Equipment Gallery</h1>
-        <p className="text-white text-center sm:w-[500px] ">
+        <h1 className="text-[40px] text-white text-center sm:text-start font-bold ">
+          Equipment Gallery
+        </h1>
+        <p className="text-white text-center sm:px-0 px-4 sm:w-[500px] ">
           Have a look at modern day equipment we make use of here at Gani-Ola
           Engineering Services ltd.
         </p>

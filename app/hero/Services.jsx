@@ -34,13 +34,13 @@ function Services() {
   const scrollPercentage = (scrollLeft / scrollWidth) * 100;
 
   return (
-    <div className="bg-white min-h-screen px-[110px] py-[80px]  w-full ">
+    <div className="bg-white min-h-screen px-[10px] sm:px-[110px] py-[80px]  w-full ">
       <h1 className="text-center text-primary text-[40px] font-bold  ">
         Services
       </h1>
       <section
         ref={scrollRef}
-        className="flex  overflow-x-scroll no-scrollbar mt-20 gap-4 w-full h-auto  "
+        className="flex  overflow-x-scroll no-scrollbar mt-10 sm:mt-20 gap-4 w-full h-auto  "
       >
         {[1, 2, 3, 4].map((d, id) => {
           return (

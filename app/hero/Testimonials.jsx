@@ -38,7 +38,7 @@ function Testimonials() {
 
   return (
     <div className="bg-white min-h-screen px-[110px] py-[80px]  w-full ">
-      <h1 className="text-center mb-20 text-primary text-[40px] font-bold  ">
+      <h1 className="text-center mb-20 text-primary text-[30px] sm:text-[40px] font-bold  ">
         Testimonies
       </h1>
       <section

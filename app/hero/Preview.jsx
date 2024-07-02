@@ -12,13 +12,13 @@ function Preview() {
         <div className="cover bg-black bg-opacity-40" />
         <div className="relative flex flex-col gap-4 items-center z-40 ">
           <h1 className="text-[40px] text-white font-bold ">Project Preview</h1>
-          <p className="text-white text-center sm:w-[500px] ">
+          <p className="text-white text-center sm:px-0 px-4 sm:w-[500px] ">
             Seeing is believing, explore the project preview page and see our
             ongoing and past projects and be the judge.
           </p>
           <Link href={"/projects"}>
             {" "}
-            <button className="px-8 flex gap-2 text-[20px] py-3 rounded-md text-primary font-medium bg-white ">
+            <button className="px-8 flex gap-2 sm:mt-0 mt-2 text-[20px] py-3 rounded-md text-primary font-medium bg-white ">
               Explore <FaArrowRightLong size={30} />
             </button>
           </Link>

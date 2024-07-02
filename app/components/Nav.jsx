@@ -28,7 +28,7 @@ function Nav() {
 
   return (
     <div
-      className={`w-screen bg-white z-30 absolute top-0  flex items-center justify-between px-12 h-[100px] ${
+      className={`w-screen bg-white z-30 absolute top-0  flex items-center justify-between px-4 sm:px-12 h-[80px] sm:h-[100px] ${
         active === "/admin/dashboard" ||
         active === "/admin/dashboard/message" ||
         active === "/admin/dashboard/users" ||
@@ -39,9 +39,13 @@ function Nav() {
       } `}
     >
       <div>
-        <Image className="h-full object-cover w-[220px]" src={logo} alt="" />
+        <Image
+          className="h-full object-cover sm:w-[220px] w-[90px] "
+          src={logo}
+          alt=""
+        />
       </div>
-      <div>
+      <div className="sm:block hidden  ">
         <ul className="flex gap-2 items-center ">
           <Link href={"/"}>
             <li
@@ -115,7 +119,7 @@ function Nav() {
           </Link>
         </ul>
       </div>
-      <div className="flex gap-3">
+      <div className="sm:flex hidden gap-3">
         {item === "Register" && (
           <Link href={"/register/login"}>
             <Button otherStyles={"text-primary font-[500]"} title={item} />
@@ -133,6 +137,7 @@ function Nav() {
         )}
         <Button otherStyles={"bg-[#2B0184] text-white"} title={"Hire"} />
       </div>
+      <div className="sm:hidden block "> nav</div>
     </div>
   );
 }

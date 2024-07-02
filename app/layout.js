@@ -11,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children, sho }) {
   return (
     <html lang="en">
-      <body className="overflow-x-hidden relative ">
+      <body className="overflow-x-hidden w-full relative ">
         <AppProvider>
           <Nav />
           {children}
