@@ -18,7 +18,7 @@ function Page() {
           <h1 className="mt-10 text-[50px] text-primary font-bold ">
             About Us
           </h1>
-          <p className=" mt-10 text-gray-500 ">
+          <p className=" mt-10 sm:px-0 px-4 text-gray-500 ">
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem
             accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
             quae ab illo inventore veritatis et quasi architecto beatae vitae
@@ -35,8 +35,8 @@ function Page() {
             pariatur?
           </p>
 
-          <div className="flex w-full my-20 gap-10 justify-center items-center  ">
-            <div className=" h-[600px] flex flex-col gap-8  w-[50%]">
+          <div className="flex sm:flex-row flex-col w-full my-20 gap-10 justify-center items-center  ">
+            <div className=" h-[600px] flex flex-col gap-8 sm:px-0 px-4 sm:w-[50%]">
               <div className=" ">
                 <FaLocationDot className="text-primary mb-1 " size={25} />
                 <h2 className=" text-primary font-semibold text-[20px]  ">
@@ -66,7 +66,7 @@ function Page() {
               <Map />
             </div>
 
-            <div className="h-[600px] w-[50%] ">
+            <div className="h-[600px] sm:mt-0 mt-[230px] sm:w-[50%] ">
               <Form />
             </div>
           </div>

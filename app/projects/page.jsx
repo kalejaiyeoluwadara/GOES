@@ -5,9 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 function Page() {
   return (
-    <div className="flex items-center flex-col gap-8 py-40 justify-center min-h-screen w-screen ">
-      <h1 className="text-primary">Projects</h1>
-      <div className="w-[90%] flex-center relative h-[400px] bg-gray-900  ">
+    <div className="flex items-center flex-col gap-8 py-40  justify-center min-h-screen w-screen ">
+      <h1 className="text-primary text-[36px]  ">Projects</h1>
+      <div className="sm:w-[90%] w-[100%] flex-center relative h-[400px] bg-gray-900  ">
         <Image className=" cover " src={finished} alt="" />
         <div className="z-40 text-center text-white">
           <h1>Ongoing Projects</h1>
@@ -23,10 +23,10 @@ function Page() {
 
       <div className="flex relative w-[90%]  flex-center h-[70px]  ">
         <div className="border-primary h-[2px] w-full bg-primary " />
-        <div className="w-[300px] h-[40px] absolute top-4 bg-white " />
+        <div className="sm:w-[300px] w-[100px] h-[40px] absolute top-4 bg-white " />
       </div>
 
-      <div className="w-[90%] flex-center relative h-[400px] bg-gray-900  ">
+      <div className="sm:w-[90%] w-[100%] flex-center relative h-[400px] bg-gray-900  ">
         <Image className=" cover " src={past} alt="" />
         <div className="z-40 text-center text-white">
           <h1>Past Projects</h1>

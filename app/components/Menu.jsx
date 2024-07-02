@@ -8,8 +8,8 @@ function Menu() {
   return (
     <>
       {isMenuOpen && (
-        <div className="fixed top-0 z-50 left-0 h-full w-full bg-black bg-opacity-65 flex-center  ">
-          <div className="h-[400px] w-[400px] bg-white p-6 rounded-xl ">
+        <div className="fixed top-0 z-50 left-0 h-screen w-screen  bg-black bg-opacity-65 flex-center  ">
+          <div className="h-[400px] w-[330px] bg-white p-6 rounded-xl ">
             <div
               onClick={() => {
                 setIsMenuOpen(false);
