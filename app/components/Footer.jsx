@@ -8,8 +8,8 @@ import Image from "next/image";
 function Footer() {
   return (
     <footer className=" ">
-      <section className="h-[300px]  w-screen bg-primary  ">
-        <section className="flex justify-between px-8 p-10 text-white ">
+      <section className="sm:h-[300px] w-screen bg-primary  ">
+        <section className="flex sm:flex-row flex-col sm:gap-0 gap-20 justify-between px-8 p-10 text-white ">
           <Image
             alt=""
             className="h-[90px] object-cover bg-white w-[210px] "
@@ -19,7 +19,7 @@ function Footer() {
             <h2 className="text-[30px] border-l-2 mb-4 border-green-400 px-2 font-semibold ">
               Quick Links
             </h2>
-            <div className=" flex flex-col mt-2 text-gray-100 gap-1 ">
+            <div className=" flex flex-col mt-2 text-gray-100 gap-3 sm:gap-1 ">
               <p>
                 {" "}
                 <Link href={"/about-us"}>{"> "}About Us</Link>
@@ -43,7 +43,7 @@ function Footer() {
               Contact Info
             </h2>
             <div className="flex flex-col gap-4">
-              <div className="flex flex-col gap-1 ">
+              <div className="flex flex-col gap-3 sm:gap-1 ">
                 <FaLocationDot size={20} />
                 <p>
                   21A, Tunji Bello Street, Ikolaba Estate, Ibadan, Oyo state.
@@ -63,7 +63,7 @@ function Footer() {
         <section></section>
       </section>
       <section className="w-screen h-[60px] bg-white flex items-center justify-center ">
-        <p className="text-gray-400">
+        <p className="text-gray-400 sm:text-start text-center sm:text-base text-[12px] ">
           Copyright 2024 Gani-Ola Engineering Services ltd.
         </p>
       </section>

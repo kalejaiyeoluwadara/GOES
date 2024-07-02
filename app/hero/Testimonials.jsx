@@ -37,7 +37,7 @@ function Testimonials() {
   const scrollPercentage = (scrollLeft / scrollWidth) * 100;
 
   return (
-    <div className="bg-white min-h-screen px-[110px] py-[80px]  w-full ">
+    <div className="bg-white min-h-screen sm:px-[110px] px-[10px] py-[80px]  w-full ">
       <h1 className="text-center mb-20 text-primary text-[30px] sm:text-[40px] font-bold  ">
         Testimonies
       </h1>

@@ -11,6 +11,7 @@ import { FaPhone, FaBuildingCircleArrowRight } from "react-icons/fa6";
 import { IoIosPeople } from "react-icons/io";
 import { useParams } from "@/utils/params";
 import logo from "../assets/head.png";
+import { RiMenu2Fill } from "react-icons/ri";
 import Image from "next/image";
 import { useGlobal } from "../Context";
 function Nav() {
@@ -137,7 +138,10 @@ function Nav() {
         )}
         <Button otherStyles={"bg-[#2B0184] text-white"} title={"Hire"} />
       </div>
-      <div className="sm:hidden block "> nav</div>
+      <div className="sm:hidden block ">
+        {" "}
+        <RiMenu2Fill size={30} />
+      </div>
     </div>
   );
 }
