@@ -5,12 +5,16 @@ import { FaLocationDot } from "react-icons/fa6";
 import { MdCall } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
 import Footer from "../components/Footer";
+import Image from "next/image";
 
+import ongoing from "@/app/assets/ongoing.jpg";
 function Page() {
   return (
     <>
       <div>
-        <div className="h-[50vh] mb-8 w-screen bg-gray-300  " />
+        <div className="h-[50vh] relative mb-8 w-screen bg-gray-300  ">
+          <Image className="cover" src={ongoing} alt="" />
+        </div>
         <main className="min-h-[140vh]  pb-40 sm:px-20 flex  flex-col items-center justify-center w-screen ">
           <div className="flex w-full   justify-center items-center  ">
             <div className="h-[600px] sm:px-0 px-4 sm:-translate-y-40 sm:w-[50%] ">
