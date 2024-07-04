@@ -35,7 +35,8 @@ function Nav() {
         active === "/admin/dashboard/message" ||
         active === "/admin/dashboard/users" ||
         active === "/admin/dashboard/applications" ||
-        active === "/admin/dashboard/upload"
+        active === "/admin/dashboard/upload" ||
+        active === "/admin/dashboard/projects"
           ? "invisible"
           : " visible "
       } `}

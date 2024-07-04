@@ -2,12 +2,45 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { MdDelete } from "react-icons/md";
-import { BsMenuButtonWide, BsCopy } from "react-icons/bs";
 import { db } from "@/utils/firebase";
+
+// Spinner Component
+const Spinner = () => (
+  <div className="flex items-center justify-center">
+    <div
+      className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
+      role="status"
+    >
+      {/* <span className="visually-hidden">Loading...</span> */}
+    </div>
+  </div>
+);
+
+// Modal Component
+const Modal = ({ show, message, onClose }) => (
+  <div
+    className={`fixed inset-0 flex z-[70] items-center justify-center bg-black bg-opacity-50 transition-opacity ${
+      show ? "opacity-100" : "opacity-0 pointer-events-none"
+    }`}
+  >
+    <div className="bg-white p-6 rounded-lg shadow-lg">
+      <h2 className="text-lg font-semibold">{message}</h2>
+      <button
+        onClick={onClose}
+        className="mt-4 bg-primary text-white px-3 py-1 rounded"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+);
+
 function Page() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [modalMessage, setModalMessage] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -29,41 +62,65 @@ function Page() {
 
     fetchMessages();
   }, []);
+
+  const handleDelete = async (id) => {
+    setLoading(true);
+    try {
+      await deleteDoc(doc(db, "messages", id));
+      setMessages(messages.filter((message) => message.id !== id));
+      setModalMessage("Message deleted successfully!");
+      setShowModal(true);
+    } catch (err) {
+      setError("Failed to delete message");
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const closeModal = () => setShowModal(false);
+
   return (
-    <div className="w-full flex-col gap-6 flex  py-2 pl-10  items-center justify-center overflow-y-hidden h-screen  ">
+    <div className="w-full flex-col gap-6 flex py-2 pl-10 items-center justify-center overflow-y-hidden h-screen">
       {loading ? (
-        <p>Loading...</p>
+        <Spinner />
       ) : (
-        <div className=" h-[400px] flex-col gap-6 flex overflow-y-scroll ">
-          {messages.map((d, id) => {
-            const { email, message, name, phoneNumber, subject } = d;
-            return (
-              <div
-                key={id}
-                className="w-[700px] bg-white rounded-md shadow-sm border h-auto p-6 "
-              >
-                <div className="flex items-center justify-between">
-                  <h2 className="text-[20px] font-semibold ">{name}</h2>
-                  <p className="text-gray-400 text-sm ">{email}</p>
+        <div className="h-[400px] flex-col gap-6 flex no-scrollbar overflow-y-scroll">
+          {messages.length === 0 ? (
+            <p>No messages available.</p>
+          ) : (
+            messages.map((d, id) => {
+              const { email, message, name, phoneNumber, subject } = d;
+              return (
+                <div
+                  key={id}
+                  className="w-[700px] bg-white rounded-md shadow-sm border h-auto p-6"
+                >
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-[20px] font-semibold">{name}</h2>
+                    <p className="text-gray-400 text-sm">{email}</p>
+                  </div>
+                  <h4 className="text-[18px] mt-4 font-medium capitalize">
+                    {subject}
+                  </h4>
+                  <p className="truncate w-[90%] text-base font-light">
+                    {message}
+                  </p>
+                  <div className="w-full h-auto flex gap-2 items-end justify-end">
+                    <MdDelete
+                      size={20}
+                      className="text-gray-500 cursor-pointer"
+                      onClick={() => handleDelete(d.id)}
+                    />
+                    {/* <BsCopy size={20} className="text-gray-500" /> */}
+                  </div>
                 </div>
-                <h4 className="text-[18px] mt-4 font-medium capitalize  ">
-                  {subject}
-                </h4>
-                <p className="truncate w-[90%] text-base font-light ">
-                  {message}
-                </p>
-                <div className="w-full h-auto flex gap-2 items-end justify-end ">
-                  <MdDelete
-                    size={20}
-                    className="text-gray-500 cursor-pointer "
-                  />
-                  {/* <BsCopy size={20} className="text-gray-500" /> */}
-                </div>
-              </div>
-            );
-          })}
+              );
+            })
+          )}
         </div>
       )}
+      <Modal show={showModal} message={modalMessage} onClose={closeModal} />
     </div>
   );
 }

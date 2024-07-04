@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { FaCheckCircle } from "react-icons/fa";
 import { MdError } from "react-icons/md";
-
+import { LiaTimesSolid } from "react-icons/lia";
 const storage = getStorage();
 
 const EditProjectForm = ({ project, onSave, onCancel }) => {
@@ -84,7 +84,7 @@ const EditProjectForm = ({ project, onSave, onCancel }) => {
   };
 
   return (
-    <div className="min-h-screen grid grid-cols-3 items-center justify-center w-screen py-10 px-8 gap-12">
+    <div className="min-h-screen grid grid-cols-3 items-center justify-center w-full py-10 px-2 gap-12">
       <section className="col-span-2 bg-white rounded-xl h-auto p-6 w-auto border flex flex-col gap-6 shadow-md">
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <div className="flex flex-col gap-4">
@@ -133,7 +133,7 @@ const EditProjectForm = ({ project, onSave, onCancel }) => {
             </select>
           </div>
           <div className="flex flex-col gap-4">
-            <label className="text-lg font-medium">Upload Images (Max 6)</label>
+            <label className="text-lg font-medium">More Images</label>
             <div
               onClick={handleClick}
               className="w-full rounded-md px-6 text-center gap-2 h-[150px] border-[2px] border-dashed bg-blue-100 flex flex-col items-center justify-center cursor-pointer"
@@ -165,7 +165,7 @@ const EditProjectForm = ({ project, onSave, onCancel }) => {
         {formData.files.map((file, index) => (
           <div
             key={index}
-            className="w-full border h-[60px] flex items-center justify-between px-4 rounded-lg bg-gray-100 mb-2"
+            className="w-auto border flex justify-between items-center pr-2 gap-2 h-auto  rounded-lg  mb-2"
           >
             <img
               src={file}
@@ -176,7 +176,7 @@ const EditProjectForm = ({ project, onSave, onCancel }) => {
               onClick={() => handleDeleteFile(file)}
               className="text-red-500 font-semibold"
             >
-              Delete
+              <LiaTimesSolid size={20} />
             </button>
           </div>
         ))}
