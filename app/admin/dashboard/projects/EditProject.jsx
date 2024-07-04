@@ -12,10 +12,10 @@ const storage = getStorage();
 
 const EditProjectForm = ({ project, onSave, onCancel }) => {
   const [formData, setFormData] = useState({
-    projectname: project.projectname,
-    projectlocation: project.projectlocation,
-    status: project.status,
-    description: project.description,
+    projectname: project?.projectname,
+    projectlocation: project?.projectlocation,
+    status: project?.status,
+    description: project?.description,
     files: project.files || [], // Add files array
   });
 
