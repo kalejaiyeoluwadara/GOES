@@ -26,7 +26,7 @@ function Menu() {
             >
               <Link href={"/"}>Home</Link>
               <Link href={"/about-us"}>About Us</Link>
-              <Link href={"/our-staffs"}>Our Staffs</Link>
+              <Link href={"/"}>Our Staffs</Link>
               <Link href={"/projects"}>Projects</Link>
               <Link href={"/consultancy"}>Consultancy</Link>
               <Link href={"/work-experience"}>Work Experience & Training</Link>
