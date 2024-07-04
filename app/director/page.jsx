@@ -3,15 +3,17 @@ import Image from "next/image";
 import prof from "@/app/assets/test2.jpg";
 function Page() {
   return (
-    <div className="px-20 flex flex-col items-center justify-center py-40 ">
+    <div className="sm:px-20 px-8 flex flex-col items-center justify-center py-40 ">
       <h1 className="text-primary mb-12 font-medium ">Director Profile</h1>
       <div className="bg-gray-100 h-[300px] relative overflow-hidden w-[300px] rounded-full ">
         <Image className="cover" src={prof} alt="" />
       </div>
-      <h1 className="text-primary mt-2 font-medium ">
+      <h1 className="text-primary sm:text-start text-center mt-2 font-medium ">
         Mr. Jimoh Ganiyu Olalekan
       </h1>
-      <p className="h5">CEO, Gani-Ola Engineering Services Limited.</p>
+      <p className="h5 sm:text-start text-center ">
+        CEO, Gani-Ola Engineering Services Limited.
+      </p>
 
       <article className="mt-20">
         <p className="h6">

@@ -63,7 +63,7 @@ function Nav() {
               setProfiles(false);
               setAbout((prev) => !prev);
             }}
-            className={`"tex-[16px] relative flex items-center gap-1 ${
+            className={`text-[16px] relative flex items-center gap-1 ${
               active === "/about-us"
                 ? "border-b-2 border-primary font-semibold "
                 : ""
@@ -78,7 +78,7 @@ function Nav() {
             }}
           >
             <li
-              className={`text-[16px]  text-primary flex items-center gap-1  ${
+              className={`text-[16px]   text-primary  flex items-center gap-1  ${
                 active === "/our-staffs" ||
                 active === "/staff" ||
                 active === "/director"
@@ -94,16 +94,16 @@ function Nav() {
               )}
             </li>
             {staffs && (
-              <div className="absolute flex items-center justify-center gap-10 top-10 h-[100px] w-[400px] bg-white shadow-md rounded-md ">
+              <div className="absolute flex items-center justify-center gap-10 z-40 left-20 top-[15px] h-[100px] w-[400px] bg-white shadow-md rounded-md ">
                 <Link
                   className="hover:shadow-sm hover:border px-3 py-2 rounded-md "
-                  href={"director"}
+                  href={"/director"}
                 >
                   Director Profile
                 </Link>
                 <Link
-                  className="hover:shadow-sm hover:border px-3 py-2 rounded-md "
-                  href={"staff"}
+                  className="hover:shadow-sm cursor-pointer relative z-40 hover:border px-3 py-2 rounded-md "
+                  href={"/staff"}
                 >
                   Staffs
                 </Link>
