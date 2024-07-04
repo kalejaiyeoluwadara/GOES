@@ -66,7 +66,7 @@ function Page() {
               <Map />
             </div>
 
-            <div className="h-[600px] sm:mt-0 mt-[230px] sm:w-[50%] ">
+            <div className="h-[600px]  sm:mt-0 mt-[230px] sm:w-[50%] ">
               <Form />
             </div>
           </div>

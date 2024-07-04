@@ -27,7 +27,7 @@ function Nav() {
       setItem("Log Out");
     }
   }, []); // Runs only once when the component mounts
-
+  const [staffs, setstaffs] = useState(false);
   return (
     <div
       className={`w-screen bg-white sm:z-30 fixed z-40 sm:absolute top-0  flex items-center justify-between px-4 sm:px-12 h-[80px] sm:h-[100px] ${
@@ -71,19 +71,45 @@ function Nav() {
           >
             <Link href={"/about-us"}>About Us</Link>
           </li>
-          <Link href={"/director"}>
+          <div
+            className="relative"
+            onClick={() => {
+              setstaffs((prev) => !prev);
+            }}
+          >
             <li
-              className={`text-[16px] text-primary relative flex items-center gap-1  ${
+              className={`text-[16px]  text-primary flex items-center gap-1  ${
                 active === "/our-staffs" ||
-                active === "/staffs" ||
+                active === "/staff" ||
                 active === "/director"
                   ? "border-b-2 border-primary font-semibold "
                   : ""
               }  b  px-2 cursor-pointer`}
             >
               Our Staffs
+              {!staffs ? (
+                <GoChevronDown size={20} />
+              ) : (
+                <GoChevronUp size={20} />
+              )}
             </li>
-          </Link>
+            {staffs && (
+              <div className="absolute flex items-center justify-center gap-10 top-10 h-[100px] w-[400px] bg-white shadow-md rounded-md ">
+                <Link
+                  className="hover:shadow-sm hover:border px-3 py-2 rounded-md "
+                  href={"director"}
+                >
+                  Director Profile
+                </Link>
+                <Link
+                  className="hover:shadow-sm hover:border px-3 py-2 rounded-md "
+                  href={"staff"}
+                >
+                  Staffs
+                </Link>
+              </div>
+            )}
+          </div>
           <Link href={"/projects"}>
             <li
               className={`text-[16px] text-primary relative flex items-center gap-1  ${

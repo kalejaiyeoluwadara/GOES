@@ -3,10 +3,33 @@ import React, { useState } from "react";
 import { IoSend } from "react-icons/io5";
 import { db } from "@/utils/firebase"; // Adjust the path as necessary
 import { collection, addDoc } from "firebase/firestore";
-import { FaCheckCircle } from "react-icons/fa";
 import { useGlobal } from "../Context";
-// import { Router } from "next/navigation";
-function Form() {
+import { useRouter } from "next/navigation";
+import { FaCheckCircle } from "react-icons/fa";
+import { MdError } from "react-icons/md";
+const Modal = ({ modalMessage, isModalOpen, abnormal = false }) => {
+  return (
+    <>
+      {isModalOpen && (
+        <div
+          className={`w-screen  ${
+            abnormal ? "top-[26.5rem] -left-[315px] " : "fixed top-2 left-0"
+          }  z-40  flex items-center justify-center`}
+        >
+          <div className="w-auto px-6 h-[60px] gap-4 flex items-center justify-center shadow-md bg-white rounded-xl ">
+            {modalMessage === "Message sent successfully" ? (
+              <FaCheckCircle className=" text-green-500 " size={30} />
+            ) : (
+              <MdError className="text-primary  " />
+            )}
+            <p className="text-[16px] text-black ">{modalMessage}</p>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+function Form({ abnormal = false }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,6 +38,8 @@ function Form() {
     message: "",
   });
   const { modal, setModal } = useGlobal();
+  const [modalMessage, setModalMessage] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
   // const router = Router();
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,8 +49,6 @@ function Form() {
     e.preventDefault();
     try {
       await addDoc(collection(db, "messages"), formData);
-      console.log("Message submitted: ", formData);
-      setModal("Message Submitted successfuly");
       setFormData({
         name: "",
         email: "",
@@ -33,10 +56,18 @@ function Form() {
         subject: "",
         message: "",
       });
-      // router.route("/");
+      setModalMessage("Message sent successfully");
+      setIsModalOpen(true);
+      setTimeout(() => {
+        setIsModalOpen(false);
+      }, 3000);
     } catch (error) {
       console.error("Error submitting message: ", error);
-      setModal("Error encountered, try again");
+      setModalMessage("An error occurred. Please try again.");
+      setIsModalOpen(true);
+      setTimeout(() => {
+        setIsModalOpen(false);
+      }, 4000);
     }
   };
 
@@ -97,6 +128,11 @@ function Form() {
         <p className="h6 mb-2">
           {modal === "" ? "We'll respond as soon as possible" : modal}
         </p>
+        <Modal
+          abnormal={abnormal}
+          isModalOpen={isModalOpen}
+          modalMessage={modalMessage}
+        />
       </form>
     </div>
   );
