@@ -1,12 +1,13 @@
+"use client";
 import React from "react";
-import { useGlobal } from "../Context";
 import Image from "next/image";
-import dummy from "../assets/dummy.jpeg";
-function Gallery() {
+import { useGlobal } from "@/app/Context";
+import dummy from "@/app/assets/dummy.jpeg";
+function Page() {
   const { state, setState } = useGlobal();
   console.log(state);
   return (
-    <main className="min-h-screen relative bg-white py-[80px]  main flex-col ">
+    <main className="min-h-screen relative bg-white pt-[100px] py-[80px]  main flex-col ">
       <h1 className="text-primary mb-12 ">"BORA" Hotel Building </h1>
       <div className="flex flex-wrap gap-10 items-center justify-center ">
         {[1, 2, 3, 4, 5, 6].map((d, id) => {
@@ -27,4 +28,4 @@ function Gallery() {
   );
 }
 
-export default Gallery;
+export default Page;

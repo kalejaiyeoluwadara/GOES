@@ -4,17 +4,17 @@ import React from "react";
 import img from "../assets/explore.webp";
 import { BsArrowUpRight } from "react-icons/bs";
 import { useGlobal } from "../Context";
-function Card() {
+function Card({ projectname, projectlocation, description, files }) {
   const { state, setState } = useGlobal();
   return (
     <div className="relative  h-auto my-4 overflow-hidden  bg-gray-300 w-[300px] rounded-[6px]  ">
-      <Image src={img} alt="" className="object-cover" />
+      <img src={files[0]} alt="" className="object-cover" />
       <div className="flex justify-between items-start gap-2 400 p-3  ">
         <section>
           <h5 className="font-semibold text-primary text-[16px] ">
-            “Bora” Hotel Building{" "}
+            {projectname}
           </h5>
-          <p className="text-[15px] text-gray-600 ">Enugu</p>
+          <p className="text-[15px] text-gray-600 ">{projectlocation}</p>
         </section>
         <button
           onClick={() => {

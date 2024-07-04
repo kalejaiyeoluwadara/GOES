@@ -4,10 +4,11 @@ const AppContext = React.createContext();
 
 function AppProvider({ children }) {
   const [src, setSrc] = useState("");
-  const [state, setState] = useState(true);
+  const [state, setState] = useState([]);
   const [modal, setModal] = useState("");
   const [item, setItem] = useState("Register");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [status, setStatus] = useState("ongoing");
   return (
     <AppContext.Provider
       value={{
@@ -19,6 +20,8 @@ function AppProvider({ children }) {
         setModal,
         isMenuOpen,
         setIsMenuOpen,
+        status,
+        setStatus,
       }}
     >
       {children}

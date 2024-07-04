@@ -1,9 +1,12 @@
+"use client";
 import React from "react";
 import finished from "@/app/assets/ongoing.jpg";
 import past from "@/app/assets/past.jpg";
 import Image from "next/image";
 import Link from "next/link";
+import { useGlobal } from "../Context";
 function Page() {
+  const { status, setStatus } = useGlobal();
   return (
     <div className="flex items-center flex-col gap-8 py-40  justify-center min-h-screen w-screen ">
       <h1 className="text-primary text-[36px]  ">Projects</h1>
@@ -11,7 +14,12 @@ function Page() {
         <Image className=" cover " src={finished} alt="" />
         <div className="z-40 text-center text-white">
           <h1>Ongoing Projects</h1>
-          <Link href={"/ongoing-projects"}>
+          <Link
+            onClick={() => {
+              setStatus("ongoing");
+            }}
+            href={"/projectslisting"}
+          >
             {" "}
             <p className=" pointer hover:font-bold hover:text-primary ">
               Click to view {"- >"}
@@ -30,7 +38,12 @@ function Page() {
         <Image className=" cover " src={past} alt="" />
         <div className="z-40 text-center text-white">
           <h1>Past Projects</h1>
-          <Link href={"/past-projects"}>
+          <Link
+            onClick={() => {
+              setStatus("past");
+            }}
+            href={"/projectslisting"}
+          >
             {" "}
             <p className=" pointer hover:font-bold hover:text-primary ">
               Click to view {"- >"}
