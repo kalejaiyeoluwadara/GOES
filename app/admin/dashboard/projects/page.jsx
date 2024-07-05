@@ -105,7 +105,7 @@ function Page() {
             className="w-full border h-auto sm:h-[200px] px-4 py-1 grid grid-cols-1 sm:grid-cols-4 justify-between items-center rounded-md bg-white shadow-sm"
           >
             <section className="flex sm:flex-row flex-col items-center sm:col-span-2 gap-4">
-              <div className="w-[200px] flex-shrink-0 relative rounded-xl bg-gray-300 h-[180px]">
+              <div className="sm:w-[200px] w-full flex-shrink-0 relative rounded-xl bg-gray-300 h-[180px]">
                 {project.files ? (
                   <img
                     src={project.files[0]}
@@ -121,7 +121,7 @@ function Page() {
                 <p className="text-gray-500">{project.projectlocation}</p>
               </div>
             </section>
-            <section className="  sm:flex-center">
+            <section className=" sm:w-auto w-full text-center sm:text-start sm:flex-center">
               <p className="capitalize">{project.status}</p>
             </section>
             <section className="flex items-center justify-center gap-2">

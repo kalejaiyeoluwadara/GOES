@@ -84,8 +84,8 @@ const EditProjectForm = ({ project, onSave, onCancel }) => {
   };
 
   return (
-    <div className="min-h-screen grid grid-cols-3 items-center justify-center w-full py-10 px-2 gap-12">
-      <section className="col-span-2 bg-white rounded-xl h-auto p-6 w-auto border flex flex-col gap-6 shadow-md">
+    <div className="min-h-screen grid grid-cols-1 sm:grid-cols-3 items-center justify-center w-full py-10 px-2 gap-4 sm:gap-12">
+      <section className="sm:col-span-2 bg-white rounded-xl h-auto p-6 w-full sm:w-auto border flex flex-col gap-6 shadow-sm">
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <div className="flex flex-col gap-4">
             <label className="text-lg font-medium">Project Name</label>
@@ -153,14 +153,14 @@ const EditProjectForm = ({ project, onSave, onCancel }) => {
           </div>
           <button
             type="submit"
-            className="w-full rounded-md px-4 py-2 bg-blue-600 text-white"
+            className="w-full rounded-md px-4 py-2 bg-primary text-white"
             disabled={uploading}
           >
             {uploading ? "Uploading..." : "Save Changes"}
           </button>
         </form>
       </section>
-      <section className="bg-white rounded-xl h-full p-6 w-auto border flex flex-col gap-2 shadow-md">
+      <section className="bg-white rounded-xl h-full p-6 w-auto border flex flex-col gap-2 shadow-sm">
         <h2 className="text-xl font-semibold mb-4">Current Images</h2>
         {formData.files.map((file, index) => (
           <div
@@ -191,7 +191,7 @@ const Modal = ({ modalMessage, isModalOpen }) => {
     <>
       {isModalOpen && (
         <div className="w-screen fixed z-40 top-2 left-0 flex items-center justify-center">
-          <div className="w-auto px-6 h-[60px] gap-4 flex items-center justify-center shadow-md bg-white rounded-xl">
+          <div className="w-auto px-6 h-[60px] gap-4 flex items-center justify-center shadow-sm bg-white rounded-xl">
             {modalMessage === "Project updated successfully..." ? (
               <FaCheckCircle className="text-green-500" size={30} />
             ) : (
