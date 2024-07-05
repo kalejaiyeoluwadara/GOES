@@ -166,7 +166,7 @@ function Page() {
             <label>Upload Images (Max 6)</label>
             <div
               onClick={handleClick}
-              className="w-full rounded-md px-6 text-center gap-2 h-[300px] border-[2px] border-dashed bg-blue-100 flex flex-col items-center justify-center cursor-pointer"
+              className="w-full rounded-md px-6 text-center gap-2 h-[300px] border-[2px] border-dashed bg-primary flex flex-col items-center justify-center cursor-pointer"
             >
               <IoCloudUploadOutline size={50} />
               <p>Click to upload</p>
@@ -183,7 +183,7 @@ function Page() {
           </div>
           <button
             type="submit"
-            className="w-full rounded-md px-4 py-2 bg-blue-600 text-white"
+            className="w-full rounded-md px-4 py-2 bg-white border border-dashed text-white"
             disabled={uploading}
           >
             {uploading ? "Uploading..." : "Submit"}

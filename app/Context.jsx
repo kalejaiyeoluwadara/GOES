@@ -9,6 +9,7 @@ function AppProvider({ children }) {
   const [item, setItem] = useState("Register");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [status, setStatus] = useState("ongoing");
+
   return (
     <AppContext.Provider
       value={{

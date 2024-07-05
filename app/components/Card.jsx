@@ -7,7 +7,7 @@ import { useGlobal } from "../Context";
 function Card({ projectname, projectlocation, description, files }) {
   const { state, setState } = useGlobal();
   return (
-    <div className="relative  h-auto my-4 overflow-hidden  bg-gray-300 w-[300px] rounded-[6px]  ">
+    <div className="relative  h-auto my-8 pb-4 overflow-hidden  bg-white w-[300px] border shadow-sm rounded-[6px]  ">
       <img src={files[0]} alt="" className="object-cover" />
       <div className="flex justify-between items-start gap-2 400 p-3  ">
         <section>

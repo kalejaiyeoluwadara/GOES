@@ -50,7 +50,12 @@ function Slide({ status, setStatus }) {
                   key={d.id} // Use the project ID for the key prop
                   className="cursor-pointer"
                 >
-                  <Link href={"/projectslisting/1"}>
+                  <Link
+                    onClick={() => {
+                      setState(d);
+                    }}
+                    href={"/projectslisting/1"}
+                  >
                     <Card
                       projectname={projectname}
                       projectlocation={projectlocation}
