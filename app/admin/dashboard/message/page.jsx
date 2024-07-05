@@ -90,18 +90,18 @@ function Page() {
   };
 
   return (
-    <div className="w-full flex-col gap-6 flex py-2 pl-10 items-center justify-center overflow-y-hidden h-screen">
+    <div className="w-full flex-col gap-6 flex py-2 sm:pl-10 px-2 items-center justify-start sm:justify-center overflow-y-hidden h-screen">
       {loading ? (
         <Spinner />
       ) : selectedMessage ? (
-        <div className="w-[700px] bg-white rounded-md shadow-sm border h-auto p-6">
+        <div className="sm:w-[700px] w-[360px]  bg-white rounded-md shadow-sm border h-auto p-4 sm:p-6">
           <button
             onClick={handleBackToList}
-            className="mb-4  text-primary px-3 py-1 rounded"
+            className="mb-4  text-primary sm:px-3 py-1 rounded"
           >
             <IoArrowBack size={20} />
           </button>
-          <div className="flex items-center justify-between">
+          <div className="flex sm:flex-row flex-col items-start sm:items-center justify-between">
             <h2 className="text-[20px] font-semibold">
               {selectedMessage.name}
             </h2>
@@ -129,17 +129,21 @@ function Page() {
               return (
                 <div
                   key={d.id}
-                  className="w-[700px] bg-white rounded-md shadow-sm border h-auto p-6 cursor-pointer"
+                  className="sm:w-[700px] w-[360px] bg-white   unded-md shadow-sm border p-4 sm:p-6 cursor-pointer"
                   onClick={() => handleSelectMessage(d)}
                 >
-                  <div className="flex items-center justify-between">
-                    <h2 className="text-[20px] font-semibold">{name}</h2>
-                    <p className="text-gray-400 text-sm">{email}</p>
+                  <div className="flex sm:flex-row flex-col items-start sm:items-center justify-between">
+                    <h2 className="sm:text-[20px] text-sm truncate sm:w-auto  font-semibold">
+                      {name}
+                    </h2>
+                    <p className="text-gray-400 sm:text-sm text-[8px]">
+                      {email}
+                    </p>
                   </div>
-                  <h4 className="text-[18px] mt-4 font-medium capitalize">
+                  <h4 className="sm:text-[18px] text-[13px] mt-4 font-medium capitalize">
                     {subject}
                   </h4>
-                  <p className="truncate w-[90%] text-base font-light">
+                  <p className="truncate w-[90%]  text-base font-light">
                     {message}
                   </p>
                   <div className="w-full h-auto flex gap-2 items-end justify-end">

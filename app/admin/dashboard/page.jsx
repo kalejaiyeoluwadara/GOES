@@ -2,8 +2,8 @@ import React from "react";
 import { BsAmazon } from "react-icons/bs";
 function Page() {
   return (
-    <main className="    flex-1 flex items-center justify-center ">
-      <div className="grid w-full bg-gray-200 gap-8 h-full px-10 py-8 grid-cols-2">
+    <main className="    flex-1 flex items-center sm:mb-0 mb-20 justify-center ">
+      <div className="grid w-full bg-gray-200 sm:gap-8 gap-2 px-2 h-full sm:px-10 py-8 grid-cols-2">
         {" "}
         <div className="flex bg-white justify-between px-6 py-3 flex-col h-[150px] rounded-md shadow-sm w-auto ">
           <div className="flex items-center justify-between ">
