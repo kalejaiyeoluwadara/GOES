@@ -17,7 +17,7 @@ function Selected({ selected, setSelected }) {
   }
 
   return (
-    <div className="sm:px-20 min-h-screen w-screen bg-white py-12 justify-center flex-col">
+    <div className="sm:px-20 px-4 sm:pb-0 pb-20 min-h-screen w-screen bg-white py-12 justify-center flex-col">
       <h1
         onClick={() => {
           setSelected(null);
@@ -27,7 +27,7 @@ function Selected({ selected, setSelected }) {
         Dashboard / <span className="text-gray-600">Applications</span>
       </h1>
       <h1 className="h4">Full Name</h1>
-      <form className="mt-10 sm:w-[700px] grid gap-4 grid-rows-3 grid-cols-2">
+      <form className="mt-10 sm:w-[700px] w-full grid gap-4 grid-rows-3 grid-cols-2">
         <div>
           <p>First Name</p>
           <div className="w-auto px-2 flex items-center justify-center rounded-md border border-primary h-[50px]">
@@ -58,7 +58,7 @@ function Selected({ selected, setSelected }) {
         <div>
           <p>Email</p>
           <div className="w-auto px-2 flex items-center justify-center rounded-md border border-primary h-[50px]">
-            <p className="px-2 outline-none flex-1 items-center justify-start flex h-full w-full">
+            <p className="px-2 outline-none truncate flex-1 items-center justify-start flex h-full w-full">
               {selected.email}
             </p>
             <BsCopy />
@@ -79,7 +79,7 @@ function Selected({ selected, setSelected }) {
             onClick={() => downloadFile(selected.fileURL)}
             className="w-auto px-2 flex items-center justify-center rounded-md border border-primary bg-blue-200 h-[200px]"
           >
-            <div className="px-2 flex-col gap-3 outline-none flex-1 items-center justify-center flex h-full w-full cursor-pointer">
+            <div className="px-2 flex-col gap-3 outline-none flex-1 items-center justify-center flex h-full w-full sm:text-start text-center cursor-pointer">
               <FiDownload size={40} />
               <p>Click to Download Resume / Application letter</p>
             </div>

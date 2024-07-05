@@ -89,7 +89,7 @@ function Page() {
   }
 
   return (
-    <main className="gap-8 w-full px-20 flex items-center justify-start py-10 flex-col min-h-screen">
+    <main className="gap-8 w-full sm:mb-0 mb-20 px-2 sm:px-20 flex items-center justify-start py-10 flex-col min-h-screen">
       {projects.length === 0 ? (
         <p className="text-center w-full mt-20">No projects found.</p>
       ) : editingProject ? (
@@ -102,9 +102,9 @@ function Page() {
         projects.map((project) => (
           <div
             key={project.id}
-            className="w-full border h-[200px] px-4 py-1 grid grid-cols-4 justify-between items-center rounded-md bg-white shadow-sm"
+            className="w-full border h-auto sm:h-[200px] px-4 py-1 grid grid-cols-1 sm:grid-cols-4 justify-between items-center rounded-md bg-white shadow-sm"
           >
-            <section className="flex items-center col-span-2 gap-4">
+            <section className="flex sm:flex-row flex-col items-center sm:col-span-2 gap-4">
               <div className="w-[200px] flex-shrink-0 relative rounded-xl bg-gray-300 h-[180px]">
                 {project.files ? (
                   <img
@@ -121,7 +121,7 @@ function Page() {
                 <p className="text-gray-500">{project.projectlocation}</p>
               </div>
             </section>
-            <section className="flex-center">
+            <section className="  sm:flex-center">
               <p className="capitalize">{project.status}</p>
             </section>
             <section className="flex items-center justify-center gap-2">

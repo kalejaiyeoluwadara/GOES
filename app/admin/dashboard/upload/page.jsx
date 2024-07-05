@@ -115,8 +115,8 @@ function Page() {
   };
 
   return (
-    <div className="min-h-screen grid grid-cols-3 items-center justify-center w-screen py-10 px-8 gap-12">
-      <section className="col-span-2 bg-white rounded-xl h-auto p-6 w-auto border flex flex-col gap-2">
+    <div className="min-h-screen grid grid-cols-1 sm:grid-cols-3 items-center justify-center w-screen py-10 px-2  sm:px-8 gap-3 sm:gap-12">
+      <section className="sm:col-span-2 bg-white rounded-xl h-auto p-6 w-auto border flex flex-col gap-2">
         <form onSubmit={handleSubmit} className="flex flex-col gap-2">
           <div className="flex flex-col gap-2">
             <label>Project Name</label>
@@ -191,7 +191,7 @@ function Page() {
           </button>
         </form>
       </section>
-      <section className="bg-white rounded-xl h-full p-6 w-auto border flex flex-col gap-2">
+      <section className="bg-white rounded-xl sm:mb-0 mb-20 h-[300px] sm:h-full p-6 w-auto border flex flex-col gap-2">
         {formData.files.map((file, index) => (
           <div
             key={index}

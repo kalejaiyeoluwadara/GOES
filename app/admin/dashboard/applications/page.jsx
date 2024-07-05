@@ -54,12 +54,12 @@ function Page() {
   };
 
   return (
-    <div className="flex pt-8 pl-6 bg-gray-300 min-h-screen">
+    <div className="flex pt-8 sm:pl-6 bg-gray-300 min-h-screen">
       {selected ? (
         <Selected selected={selected} setSelected={setSelected} />
       ) : (
         <div>
-          <header className="w-screen text-gray-600 grid grid-cols-4 justify-center px-8 items-center bg-white shadow-md h-[80px]">
+          <header className="w-screen text-gray-600 grid grid-cols-3 sm:grid-cols-4 justify-center px-8 items-center bg-white shadow-md h-[80px]">
             <p>Name</p>
             <p></p>
             <p className=""></p>
@@ -73,22 +73,24 @@ function Page() {
                   onClick={() => {
                     setSelected(d);
                   }}
-                  className="w-screen border-y cursor-pointer border-gray-400 text-gray-600 grid grid-cols-3 justify-center px-8 items-center bg-gray-200 shadow-md h-[80px]"
+                  className="w-screen border-y cursor-pointer border-gray-400 text-gray-600 grid grid-cols-3 justify-between sm:justify-center px-2 sm:px-8 items-center bg-gray-200 shadow-md h-[80px]"
                 >
-                  <p>
+                  <p className="truncate">
                     {d.firstName} {d.lastName}
                   </p>
-                  <p className="flex text-primary gap-1 items-center">
+                  <p className="flex text-primary truncate gap-1 items-center">
                     View Application <BsArrowsVertical />
                   </p>
-                  <MdDelete
-                    onClick={(e) => {
-                      e.stopPropagation(); // Prevents the click event from propagating to the main div
-                      handleDelete(d.id);
-                    }}
-                    className="cursor-pointer text-red-500"
-                    size={20}
-                  />
+                  <div className="flex items-center justify-center">
+                    <MdDelete
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevents the click event from propagating to the main div
+                        handleDelete(d.id);
+                      }}
+                      className="cursor-pointer text-red-500"
+                      size={20}
+                    />
+                  </div>
                 </main>
               );
             })}

@@ -74,8 +74,8 @@ function Page() {
   };
 
   return (
-    <div className="items-start pt-8 pl-6 bg-gray-300 h-screen">
-      <header className="w-screen text-gray-600 grid grid-cols-4 justify-center px-8 items-center bg-white shadow-md h-[80px]">
+    <div className="items-start pt-8 sm:pl-6 bg-gray-300 h-screen">
+      <header className="w-screen text-gray-600 grid grid-cols-4 justify-center px-2 sm:px-8 items-center bg-white shadow-md h-[80px]">
         <p>Name</p>
         <p>Email</p>
         <p className="col-span-2">Status</p>
@@ -93,10 +93,10 @@ function Page() {
         users.map((user) => (
           <main
             key={user.id}
-            className="w-screen border-y border-gray-400 text-gray-600 grid grid-cols-4 justify-center px-8 items-center bg-gray-200 shadow-md h-[80px]"
+            className="w-screen border-y border-gray-400 text-gray-600 grid grid-cols-4 justify-center sm:px-8 px-2 items-center bg-gray-200 shadow-md h-[80px]"
           >
-            <p>{user.username}</p>
-            <p className="flex gap-1 items-center">
+            <p className="truncate">{user.username}</p>
+            <p className="flex sm:gap-1 gap-[2px] truncate items-center">
               {user.email}{" "}
               <BsCopy
                 onClick={() => {
@@ -106,7 +106,7 @@ function Page() {
               />
             </p>
             <p
-              className={`font-medium text-[16px] ${
+              className={`font-medium sm:ml-0 ml-2 text-[16px] ${
                 user.status === "blocked" ? "text-red-400" : "text-green-400"
               }`}
             >
