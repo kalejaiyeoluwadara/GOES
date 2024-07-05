@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { BsCopy } from "react-icons/bs";
 import { FaCheckCircle } from "react-icons/fa";
 import { MdError } from "react-icons/md";
+import { LiaTimesSolid } from "react-icons/lia";
 const Modal = ({ modalMessage, isModalOpen }) => {
   return (
     <>
@@ -166,7 +167,7 @@ function Page() {
             <label>Upload Images (Max 6)</label>
             <div
               onClick={handleClick}
-              className="w-full rounded-md px-6 text-center gap-2 h-[300px] border-[2px] border-dashed bg-primary flex flex-col items-center justify-center cursor-pointer"
+              className="w-full rounded-md px-6 text-center gap-2 h-[300px] border-[2px] border-dashed bg-gray-100 flex flex-col items-center justify-center cursor-pointer"
             >
               <IoCloudUploadOutline size={50} />
               <p>Click to upload</p>
@@ -183,7 +184,7 @@ function Page() {
           </div>
           <button
             type="submit"
-            className="w-full rounded-md px-4 py-2 bg-white border border-dashed text-white"
+            className="w-full rounded-md px-4 py-4 bg-primary  text-white"
             disabled={uploading}
           >
             {uploading ? "Uploading..." : "Submit"}
@@ -196,12 +197,12 @@ function Page() {
             key={index}
             className="w-full border h-[60px] flex items-center justify-between px-4"
           >
-            <p>{file.name}</p>
+            <p className="truncate  ">{file.name}</p>
             <button
               onClick={() => handleRemoveFile(index)}
               className="text-red-500"
             >
-              Cancel
+              <LiaTimesSolid />
             </button>
           </div>
         ))}

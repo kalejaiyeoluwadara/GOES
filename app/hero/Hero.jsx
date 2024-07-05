@@ -31,18 +31,25 @@ function Hero() {
           </p>
         </div>
         {/* counts slide */}
-        <div className="bg-white flex sm:gap-8 gap-2 items-center justify-center w-[500px] mt-[70px] h-[110px] sm:-translate-x-10 -translate-x-[70px] rounded-xl  ">
+        <div className="bg-white sm:px-0 px-4 flex sm:gap-8 gap-2 items-center justify-center w-[500px] mt-[70px] h-[110px] sm:-translate-x-10 -translate-x-[70px] rounded-xl  ">
           <div className="flex items-center flex-col">
             <h1 className="leading-[40px]">50+</h1>
-            <p className="text-gray-600">Projects Done</p>
+            <p className="text-gray-600 sm:text-base text-[14px] ">
+              Projects Done
+            </p>
           </div>
           <div className="flex items-center flex-col">
             <h1 className="leading-[40px]">150+</h1>
-            <p className="text-gray-600">Total Employees</p>
+            <p className="text-gray-600 sm:text-base text-[14px] ">
+              Total Employees
+            </p>
           </div>
+
           <div className="flex items-center flex-col">
             <h1 className="leading-[40px]">25+</h1>
-            <p className="text-gray-600">Years Experience</p>
+            <p className="text-gray-600 sm:text-base text-[14px] ">
+              Years Experience
+            </p>
           </div>
         </div>
       </div>

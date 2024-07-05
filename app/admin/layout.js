@@ -7,5 +7,5 @@ export const metadata = {
 };
 
 export default function Layout({ children }) {
-  return <div className="overflow-x-hidden ">{children}</div>;
+  return <div className="">{children}</div>;
 }

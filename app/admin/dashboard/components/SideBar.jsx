@@ -25,7 +25,7 @@ function SideBar() {
     console.log(active);
   }, [active]);
   return (
-    <div className="min-h-screen flex relative items-start px-4 justify-start pt-8 gap-2 flex-col bg-primary  top-0 w-[190px]">
+    <div className="min-h-screen sm:flex hidden relative items-start px-4 justify-start pt-8 gap-2 flex-col bg-primary  top-0 w-[190px]">
       {routes.map((item, id) => {
         return (
           <Link href={`/admin/dashboard/${item.route}`}>

@@ -11,7 +11,7 @@ function Page() {
     <main className="min-h-screen relative bg-white pt-[100px] py-[80px]  main flex-col ">
       <h1 className="text-primary mb-4 ">{state.projectname}</h1>
       <Link
-        className="flex w-full text-[20px] items-center mb-12 gap-4"
+        className="flex sm:px-0 px-3 w-full text-[20px] items-center mb-12 gap-4"
         href={"/projectslisting"}
       >
         <p className="flex items-center text-gray-500 justify-center gap-2">
@@ -23,10 +23,10 @@ function Page() {
         </p>
       </Link>
 
-      <div className="flex flex-wrap gap-10 items-center justify-center ">
-        {state.files.map((d, id) => {
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 w-full items-center justify-center ">
+        {state?.files.map((d, id) => {
           return (
-            <div className="h-[300px] cursor-pointer relative w-[300px] bg-gray-400  ">
+            <div className="h-[300px] cursor-pointer relative w-full sm:w-[300px] bg-gray-400  ">
               <img alt="" className="cover h-full w-full " src={d} />
             </div>
           );

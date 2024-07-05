@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { MdDelete } from "react-icons/md";
 import { db } from "@/utils/firebase";
-
+import { IoArrowBack } from "react-icons/io5";
 // Spinner Component
 const Spinner = () => (
   <div className="flex items-center justify-center">
@@ -41,6 +41,7 @@ function Page() {
   const [error, setError] = useState(null);
   const [modalMessage, setModalMessage] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [selectedMessage, setSelectedMessage] = useState(null);
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -52,10 +53,10 @@ function Page() {
           ...doc.data(),
         }));
         setMessages(messagesList);
-        setLoading(false);
       } catch (err) {
-        setError("Failed to fetch Messages");
+        setError("Failed to fetch messages");
         console.log(err);
+      } finally {
         setLoading(false);
       }
     };
@@ -80,21 +81,56 @@ function Page() {
 
   const closeModal = () => setShowModal(false);
 
+  const handleSelectMessage = (message) => {
+    setSelectedMessage(message);
+  };
+
+  const handleBackToList = () => {
+    setSelectedMessage(null);
+  };
+
   return (
     <div className="w-full flex-col gap-6 flex py-2 pl-10 items-center justify-center overflow-y-hidden h-screen">
       {loading ? (
         <Spinner />
+      ) : selectedMessage ? (
+        <div className="w-[700px] bg-white rounded-md shadow-sm border h-auto p-6">
+          <button
+            onClick={handleBackToList}
+            className="mb-4  text-primary px-3 py-1 rounded"
+          >
+            <IoArrowBack size={20} />
+          </button>
+          <div className="flex items-center justify-between">
+            <h2 className="text-[20px] font-semibold">
+              {selectedMessage.name}
+            </h2>
+            <p className="text-gray-400 text-sm">{selectedMessage.email}</p>
+          </div>
+          <h4 className="text-[18px] mt-4 font-medium capitalize">
+            {selectedMessage.subject}
+          </h4>
+          <p className="text-base font-light">{selectedMessage.message}</p>
+          <div className="w-full h-auto flex gap-2 items-end justify-end">
+            <MdDelete
+              size={20}
+              className="text-gray-500 cursor-pointer"
+              onClick={() => handleDelete(selectedMessage.id)}
+            />
+          </div>
+        </div>
       ) : (
         <div className="h-[400px] flex-col gap-6 flex no-scrollbar overflow-y-scroll">
           {messages.length === 0 ? (
             <p>No messages available.</p>
           ) : (
-            messages.map((d, id) => {
+            messages.map((d) => {
               const { email, message, name, phoneNumber, subject } = d;
               return (
                 <div
-                  key={id}
-                  className="w-[700px] bg-white rounded-md shadow-sm border h-auto p-6"
+                  key={d.id}
+                  className="w-[700px] bg-white rounded-md shadow-sm border h-auto p-6 cursor-pointer"
+                  onClick={() => handleSelectMessage(d)}
                 >
                   <div className="flex items-center justify-between">
                     <h2 className="text-[20px] font-semibold">{name}</h2>
@@ -110,9 +146,11 @@ function Page() {
                     <MdDelete
                       size={20}
                       className="text-gray-500 cursor-pointer"
-                      onClick={() => handleDelete(d.id)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDelete(d.id);
+                      }}
                     />
-                    {/* <BsCopy size={20} className="text-gray-500" /> */}
                   </div>
                 </div>
               );

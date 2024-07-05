@@ -1,9 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/utils/firebase";
 import Card from "../components/Card";
-import Gallery from "../components/Gallery";
 import { useGlobal } from "../Context";
 import Link from "next/link";
 
@@ -17,14 +16,20 @@ function Slide({ status, setStatus }) {
     const fetchProjects = async () => {
       try {
         const projectsCollection = collection(db, "projects");
-        const projectsSnapshot = await getDocs(projectsCollection);
+        const q = query(projectsCollection, where("status", "==", status));
+        const projectsSnapshot = await getDocs(q);
         const projectsList = projectsSnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
-        setProjects(projectsList);
+
+        if (projectsList.length === 0) {
+          setError("No projects found for the selected status.");
+        } else {
+          setProjects(projectsList);
+        }
       } catch (err) {
-        setError("Failed to fetch Projects");
+        setError("Failed to fetch projects");
         console.error(err);
       } finally {
         setLoading(false);
@@ -32,7 +37,7 @@ function Slide({ status, setStatus }) {
     };
 
     fetchProjects();
-  }, []);
+  }, [status]);
 
   return (
     <>
@@ -44,7 +49,13 @@ function Slide({ status, setStatus }) {
             <p className="text-red-500">{error}</p>
           ) : (
             projects.map((d) => {
-              const { projectname, projectlocation, description, files } = d;
+              const {
+                projectname,
+                projectlocation,
+                description,
+                files,
+                status,
+              } = d;
               return (
                 <div
                   key={d.id} // Use the project ID for the key prop
