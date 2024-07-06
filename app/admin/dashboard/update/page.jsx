@@ -39,7 +39,7 @@ function UpdateAdminPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-400 w-full sm:w-auto flex items-center justify-center">
+    <div className="min-h-screen w-full flex items-center justify-center">
       {/* <Image src={explore} className="cover" alt="" /> */}
       <div className="h-[400px] w-full sm:w-[500px] bg-white rounded-md shadow-md flex flex-col items-center justify-center p-6">
         <Image className="h-[40px] w-[40px]" src={logo} alt="" />
