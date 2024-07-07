@@ -15,10 +15,10 @@ function Page() {
           <Image className="cover" src={ongoing} alt="" />
         </div>
         <main className="min-h-[140vh] pb-40 sm:px-20 flex  flex-col items-center justify-center w-screen ">
-          <h1 className="mt-10 text-[50px] text-primary font-bold ">
+          <h1 className="sm:my-10 my-2 text-[50px] text-primary font-bold ">
             About Us
           </h1>
-          <p className=" mt-10 sm:px-0 px-4 text-gray-500 ">
+          <p className="  sm:px-0 px-4 text-gray-500 ">
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem
             accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
             quae ab illo inventore veritatis et quasi architecto beatae vitae
@@ -36,7 +36,7 @@ function Page() {
           </p>
 
           <div className="flex sm:flex-row flex-col w-full my-20 gap-10 justify-center items-center  ">
-            <div className=" h-[600px] flex flex-col gap-8 sm:px-0 px-4 sm:w-[50%]">
+            <div className=" h-[600px] mb-4 sm:mb-0 flex flex-col gap-8 sm:px-0 px-4 sm:w-[50%]">
               <div className=" ">
                 <FaLocationDot className="text-primary mb-1 " size={25} />
                 <h2 className=" text-primary font-semibold text-[20px]  ">

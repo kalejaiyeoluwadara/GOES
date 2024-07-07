@@ -4,7 +4,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import StaffComp from "../components/StaffComp";
 function Staffs() {
   return (
-    <div className="min-h-screen  flex flex-col pt-[180px] w-screen items-center justify-center ">
+    <div className="min-h-screen  flex flex-col pt-[50px] sm:pt-[180px] w-screen items-center justify-center ">
       <h1 className="text-primary text-[30px] sm:text-[50px] font-bold  ">
         Our Staff
       </h1>

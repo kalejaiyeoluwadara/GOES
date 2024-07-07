@@ -15,8 +15,8 @@ function Page() {
         CEO, Gani-Ola Engineering Services Limited.
       </p>
 
-      <article className="mt-20">
-        <p className="h6">
+      <article className=" mt-10  sm:mt-20">
+        <p className="h6 w-full sm:text-start text-justify ">
           Jimoh Ganiyu Olalekan is a distinguished leader in the construction
           industry, currently serving as the Chief Executive Officer of Gani-Ola
           Engineering Services Limited. With an impressive career spanning over
@@ -86,7 +86,7 @@ function Page() {
         <section className="mt-12">
           <h3 className=" h3 text-[17px]  ">Conclusion:</h3>
           <ul className=" space-y-4  mt-4   ">
-            <p className="h6">
+            <p className="h6 sm:text-start text-justify ">
               The Director’s extensive experience, robust educational
               background, and numerous certifications make him an exemplary
               leader in the construction industry. His dedication to excellence,

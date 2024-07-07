@@ -9,7 +9,7 @@ function Page() {
   const { status, setStatus } = useGlobal();
   return (
     <div className="flex items-center flex-col gap-8 py-40  justify-center min-h-screen w-screen ">
-      <h1 className="text-primary text-[36px]  ">Projects</h1>
+      <h1 className="text-primary text-[36px]  ">Our Projects</h1>
       <div className="sm:w-[90%] w-[100%] flex-center relative h-[400px] bg-gray-900  ">
         <Image className=" cover " src={finished} alt="" />
         <div className="z-40 text-center text-white">

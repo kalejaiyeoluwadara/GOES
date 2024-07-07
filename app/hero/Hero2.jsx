@@ -3,7 +3,7 @@ import React from "react";
 import ab from "@/app/assets/ab.png";
 function Hero2() {
   return (
-    <div className="main flex-col items-center justify-center sm:py-[100px] py-[80px]  min-h-[300px] ">
+    <div className="main flex-col items-center justify-center sm:py-[100px] py-[30px]  min-h-[300px] ">
       <h1 className="text-primary font-bold text-[40px] ">Who are We?</h1>
       <div className="grid sm:px-20 px-4 sm:mt-12 mt-6 items-start justify-start grid-cols-1 sm:grid-cols-2 gap-10 ">
         <p className="w-auto   ">

@@ -37,7 +37,7 @@ function Testimonials() {
   const scrollPercentage = (scrollLeft / scrollWidth) * 100;
 
   return (
-    <div className="bg-white min-h-screen sm:px-[110px] px-[10px] py-[80px]  w-full ">
+    <div className="bg-white min-h-screen sm:px-[110px] px-[10px] py-[10px] sm:py-[80px]  w-full ">
       <h1 className="text-center mb-20 text-primary text-[30px] sm:text-[40px] font-bold  ">
         Testimonies
       </h1>
@@ -88,7 +88,7 @@ function Testimonials() {
         })}
       </section>
 
-      <section className="mt-[62px] items-center flex gap-[32px]">
+      <section className="sm:mt-[62px] mt-[0px] items-center flex gap-[32px]">
         {/* scroll indicator */}
         <div className="h-[4px] w-[80%] bg-black relative">
           <div
