@@ -70,7 +70,7 @@ function Testimonials() {
         ].map((d, id) => {
           const { name, role, test, img } = d;
           return (
-            <div className="h-[300px] relative overflow-visible flex-shrink-0 text-white flex items-center justify-center flex-col bg-slate-100  w-[500px] px-6 ">
+            <div className="h-[300px] relative overflow-visible flex-shrink-0 text-white flex items-center justify-center flex-col bg-slate-100  w-[354px] sm:w-[500px] px-6 ">
               <div className="absolute z-40 -top-[50px] flex items-center justify-center flex-col gap-2 ">
                 <div className="h-[100px] overflow-hidden flex- w-[100px] relative rounded-full bg-gray-200 ">
                   <Image className="cover" src={img} alt="" />
@@ -80,7 +80,7 @@ function Testimonials() {
                 </h3>
                 <p className="text-[14px] mb-1 text-gray-600 ">{role}</p>
               </div>
-              <p className="text-center mt-12 text-[20px] text-gray-600 ">
+              <p className="text-center mt-12 text-[16px] sm:text-[20px] text-gray-600 ">
                 {test}
               </p>
             </div>

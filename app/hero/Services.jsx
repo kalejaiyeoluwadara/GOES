@@ -44,11 +44,11 @@ function Services() {
       >
         {[1, 2, 3, 4].map((d, id) => {
           return (
-            <div className="h-[300px] flex-shrink-0 text-white flex items-center justify-center flex-col relative  w-[500px] px-6 ">
+            <div className="h-[300px] flex-shrink-0 text-white flex items-center justify-center flex-col relative  w-[354px] sm:w-[500px] px-2 sm:px-6 ">
               <h2 className="text-[30px] relative z-30 font-medium ">
                 Service
               </h2>
-              <p className="text-center relative z-30">
+              <p className="text-center sm:text-base text-sm relative z-30">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
