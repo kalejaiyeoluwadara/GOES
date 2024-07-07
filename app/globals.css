@@ -46,6 +46,12 @@ h1{
 .pointer{
   @apply cursor-pointer transition-all
 }
+button{
+  @apply hover:bg-opacity-[0.8] transition-all
+}
+.parent{
+  @apply relative overflow-hidden
+}
 .h4{
   @apply font-semibold text-gray-600
 }
