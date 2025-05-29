@@ -1,37 +1,45 @@
 import React from "react";
 import Form from "../components/Form";
-import Map from "../components/Map";
-import { FaLocationDot } from "react-icons/fa6";
-import { MdCall } from "react-icons/md";
-import { MdEmail } from "react-icons/md";
 import Footer from "../components/Footer";
 import Image from "next/image";
+import personCalling from "@/app/assets/person_calling.jpg";
 
-import ongoing from "@/app/assets/ongoing.jpg";
 function Page() {
   return (
-    <>
-      <div>
-        <div className="h-[50vh] relative mb-8 w-screen bg-gray-300  ">
-          <Image className="cover" src={ongoing} alt="" />
-        </div>
-        <main className="min-h-[140vh]  pb-40 sm:px-20 flex  flex-col items-center justify-center w-screen ">
-          <div className="flex w-full  justify-center items-center  ">
-            <div className="h-[600px] sm:px-0 px-4 sm:-translate-y-40 sm:w-[50%] ">
-              <Form />
-              <h2 className="sm:mt-3 mt-8 w-full text-center">
-                Or Text Us On{" "}
-                <a href="">
-                  <span className="text-green-400 underline ">Whatsapp</span>
-                </a>{" "}
-                faster response
-              </h2>
+      <>
+        <div>
+          {/* Hero Section */}
+          <div className="relative w-full h-[50vh] mb-12">
+            <Image
+                src={personCalling}
+                alt="Contact Hero"
+                className="w-full h-full object-cover object-center"
+                priority
+            />
+            <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+              <h1 className="text-white text-3xl sm:text-4xl font-semibold">Get In Touch</h1>
             </div>
           </div>
-        </main>
-      </div>
-      <Footer />
-    </>
+
+          {/* Form Section */}
+          <main className="w-full flex flex-col items-center justify-center px-4 sm:px-10 lg:px-20 pb-20">
+            <div className="w-full max-w-5xl flex flex-col items-center justify-center gap-6">
+              <div className="w-full sm:w-[80%] md:w-[60%] mt-0">
+                <Form />
+                <h2 className="text-center text-sm text-gray-700 mt-6">
+                  Or text us on{" "}
+                  <a href="#" className="text-green-500 underline">
+                    WhatsApp
+                  </a>{" "}
+                  for a faster response
+                </h2>
+              </div>
+            </div>
+          </main>
+        </div>
+
+        <Footer />
+      </>
   );
 }
 

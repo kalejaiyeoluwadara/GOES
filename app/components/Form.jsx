@@ -1,34 +1,31 @@
 "use client";
 import React, { useState } from "react";
 import { IoSend } from "react-icons/io5";
-import { db } from "@/utils/firebase"; // Adjust the path as necessary
-import { collection, addDoc } from "firebase/firestore";
 import { useGlobal } from "../Context";
-import { useRouter } from "next/navigation";
 import { FaCheckCircle } from "react-icons/fa";
 import { MdError } from "react-icons/md";
+
 const Modal = ({ modalMessage, isModalOpen, abnormal = false }) => {
   return (
-    <>
-      {isModalOpen && (
-        <div
-          className={`w-screen  ${
-            abnormal ? "top-[26.5rem] -left-[315px] " : "fixed top-2 left-0"
-          }  z-40  flex items-center justify-center`}
-        >
-          <div className="w-auto px-6 h-[60px] gap-4 flex items-center justify-center shadow-md bg-white rounded-xl ">
-            {modalMessage === "Message sent successfully" ? (
-              <FaCheckCircle className=" text-green-500 " size={30} />
-            ) : (
-              <MdError className="text-primary  " />
-            )}
-            <p className="text-[16px] text-black ">{modalMessage}</p>
+      isModalOpen && (
+          <div
+              className={`fixed z-50 ${
+                  abnormal ? "top-[26.5rem] -left-[315px]" : "top-6 left-1/2 -translate-x-1/2"
+              } flex items-center justify-center`}
+          >
+            <div className="flex items-center gap-3 px-5 py-3 bg-white border shadow-lg rounded-xl">
+              {modalMessage === "Message sent successfully" ? (
+                  <FaCheckCircle className="text-green-500" size={24} />
+              ) : (
+                  <MdError className="text-red-500" size={24} />
+              )}
+              <p className="text-sm font-medium text-gray-800">{modalMessage}</p>
+            </div>
           </div>
-        </div>
-      )}
-    </>
+      )
   );
 };
+
 function Form({ abnormal = false }) {
   const [formData, setFormData] = useState({
     name: "",
@@ -40,10 +37,9 @@ function Form({ abnormal = false }) {
   const { modal, setModal } = useGlobal();
   const [modalMessage, setModalMessage] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // const router = Router();
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+
+  const handleChange = (e) =>
+      setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -58,83 +54,59 @@ function Form({ abnormal = false }) {
       });
       setModalMessage("Message sent successfully");
       setIsModalOpen(true);
-      setTimeout(() => {
-        setIsModalOpen(false);
-      }, 3000);
+      setTimeout(() => setIsModalOpen(false), 3000);
     } catch (error) {
       console.error("Error submitting message: ", error);
       setModalMessage("An error occurred. Please try again.");
       setIsModalOpen(true);
-      setTimeout(() => {
-        setIsModalOpen(false);
-      }, 4000);
+      setTimeout(() => setIsModalOpen(false), 4000);
     }
   };
 
   return (
-    <div className="min-w-[400px] bg-white h-auto px-8 py-4 border border-gray-600 ">
-      <h2 className="text-[22px] flex flex-col font-[400] mb-8 ">
-        Send us a message
-      </h2>
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        <input
-          name="name"
-          placeholder="Name"
-          className="border w-full h-[60px] bg-gray-100 px-4 "
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
-        <input
-          name="email"
-          placeholder="Email"
-          className="border w-full h-[60px] bg-gray-100 px-4 "
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          name="phoneNumber"
-          placeholder="Phone Number"
-          type="tel"
-          className="border w-full h-[60px] bg-gray-100 px-4 "
-          value={formData.phoneNumber}
-          onChange={handleChange}
-          required
-        />
-        <input
-          name="subject"
-          placeholder="Subject"
-          type="text"
-          className="border w-full h-[60px] bg-gray-100 px-4 "
-          value={formData.subject}
-          onChange={handleChange}
-          required
-        />
-        <textarea
-          name="message"
-          placeholder="Message"
-          className="border w-full h-[190px] rounded-lg py-4 bg-gray-100 px-4 "
-          value={formData.message}
-          onChange={handleChange}
-          required
-        />
-        <button
-          type="submit"
-          className="w-[200px] flex items-center gap-2 justify-center h-[60px] mt-4 rounded-md bg-primary text-white "
-        >
-          Send Message <IoSend size={20} />
-        </button>
-        <p className="h6 mb-2">
-          {modal === "" ? "We'll respond as soon as possible" : modal}
-        </p>
-        <Modal
-          abnormal={abnormal}
-          isModalOpen={isModalOpen}
-          modalMessage={modalMessage}
-        />
-      </form>
-    </div>
+      <div className="w-full max-w-lg bg-white rounded-xl shadow-md px-8 py-6 border border-gray-200">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-6">Send us a message</h2>
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+          {["name", "email", "phoneNumber", "subject"].map((field) => (
+              <input
+                  key={field}
+                  name={field}
+                  type={field === "email" ? "email" : field === "phoneNumber" ? "tel" : "text"}
+                  placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+                  className="h-[52px] px-4 rounded-lg bg-gray-50 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary transition"
+                  value={formData[field]}
+                  onChange={handleChange}
+                  required
+              />
+          ))}
+
+          <textarea
+              name="message"
+              placeholder="Your Message"
+              className="h-[140px] px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 resize-none focus:outline-none focus:ring-2 focus:ring-primary transition"
+              value={formData.message}
+              onChange={handleChange}
+              required
+          />
+
+          <button
+              type="submit"
+              className="w-full sm:w-[200px] h-[52px] mt-4 flex items-center justify-center gap-2 rounded-lg bg-primary hover:bg-primary/90 text-white font-medium transition"
+          >
+            Send Message <IoSend size={18} />
+          </button>
+
+          <p className="text-sm text-gray-600 mt-2">
+            {modal === "" ? "We'll respond as soon as possible" : modal}
+          </p>
+
+          <Modal
+              abnormal={abnormal}
+              isModalOpen={isModalOpen}
+              modalMessage={modalMessage}
+          />
+        </form>
+      </div>
   );
 }
 

@@ -7,6 +7,8 @@ import { MdEmail } from "react-icons/md";
 import Footer from "../components/Footer";
 import Image from "next/image";
 import ongoing from "@/app/assets/ongoing.jpg";
+
+
 function Page() {
   return (
     <>

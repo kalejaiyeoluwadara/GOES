@@ -1,45 +1,43 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useEffect, useState } from "react";
 import {
   FaTachometerAlt,
   FaEnvelope,
   FaUsers,
   FaFileAlt,
   FaUpload,
-  FaBox,
-} from "react-icons/fa"; // Import necessary icons
+} from "react-icons/fa";
 import { GoProjectSymlink } from "react-icons/go";
+
 const routes = [
-  { route: "", icon: <FaTachometerAlt /> },
-  { route: "message", icon: <FaEnvelope /> },
-  { route: "users", icon: <FaUsers /> },
-  { route: "applications", icon: <FaFileAlt /> },
-  { route: "upload", icon: <FaUpload /> },
-  { route: "projects", icon: <GoProjectSymlink /> },
+  { route: "", icon: <FaTachometerAlt />, label: "Dashboard" },
+  { route: "message", icon: <FaEnvelope />, label: "Messages" },
+  // { route: "users", icon: <FaUsers />, label: "Users" },
+  { route: "applications", icon: <FaFileAlt />, label: "Applications" },
+  { route: "upload", icon: <FaUpload />, label: "Upload" },
+  { route: "projects", icon: <GoProjectSymlink />, label: "Projects" },
 ];
+
 function SideBar() {
   const active = usePathname();
-  useEffect(() => {
-    console.log(active);
-  }, [active]);
+
   return (
-    <div className="min-h-screen sm:flex hidden relative items-start px-4 justify-start pt-8 gap-2 flex-col bg-primary  top-0 w-[190px]">
-      {routes.map((item, id) => {
+    <div className="min-h-screen sm:flex hidden flex-col items-start justify-start gap-2 px-4 pt-8 bg-primary w-[190px]">
+      {routes.map((item, index) => {
+        const href = `/admin/dashboard/${item.route}`;
+        const isActive = active === href;
+
         return (
-          <Link href={`/admin/dashboard/${item.route}`}>
+          <Link href={href} key={index} passHref>
             <div
-              key={id}
-              className={`flex cursor-pointer px-4 w-[170px] items-start justify-start h-[50px]  rounded-md ${
-                active === `/admin/dashboard/${item.route}`
-                  ? "bg-white text-black "
-                  : "bg-none text-white "
-              } items-center gap-2`}
+              className={`flex items-center gap-2 w-[170px] h-[50px] px-4 rounded-md cursor-pointer transition-colors duration-200 ${
+                isActive ? "bg-white text-black" : "text-white"
+              }`}
             >
-              {item.icon}
-              <p className=" capitalize text-[16px] font-semibold">
-                {item.route === "" ? "Dashboard" : item.route}
+              <span className="text-lg">{item.icon}</span>
+              <p className="capitalize text-[16px] font-semibold">
+                {item.label}
               </p>
             </div>
           </Link>

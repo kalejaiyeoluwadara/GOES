@@ -8,8 +8,12 @@ import { db } from "@/utils/firebase"; // Adjust the path as necessary
 import { collection, doc, updateDoc } from "firebase/firestore";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import useAdminAuth from "@/hooks/useAdminAuth";
 
 function UpdateAdminPage() {
+
+  useAdminAuth()
+
   const [newAdminId, setNewAdminId] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [message, setMessage] = useState(""); // For displaying success or error messages

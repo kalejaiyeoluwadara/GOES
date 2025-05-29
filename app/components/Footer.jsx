@@ -1,73 +1,56 @@
 import Link from "next/link";
 import React from "react";
 import { FaLocationDot } from "react-icons/fa6";
-import { MdCall } from "react-icons/md";
-import { MdEmail } from "react-icons/md";
-import logo from "../assets/foot.png";
+import { MdCall, MdEmail } from "react-icons/md";
 import Image from "next/image";
+import logo from "../assets/foot.png";
+
 function Footer() {
   return (
-    <footer className=" ">
-      <section className="sm:h-[300px] w-screen bg-primary  ">
-        <section className="flex sm:flex-row flex-col sm:gap-0 gap-20 justify-between px-8 p-10 text-white ">
-          <Image
-            alt=""
-            className="h-[90px] object-cover bg-white w-[210px] "
-            src={logo}
-          />
+      <footer className="bg-primary text-white w-full">
+        {/* Top Footer Section */}
+        <div className="w-full max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-3 gap-12">
+          {/* Logo */}
           <div>
-            <h2 className="text-[30px] border-l-2 mb-4 border-green-400 px-2 font-semibold ">
-              Quick Links
-            </h2>
-            <div className=" flex flex-col mt-2 text-gray-100 gap-3 sm:gap-1 ">
-              <p>
-                {" "}
-                <Link href={"/about-us"}>{"> "}About Us</Link>
-              </p>
-              <p>
-                {" "}
-                <Link href={"/ongoing-projects"}>{"> "}Projects</Link>
-              </p>
-              <p>
-                {" "}
-                <Link href={""}>{"> "}Consultancy</Link>
-              </p>
-              <p>
-                {" "}
-                <Link href={"/work-experience"}>{"> "}Work Experience</Link>
-              </p>
-            </div>
+            <Image src={logo} alt="Footer Logo" className="h-[80px] w-auto object-contain  p-1 rounded-md" />
           </div>
+
+          {/* Quick Links */}
           <div>
-            <h2 className="text-[30px] border-l-2 border-green-400 px-2 font-semibold mb-4 ">
-              Contact Info
-            </h2>
-            <div className="flex flex-col gap-4">
-              <div className="flex flex-col gap-3 sm:gap-1 ">
-                <FaLocationDot size={20} />
-                <p>
-                  21A, Tunji Bello Street, Ikolaba Estate, Ibadan, Oyo state.
-                </p>
-              </div>
-              <div className="flex flex-col gap-1 ">
-                <MdCall size={20} />
-                <p>(+234) 803 3244 038</p>
-              </div>
-              <div className="flex flex-col gap-1 ">
-                <MdEmail size={20} />
-                <p>goeslimited@gmail.com</p>
-              </div>
-            </div>
+            <h2 className="text-xl font-semibold border-l-4 border-green-400 pl-3 mb-4">Quick Links</h2>
+            <ul className="flex flex-col gap-3 text-sm">
+              <li><Link href="/about-us">{"> "}About Us</Link></li>
+              <li><Link href="/ongoing-projects">{"> "}Projects</Link></li>
+              <li><Link href="#">{"> "}Consultancy</Link></li>
+              <li><Link href="/work-experience">{"> "}Work Experience</Link></li>
+            </ul>
           </div>
-        </section>
-        <section></section>
-      </section>
-      <section className="w-screen h-[60px] bg-white flex items-center justify-center ">
-        <p className="text-gray-400 sm:text-start text-center sm:text-base text-[12px] ">
-          Copyright 2024 Gani-Ola Engineering Services ltd.
-        </p>
-      </section>
-    </footer>
+
+          {/* Contact Info */}
+          <div>
+            <h2 className="text-xl font-semibold border-l-4 border-green-400 pl-3 mb-4">Contact Info</h2>
+            <ul className="flex flex-col gap-5 text-sm">
+              <li className="flex items-start gap-2">
+                <FaLocationDot size={18} className="mt-1" />
+                <span>21A, Tunji Bello Street, Ikolaba Estate, Ibadan, Oyo state.</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <MdCall size={18} />
+                <span>(+234) 803 3244 038</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <MdEmail size={18} />
+                <span>goeslimited@gmail.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Copyright */}
+        <div className="bg-white text-gray-500 text-sm py-4 text-center">
+          © {new Date().getFullYear()} Gani-Ola Engineering Services Ltd. All rights reserved.
+        </div>
+      </footer>
   );
 }
 

@@ -1,4 +1,4 @@
-import Image from "next/image";
+    import Image from "next/image";
 import Hero from "./hero/Hero";
 import Hero2 from "./hero/Hero2";
 import Services from "./hero/Services";
@@ -14,7 +14,7 @@ export default function Home() {
       <Hero2 />
       <Services />
       <Explore />
-      <Staffs />
+      {/*<Staffs />*/}
       <Preview />
       <Testimonials />
       <Footer />

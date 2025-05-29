@@ -1,158 +1,98 @@
 "use client";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import Button from "./Button";
-import { GoChevronDown, GoChevronUp } from "react-icons/go";
-import { motion, AnimatePresence } from "framer-motion";
-import { GoPersonFill } from "react-icons/go";
-import { RxPerson } from "react-icons/rx";
-import { BsBuildingCheck } from "react-icons/bs";
-import { FaPhone, FaBuildingCircleArrowRight } from "react-icons/fa6";
-import { IoIosPeople } from "react-icons/io";
-import { useParams } from "@/utils/params";
-import logo from "../assets/head.png";
-import { RiMenu2Fill } from "react-icons/ri";
 import Image from "next/image";
 import { useGlobal } from "../Context";
-function Nav() {
-  const [about, setAbout] = useState(false);
-  const [profiles, setProfiles] = useState(false);
-  const [work, setWork] = useState(false);
-  const { item, setItem, isMenuOpen, setIsMenuOpen } = useGlobal();
+import { useParams } from "@/utils/params";
+import Button from "./Button";
+import { GoChevronDown, GoChevronUp } from "react-icons/go";
+import { RiMenu2Fill } from "react-icons/ri";
+import logo from "../assets/head.png";
+import { usePathname } from "next/navigation";
 
+function Nav() {
+  const [staffs, setStaffs] = useState(false);
+  const { item, setItem, setIsMenuOpen } = useGlobal();
   const active = useParams();
+  const path = usePathname()
+
   useEffect(() => {
     const logStatus = localStorage.getItem("log");
     if (logStatus === "true") {
       setItem("Log Out");
     }
-  }, []); // Runs only once when the component mounts
-  const [staffs, setstaffs] = useState(false);
+  }, []);
+
+  const isActive = (path) => active === path;
+
+  if(path.startsWith('/admin')){
+    return;
+  }
+
   return (
-    <div
-      className={`w-screen bg-white sm:z-30 fixed z-50 sm:absolute top-0  flex items-center justify-between px-4 sm:px-12 h-[80px] sm:h-[100px] ${
-        active === "/admin/dashboard" ||
-        active === "/admin/dashboard/message" ||
-        active === "/admin/dashboard/users" ||
-        active === "/admin/dashboard/applications" ||
-        active === "/admin/dashboard/upload" ||
-        active === "/admin/dashboard/projects" ||
-        active === "/admin/dashboard/update"
-          ? "invisible"
-          : " visible "
-      } `}
-    >
+    <div className="w-screen fixed z-50 top-0 flex items-center justify-between px-4 sm:px-12 h-[80px] sm:h-[100px] bg-white">
+      {/* Logo */}
       <div>
         <Image
-          className="h-full object-cover sm:w-[220px] w-[90px] "
+          className="h-full object-cover sm:w-[220px] w-[90px]"
           src={logo}
-          alt=""
+          alt="Logo"
         />
       </div>
-      <div className="sm:block hidden  ">
-        <ul className="flex gap-2 items-center ">
-          <Link href={"/"}>
-            <li
-              className={`text-[16px] text-primary   px-2 cursor-pointer ${
-                active === "/" ? "border-b-2 border-primary font-semibold " : ""
-              } `}
-            >
+
+      {/* Desktop Navigation */}
+      <div className="hidden lg:block">
+        <ul className="flex gap-2 items-center">
+          <Link href="/">
+            <li className={`text-[16px] px-2 cursor-pointer text-primary ${isActive("/") ? "border-b-2 border-primary font-semibold" : ""}`}>
               Home
             </li>
           </Link>
-          <li
-            onClick={() => {
-              setProfiles(false);
-              setAbout((prev) => !prev);
-            }}
-            className={`text-[16px] relative flex items-center gap-1 ${
-              active === "/about-us"
-                ? "border-b-2 border-primary font-semibold "
-                : ""
-            }    px-2 cursor-pointer text-primary`}
-          >
-            <Link href={"/about-us"}>About Us</Link>
-          </li>
-          <div
-            className="relative"
-            onClick={() => {
-              setstaffs((prev) => !prev);
-            }}
-          >
-            <li
-              className={`text-[16px]   text-primary  flex items-center gap-1  ${
-                active === "/our-staffs" ||
-                active === "/staff" ||
-                active === "/director"
-                  ? "border-b-2 border-primary font-semibold "
-                  : ""
-              }  b  px-2 cursor-pointer`}
-            >
-              Our Staffs
-              {!staffs ? (
-                <GoChevronDown size={20} />
-              ) : (
-                <GoChevronUp size={20} />
-              )}
+
+          <Link href="/about-us">
+            <li className={`text-[16px] px-2 cursor-pointer text-primary ${isActive("/about-us") ? "border-b-2 border-primary font-semibold" : ""}`}>
+              About Us
             </li>
-            {staffs && (
-              <div className="absolute flex items-center justify-center gap-10 z-40 left-20 top-[15px] h-[100px] w-[400px] bg-white shadow-md rounded-md ">
-                <Link
-                  className="hover:shadow-sm hover:border px-3 py-2 rounded-md "
-                  href={"/director"}
-                >
-                  Director Profile
-                </Link>
-                <Link
-                  className="hover:shadow-sm cursor-pointer relative z-40 hover:border px-3 py-2 rounded-md "
-                  href={"/staff"}
-                >
-                  Staffs
-                </Link>
-              </div>
-            )}
-          </div>
-          <Link href={"/projects"}>
-            <li
-              className={`text-[16px] text-primary relative flex items-center gap-1  ${
-                active === "/projects" ||
-                active === "/ongoing-projects" ||
-                active === "/past-projects"
-                  ? "border-b-2 border-primary font-semibold "
-                  : ""
-              }  b  px-2 cursor-pointer`}
-            >
+          </Link>
+
+          {/* Our Director */}
+          <Link href="/director">
+            <li className={`text-[16px] px-2 cursor-pointer text-primary ${isActive("/director") ? "border-b-2 border-primary font-semibold" : ""}`}>
+              Our Director
+            </li>
+          </Link>
+
+
+
+          <Link href="/projects">
+            <li className={`text-[16px] px-2 cursor-pointer text-primary ${[
+              "/projects",
+              "/ongoing-projects",
+              "/past-projects"
+            ].includes(active) ? "border-b-2 border-primary font-semibold" : ""}`}>
               Projects
             </li>
           </Link>
-          <Link href={"/consultancy"}>
-            <li
-              className={`text-[16px] text-primary ${
-                active === "/consultancy"
-                  ? "border-b-2 border-primary font-semibold "
-                  : ""
-              } cursor-pointer`}
-            >
+
+          <Link href="/consultancy">
+            <li className={`text-[16px] px-2 cursor-pointer text-primary ${isActive("/consultancy") ? "border-b-2 border-primary font-semibold" : ""}`}>
               Consultancy
             </li>
           </Link>
-          <Link href={"/work-experience"}>
-            <li
-              className={`text-[16px] relative flex items-center gap-1  ${
-                active === "/work-experience"
-                  ? "border-b-2 border-primary font-semibold "
-                  : ""
-              }  text-primary px-2 cursor-pointer`}
-            >
+
+          <Link href="/work-experience">
+            <li className={`text-[16px] px-2 cursor-pointer text-primary ${isActive("/work-experience") ? "border-b-2 border-primary font-semibold" : ""}`}>
               Work Experience & Training
             </li>
           </Link>
         </ul>
       </div>
-      <div className="sm:flex hidden gap-3">
+
+      {/* Desktop Buttons */}
+      <div className="hidden lg:flex gap-3">
         {item === "Register" && (
-          <Link href={"/register/login"}>
-            <Button otherStyles={"text-primary font-[500]"} title={item} />
+          <Link href="/register/login">
+            <Button title="Register" otherStyles="text-primary font-[500]" />
           </Link>
         )}
         {item === "Log Out" && (
@@ -162,18 +102,18 @@ function Nav() {
               setItem("Register");
             }}
           >
-            <Button otherStyles={"text-primary font-[500]"} title={item} />
+            <Button title="Log Out" otherStyles="text-primary font-[500]" />
           </div>
         )}
-        <Button otherStyles={"bg-[#2B0184] text-white"} title={"Hire"} />
+        <Button title="Hire" otherStyles="bg-[#2B0184] text-white" />
       </div>
-      <div className="sm:hidden block ">
-        {" "}
+
+      {/* Mobile Menu Icon */}
+      <div className="lg:hidden block">
         <RiMenu2Fill
-          onClick={() => {
-            setIsMenuOpen(true);
-          }}
+          onClick={() => setIsMenuOpen(true)}
           size={30}
+          className="cursor-pointer"
         />
       </div>
     </div>

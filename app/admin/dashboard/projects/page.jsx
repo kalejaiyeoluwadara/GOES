@@ -2,33 +2,34 @@
 import React, { useState, useEffect } from "react";
 import { FiEdit3 } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
-import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import Modal from "../components/Modal";
-import { db } from "@/utils/firebase";
 import EditProjectForm from "./EditProject";
+import {ClipLoader} from "react-spinners";
+import { toast } from "react-toastify";
+import useAdminAuth from "@/hooks/useAdminAuth";
 
 function Page() {
+
+  useAdminAuth()
+
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
-  const [editingProject, setEditingProject] = useState(null); // State for editing project
+  const [editingProject, setEditingProject] = useState(null);
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const projectsCollection = collection(db, "projects");
-        const projectsSnapshot = await getDocs(projectsCollection);
-        const projectsList = projectsSnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setProjects(projectsList);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects/get`);
+        if (!response.ok) throw new Error("Network response was not ok");
+        const data = await response.json();
+        setProjects(data.projects || data); // Adjust if response shape is different
         setLoading(false);
       } catch (err) {
         setError("Failed to fetch projects");
-        console.log(err);
+        console.error(err);
         setLoading(false);
       }
     };
@@ -40,14 +41,14 @@ function Page() {
     if (!selectedProject) return;
     setLoading(true);
     try {
-      await deleteDoc(doc(db, "projects", selectedProject.id));
-      setProjects(
-        projects.filter((project) => project.id !== selectedProject.id)
-      );
+      const res = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/projects/delete/${selectedProject._id}`);
+      if (res.status !== 200) throw new Error("Delete failed");
+      setProjects(projects.filter((p) => p.id !== selectedProject._id));
       setShowModal(false);
+      toast.success('Deleted Successfully')
     } catch (err) {
-      setError("Failed to delete project");
-      console.log(err);
+      toast.error("Failed to delete project");
+      console.error(err);
     } finally {
       setLoading(false);
     }
@@ -80,12 +81,18 @@ function Page() {
     setEditingProject(null);
   };
 
-  if (loading) {
-    return <p className="text-center w-full mt-20">Loading...</p>;
-  }
+
+  if (loading)
+    return (
+        <div className="w-screen h-screen flex flex-col items-center justify-center text-gray-500">
+          <ClipLoader color={"#2B0184"}/>
+          <p className="mt-4">Loading...</p>
+        </div>
+    );
+
 
   if (error) {
-    return <p className="text-center w-full mt-20">{error}</p>;
+    return <p className="text-center w-full mt-20 text-red-500">{error}</p>;
   }
 
   return (
@@ -102,37 +109,43 @@ function Page() {
         projects.map((project) => (
           <div
             key={project.id}
-            className="w-full border h-auto sm:h-[200px] px-4 py-1 grid grid-cols-1 sm:grid-cols-4 justify-between items-center rounded-md bg-white shadow-sm"
+            className="w-full border hover:shadow-lg transition-shadow duration-300 px-4 py-3 grid grid-cols-1 sm:grid-cols-4 gap-4 items-center rounded-xl bg-white shadow-sm"
           >
             <section className="flex sm:flex-row flex-col items-center sm:col-span-2 gap-4">
-              <div className="sm:w-[200px] w-full flex-shrink-0 relative rounded-xl bg-gray-300 h-[180px]">
-                {project.files ? (
+              <div className="sm:w-[200px] w-full flex-shrink-0 relative rounded-xl bg-gray-100 h-[180px] overflow-hidden">
+                {project.images?.length > 0 ? (
                   <img
-                    src={project.files[0]}
+                    src={project.images[0]}
                     alt={project.name}
-                    className="w-full h-full absolute object-cover rounded-xl"
+                    className="w-full h-full object-cover"
                   />
-                ) : null}
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
+                    No Image
+                  </div>
+                )}
               </div>
               <div>
-                <h2 className="w-full truncate font-medium text-[20px]">
-                  {project.projectname}
-                </h2>
-                <p className="text-gray-500">{project.projectlocation}</p>
+                <h2 className="font-semibold text-xl truncate">{project.title}</h2>
+                <p className="text-gray-500">{project.location}</p>
               </div>
             </section>
-            <section className=" sm:w-auto w-full text-center sm:text-start sm:flex-center">
-              <p className="capitalize">{project.status}</p>
+
+            <section className="text-center sm:text-left">
+              <span className="inline-block capitalize px-2 py-1 rounded-full bg-blue-50 text-blue-600 text-sm font-medium">
+                {project.status}
+              </span>
             </section>
-            <section className="flex items-center justify-center gap-2">
+
+            <section className="flex items-center justify-center gap-3">
               <FiEdit3
                 size={20}
-                className="cursor-pointer h-[30px] w-[30px] p-1 rounded-md hover:border transition-all"
+                className="cursor-pointer text-blue-500 h-[30px] w-[30px] p-1 rounded-md hover:bg-blue-100 transition-all"
                 onClick={() => startEdit(project)}
               />
               <MdDelete
                 size={20}
-                className="cursor-pointer text-red-500 h-[30px] w-[30px] p-1 rounded-md hover:border transition-all"
+                className="cursor-pointer text-red-500 h-[30px] w-[30px] p-1 rounded-md hover:bg-red-100 transition-all"
                 onClick={() => openModal(project)}
               />
             </section>
@@ -141,7 +154,7 @@ function Page() {
       )}
       <Modal
         show={showModal}
-        message={`Are you sure you want to delete the project "${selectedProject?.projectname}"?`}
+        message={`Are you sure you want to delete the project "${selectedProject?.title}"?`}
         onConfirm={handleDelete}
         onClose={closeModal}
       />

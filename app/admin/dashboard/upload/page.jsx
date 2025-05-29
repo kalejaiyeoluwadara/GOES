@@ -1,15 +1,17 @@
 "use client";
 import React, { useState } from "react";
 import { IoCloudUploadOutline } from "react-icons/io5";
-import { db, storage } from "@/utils/firebase"; // Adjust the path as necessary
-import { collection, addDoc } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useRouter } from "next/navigation";
 import { BsCopy } from "react-icons/bs";
 import { FaCheckCircle } from "react-icons/fa";
 import { MdError } from "react-icons/md";
 import { LiaTimesSolid } from "react-icons/lia";
+import axios from "axios";
+import useAdminAuth from "@/hooks/useAdminAuth";
 const Modal = ({ modalMessage, isModalOpen }) => {
+
+  useAdminAuth()
+
   return (
     <>
       {isModalOpen && (
@@ -73,22 +75,24 @@ function Page() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setUploading(true);
+  
     try {
-      const fileUrls = await Promise.all(
-        formData.files.map(async (file) => {
-          const fileRef = ref(storage, `uploads/${file.name}`);
-          await uploadBytes(fileRef, file);
-          return getDownloadURL(fileRef);
-        })
-      );
-
-      await addDoc(collection(db, "projects"), {
-        projectname: formData.projectname,
-        projectlocation: formData.projectlocation,
-        description: formData.description,
-        status: formData.status,
-        files: fileUrls,
+      const form = new FormData();
+      form.append("title", formData.projectname);
+      form.append("location", formData.projectlocation);
+      form.append("description", formData.description);
+      form.append("status", formData.status);
+  
+      formData.files.forEach((file) => {
+        form.append("images", file);
       });
+  
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/projects/create`, form, {
+        headers: {
+          "Content-Type": "multipart/form-data", // OK: Axios will handle boundary
+        },
+      });
+  
       setFormData({
         projectname: "",
         projectlocation: "",
@@ -96,6 +100,7 @@ function Page() {
         status: "ongoing",
         files: [],
       });
+  
       setModalMessage("Project Uploaded successfully...");
       setIsModalOpen(true);
       setTimeout(() => {
@@ -103,16 +108,18 @@ function Page() {
         router.push("/projects");
       }, 3000);
     } catch (error) {
-      console.error("Error uploading files: ", error);
-      setModalMessage("An error occurred during upload. Please try again.");
+      console.error("Upload error:", error?.response?.data || error.message);
+      setModalMessage("An error occurred, Please try again.");
       setIsModalOpen(true);
-      setTimeout(() => {
-        setIsModalOpen(false);
-      }, 4000);
+      setTimeout(() => setIsModalOpen(false), 4000);
     } finally {
       setUploading(false);
     }
   };
+
+
+
+
 
   return (
     <div className="min-h-screen grid grid-cols-1 sm:grid-cols-3 items-center justify-center w-screen py-10 px-2  sm:px-8 gap-3 sm:gap-12">

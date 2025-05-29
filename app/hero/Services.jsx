@@ -34,7 +34,7 @@ function Services() {
   const scrollPercentage = (scrollLeft / scrollWidth) * 100;
 
   return (
-    <div className="bg-white min-h-screen px-[10px] sm:px-[110px] py-[80px]  w-full ">
+    <div className="bg-white min-hscreen px-[10px] sm:px-[110px] py-[80px]  w-full ">
       <h1 className="text-center text-primary text-[40px] font-bold  ">
         Services
       </h1>

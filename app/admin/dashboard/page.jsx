@@ -1,19 +1,12 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { BiTimeFive } from "react-icons/bi";
-import { FaUserAlt } from "react-icons/fa";
-import { AiOutlineProject, AiOutlineHistory } from "react-icons/ai";
-import { db } from "@/utils/firebase"; // Adjust the path as necessary
-import { collection, getDocs, query, where } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { BiTimeFive } from "react-icons/bi";
+import { AiOutlineProject, AiOutlineHistory, AiOutlineMessage } from "react-icons/ai";
 
-const apiKey = "a546511575msh6abf22f977f25d4p1f90efjsn26677841b53f"; // Replace with your actual API key from RapidAPI
-const apiHost = "weatherapi-com.p.rapidapi.com"; // Replace with the host of your chosen weather API on RapidAPI
-const city = "Ibadan";
-const country = "NG";
-
-function Page() {
-  const [userCount, setUserCount] = useState(0);
+const Dashboard = () => {
+  const [sessionCount, setSessionCount] = useState(0);
+  const [messagesCount, setMessagesCount] = useState(0);
   const [ongoingProjectsCount, setOngoingProjectsCount] = useState(0);
   const [pastProjectsCount, setPastProjectsCount] = useState(0);
   const [weather, setWeather] = useState(null);
@@ -22,43 +15,34 @@ function Page() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch number of users
-        const usersSnapshot = await getDocs(collection(db, "users"));
-        setUserCount(usersSnapshot.size);
+        // Fetch messages
+        const messagesRes = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/messages/get`);
+        setMessagesCount(messagesRes.data?.length || 0);
 
-        // Fetch ongoing projects
-        const ongoingQuery = query(
-          collection(db, "projects"),
-          where("status", "==", "ongoing")
-        );
-        const ongoingSnapshot = await getDocs(ongoingQuery);
-        setOngoingProjectsCount(ongoingSnapshot.size);
+        // Fetch applications (sessions)
+        const appsRes = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/applications/get`);
+        setSessionCount(appsRes.data?.length || 0);
 
-        // Fetch past projects
-        const pastQuery = query(
-          collection(db, "projects"),
-          where("status", "==", "past")
-        );
-        const pastSnapshot = await getDocs(pastQuery);
-        setPastProjectsCount(pastSnapshot.size);
+        // Fetch projects
+        const projectsRes = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/projects/get`);
+        const allProjects = projectsRes.data || [];
+        const ongoing = allProjects.filter(proj => proj.status === "ongoing").length;
+        const past = allProjects.filter(proj => proj.status === "past").length;
+        setOngoingProjectsCount(ongoing);
+        setPastProjectsCount(past);
 
-        // Fetch weather data from RapidAPI
-        const weatherResponse = await axios.get(
-          `https://${apiHost}/current.json`,
-          {
-            params: {
-              q: `${city},${country}`,
-            },
-            headers: {
-              "X-RapidAPI-Key": apiKey,
-              "X-RapidAPI-Host": apiHost,
-            },
-          }
-        );
-        setWeather(weatherResponse.data);
-      } catch (error) {
-        setError(error);
-        console.error("Error fetching data: ", error);
+        // Fetch weather
+        const weatherRes = await axios.get(`https://weatherapi-com.p.rapidapi.com/current.json`, {
+          params: { q: "Ibadan,NG" },
+          headers: {
+            "X-RapidAPI-Key": "a546511575msh6abf22f977f25d4p1f90efjsn26677841b53f",
+            "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
+          },
+        });
+        setWeather(weatherRes.data);
+      } catch (err) {
+        console.error(err);
+        setError(err);
       }
     };
 
@@ -67,52 +51,13 @@ function Page() {
 
   return (
     <main className="flex-1 flex items-center sm:mb-0 mb-20 justify-center">
-      <div className="grid w-full bg-gray-200 sm:gap-8 gap-2 px-2 h-full sm:px-10 py-8 grid-cols-2">
-        <div className="flex bg-white justify-between px-6 py-3 flex-col h-[150px] rounded-md shadow-sm w-auto">
-          <div className="flex items-center justify-between">
-            <p>Sessions</p>
-            <BiTimeFive />
-          </div>
-          <div className="flex justify-between items-center">
-            <h3 className="text-[25px] font-[600] text-primary ">20</h3>
-            <h3 className="text-[15px] font-[600] text-primary ">Today</h3>
-          </div>
-        </div>
-        <div className="flex bg-white justify-between px-6 py-3 flex-col h-[150px] rounded-md shadow-sm w-auto">
-          <div className="flex items-center justify-between">
-            <p>Users</p>
-            <FaUserAlt />
-          </div>
-          <div className="flex justify-between items-center">
-            <h3 className="text-[25px] font-[600] text-primary ">
-              {userCount}
-            </h3>
-            <h3 className="text-[15px] font-[600] text-primary ">Total</h3>
-          </div>
-        </div>
-        <div className="flex bg-white justify-between px-6 py-3 flex-col h-[150px] rounded-md shadow-sm w-auto">
-          <div className="flex items-center justify-between">
-            <p>Ongoing Projects</p>
-            <AiOutlineProject />
-          </div>
-          <div className="flex justify-between items-center">
-            <h3 className="text-[25px] font-[600] text-primary ">
-              {ongoingProjectsCount}
-            </h3>
-          </div>
-        </div>
-        <div className="flex bg-white justify-between px-6 py-3 flex-col h-[150px] rounded-md shadow-sm w-auto">
-          <div className="flex items-center justify-between">
-            <p>Past Projects</p>
-            <AiOutlineHistory />
-          </div>
-          <div className="flex justify-between items-center">
-            <h3 className="text-[25px] font-[600] text-primary ">
-              {pastProjectsCount}
-            </h3>
-          </div>
-        </div>
-        <div className="col-span-2 flex bg-white h-[200px] rounded-md shadow-sm w-auto p-6">
+      <div className="grid w-full bg-gray-100 gap-4 px-2 sm:px-10 py-10 grid-cols-2 lg:grid-cols-3">
+        <Card title="Applications " count={sessionCount} icon={<BiTimeFive />} note="Today" />
+        <Card title="Messages" count={messagesCount} icon={<AiOutlineMessage />} note="Total" />
+        <Card title="Ongoing Projects" count={ongoingProjectsCount} icon={<AiOutlineProject />} />
+        <Card title="Past Projects" count={pastProjectsCount} icon={<AiOutlineHistory />} />
+
+        <div className="col-span-2 lg:col-span-3 bg-white h-[200px] rounded-md shadow-sm w-auto p-6">
           {weather ? (
             <div className="flex flex-col items-center justify-center w-full h-full">
               <h2 className="text-2xl font-semibold">
@@ -147,6 +92,24 @@ function Page() {
       </div>
     </main>
   );
-}
+};
 
-export default Page;
+const Card = ({
+  title,
+  count,
+  icon,
+  note,
+}) => (
+  <div className="flex flex-col justify-between bg-white px-6 py-4 rounded-lg shadow-sm h-[150px]">
+    <div className="flex justify-between items-center">
+      <p className="text-sm font-medium">{title}</p>
+      <div className="text-xl text-primary">{icon}</div>
+    </div>
+    <div className="flex justify-between items-end">
+      <h3 className="text-[28px] font-bold text-primary">{count}</h3>
+      {note && <span className="text-sm font-semibold text-gray-500">{note}</span>}
+    </div>
+  </div>
+);
+
+export default Dashboard;

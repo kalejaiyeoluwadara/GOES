@@ -21,7 +21,7 @@ function Staffs() {
         </Link>
         <div className="flex sm:flex-row flex-col  gap-4">
           {[1, 2, 3].map((d, id) => {
-            return <StaffComp />;
+            return <StaffComp key={id}/>;
           })}
         </div>
       </div>
