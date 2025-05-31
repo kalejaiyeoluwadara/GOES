@@ -88,25 +88,9 @@ function Nav() {
         </ul>
       </div>
 
-      {/* Desktop Buttons */}
-      <div className="hidden lg:flex gap-3">
-        {item === "Register" && (
-          <Link href="/register/login">
-            <Button title="Register" otherStyles="text-primary font-[500]" />
-          </Link>
-        )}
-        {item === "Log Out" && (
-          <div
-            onClick={() => {
-              localStorage.removeItem("log");
-              setItem("Register");
-            }}
-          >
-            <Button title="Log Out" otherStyles="text-primary font-[500]" />
-          </div>
-        )}
+      
         <Button title="Hire" otherStyles="bg-[#2B0184] text-white" />
-      </div>
+      
 
       {/* Mobile Menu Icon */}
       <div className="lg:hidden block">

@@ -20,7 +20,7 @@ function Page() {
   const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false)
-  const user = localStorage.getItem('user')
+  // const user = localStorage.getItem('user')
 
   useEffect(() => {
     const email = localStorage.getItem("email");
@@ -28,6 +28,12 @@ function Page() {
       router.replace("/admin/dashboard"); // Redirect to dashboard if already logged in
     }
   }, []);
+
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    console.log(user);
+  }, []);
+  
   
 
 

@@ -1,12 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import prof from "@/app/assets/test2.jpg";
+import gani from "@/app/assets/gani.jpeg"
 function Page() {
   return (
     <div className="sm:px-20 px-8 flex flex-col items-center justify-center py-40 ">
       <h1 className="text-primary mb-12 font-medium ">Director Profile</h1>
       <div className="bg-gray-100 h-[300px] relative overflow-hidden w-[300px] rounded-full ">
-        <Image className="cover" src={prof} alt="" />
+        <Image className="cover" src={gani} alt="" />
       </div>
       <h1 className="text-primary sm:text-start text-center mt-2 font-medium ">
         Mr. Jimoh Ganiyu Olalekan
