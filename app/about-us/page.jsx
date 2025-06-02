@@ -58,7 +58,7 @@ function Page() {
               </div>
 
               <div className=" ">
-                <MdEmail className="text-primary" mb-1 size={25} />
+                <MdEmail className="text-primary mb-1"  size={25} />
                 <h2 className=" text-primary font-semibold text-[20px]  ">
                   e-Mail Address
                 </h2>
