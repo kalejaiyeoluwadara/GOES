@@ -56,6 +56,7 @@ function Page() {
       router.push('/admin/dashboard')
       console.log(response.data);
     } catch (error) {
+      setLoading(false)
       if (error.response) {
         // Backend responded with a status code outside the 2xx range
         console.error("Backend Error:", error.response.data);

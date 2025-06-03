@@ -7,6 +7,7 @@ import EditProjectForm from "./EditProject";
 import {ClipLoader} from "react-spinners";
 import { toast } from "react-toastify";
 import useAdminAuth from "@/hooks/useAdminAuth";
+import axios from "axios";
 
 function Page() {
 
@@ -19,20 +20,22 @@ function Page() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [editingProject, setEditingProject] = useState(null);
 
+  const fetchProjects = async () => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects/get`);
+      if (!response.ok) throw new Error("Network response was not ok");
+      const data = await response.json();
+      setProjects(data.projects || data); // Adjust if response shape is different
+      setLoading(false);
+    } catch (err) {
+      setError("Failed to fetch projects");
+      console.error(err);
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects/get`);
-        if (!response.ok) throw new Error("Network response was not ok");
-        const data = await response.json();
-        setProjects(data.projects || data); // Adjust if response shape is different
-        setLoading(false);
-      } catch (err) {
-        setError("Failed to fetch projects");
-        console.error(err);
-        setLoading(false);
-      }
-    };
+
 
     fetchProjects();
   }, []);
@@ -43,7 +46,8 @@ function Page() {
     try {
       const res = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/projects/delete/${selectedProject._id}`);
       if (res.status !== 200) throw new Error("Delete failed");
-      setProjects(projects.filter((p) => p.id !== selectedProject._id));
+      // setProjects(projects.filter((p) => p.id !== selectedProject._id));
+      fetchProjects();
       setShowModal(false);
       toast.success('Deleted Successfully')
     } catch (err) {

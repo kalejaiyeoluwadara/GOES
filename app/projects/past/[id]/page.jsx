@@ -21,6 +21,7 @@ const IndividualPastProject = () => {
             try {
                 const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/projects/get/${id}`);
                 setData(res.data);
+                console.log(res.data);
             } catch (e) {
                 console.error(e);
                 setError("Failed to load project.");

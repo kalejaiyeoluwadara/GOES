@@ -44,11 +44,25 @@ function Page() {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
+  
     if (files) {
-      const fileArray = Array.from(files).slice(0, 6);
+      const newFiles = Array.from(files).slice(0, 6);
+  
+      // Filter duplicates
+      const existingFileMap = new Map(
+        formData.files.map((file) => [`${file.name}-${file.size}`, file])
+      );
+  
+      newFiles.forEach((file) => {
+        const key = `${file.name}-${file.size}`;
+        if (!existingFileMap.has(key)) {
+          existingFileMap.set(key, file);
+        }
+      });
+  
       setFormData((prevState) => ({
         ...prevState,
-        files: [...prevState.files, ...fileArray],
+        files: Array.from(existingFileMap.values()),
       }));
     } else {
       setFormData({
@@ -57,6 +71,7 @@ function Page() {
       });
     }
   };
+  
 
   const handleClick = () => {
     document.getElementById("file-upload").click();
@@ -105,7 +120,7 @@ function Page() {
       setIsModalOpen(true);
       setTimeout(() => {
         setIsModalOpen(false);
-        router.push("/projects");
+        router.push("/admin/dashboard/projects");
       }, 3000);
     } catch (error) {
       console.error("Upload error:", error?.response?.data || error.message);
