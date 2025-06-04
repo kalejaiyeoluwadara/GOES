@@ -8,6 +8,7 @@ import { MdError } from "react-icons/md";
 import { LiaTimesSolid } from "react-icons/lia";
 import axios from "axios";
 import useAdminAuth from "@/hooks/useAdminAuth";
+import Image from "next/image";
 const Modal = ({ modalMessage, isModalOpen }) => {
 
   useAdminAuth()
@@ -90,6 +91,12 @@ function Page() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setUploading(true);
+
+    console.log("Final files to upload:");
+formData.files.forEach((file, i) => {
+  console.log(`File ${i + 1}: ${file.name} - ${file.size}`);
+});
+
   
     try {
       const form = new FormData();
@@ -115,6 +122,7 @@ function Page() {
         status: "ongoing",
         files: [],
       });
+      document.getElementById("file-upload").value = ""; // reset input after upload
   
       setModalMessage("Project Uploaded successfully...");
       setIsModalOpen(true);
@@ -213,22 +221,31 @@ function Page() {
           </button>
         </form>
       </section>
-      <section className="bg-white rounded-xl sm:mb-0 mb-20 h-[300px] sm:h-full p-6 w-auto border flex flex-col gap-2">
-        {formData.files.map((file, index) => (
-          <div
-            key={index}
-            className="w-full border h-[60px] flex items-center justify-between px-4"
-          >
-            <p className="truncate  ">{file.name}</p>
-            <button
-              onClick={() => handleRemoveFile(index)}
-              className="text-red-500"
-            >
-              <LiaTimesSolid />
-            </button>
-          </div>
-        ))}
-      </section>
+      <section className="bg-white rounded-xl sm:mb-0 mb-20 max-h-[400px] overflow-y-auto p-6 w-full sm:w-auto border shadow-md flex flex-col gap-4">
+  {formData.files.map((file, index) => (
+    <div
+      key={index}
+      className="w-full flex items-center justify-between gap-4 p-3 border rounded-lg hover:shadow-sm transition-all"
+    >
+      <div className="flex items-center gap-3 w-full">
+        <img
+          className="w-16 h-12 object-cover rounded-md border"
+          src={URL.createObjectURL(file)}
+          alt={file.name}
+        />
+        <p className="truncate text-sm text-gray-800 w-full">{file.name}</p>
+      </div>
+      <button
+        onClick={() => handleRemoveFile(index)}
+        className="text-red-500 hover:text-red-600 transition"
+        title="Remove file"
+      >
+        <LiaTimesSolid size={20} />
+      </button>
+    </div>
+  ))}
+</section>
+
       <Modal modalMessage={modalMessage} isModalOpen={isModalOpen} />
     </div>
   );
