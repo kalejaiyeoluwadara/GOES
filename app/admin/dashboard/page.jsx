@@ -57,38 +57,47 @@ const Dashboard = () => {
         <Card title="Ongoing Projects" count={ongoingProjectsCount} icon={<AiOutlineProject />} />
         <Card title="Past Projects" count={pastProjectsCount} icon={<AiOutlineHistory />} />
 
-        <div className="col-span-2 lg:col-span-3 bg-white h-[200px] rounded-md shadow-sm w-auto p-6">
-          {weather ? (
-            <div className="flex flex-col items-center justify-center w-full h-full">
-              <h2 className="text-2xl font-semibold">
-                Weather in Ibadan, Nigeria
-              </h2>
-              <div className="flex items-center justify-center mt-4">
-                <img
-                  src={weather.current.condition.icon}
-                  alt="Weather Icon"
-                  className="w-16 h-16"
-                />
-                <div className="ml-4">
-                  <h3 className="text-xl font-bold">
-                    {weather.current.temp_c}°C
-                  </h3>
-                  <p className="text-sm">{weather.current.condition.text}</p>
-                </div>
-              </div>
-              <div className="flex mt-4 text-sm space-x-4">
-                <p>Humidity: {weather.current.humidity}%</p>
-                <p>Wind: {weather.current.wind_kph} kph</p>
-              </div>
-            </div>
-          ) : error ? (
-            <p className="text-red-500">
-              Error fetching weather data: {error.message}
-            </p>
-          ) : (
-            <p>Loading weather data...</p>
-          )}
+        <div className="col-span-2 lg:col-span-3 bg-gradient-to-br from-white to-gray-50 h-[220px] rounded-2xl shadow-md w-auto p-6 transition-all duration-300">
+  {weather ? (
+    <div className="flex flex-col items-center justify-center w-full h-full">
+      <h2 className="text-2xl font-semibold text-gray-800 mb-2">
+        Weather in <span className="text-blue-600">Ibadan, Nigeria</span>
+      </h2>
+      <div className="flex items-center justify-center mt-2">
+        <img
+          src={weather.current.condition.icon}
+          alt="Weather Icon"
+          className="w-16 h-16"
+        />
+        <div className="ml-4">
+          <h3 className="text-3xl font-bold text-gray-700">
+            {weather.current.temp_c}°C
+          </h3>
+          <p className="text-sm text-gray-500">
+            {weather.current.condition.text}
+          </p>
         </div>
+      </div>
+      <div className="flex mt-6 text-sm space-x-6 border-t border-gray-200 pt-3 text-gray-600">
+        <div className="flex items-center space-x-1">
+          <span className="font-medium">Humidity:</span>
+          <span>{weather.current.humidity}%</span>
+        </div>
+        <div className="flex items-center space-x-1">
+          <span className="font-medium">Wind:</span>
+          <span>{weather.current.wind_kph} kph</span>
+        </div>
+      </div>
+    </div>
+  ) : error ? (
+    <p className="text-red-500 text-center">
+      Error fetching weather data: {error.message}
+    </p>
+  ) : (
+    <p className="text-gray-500 text-center">Loading weather data...</p>
+  )}
+</div>
+
       </div>
     </main>
   );
