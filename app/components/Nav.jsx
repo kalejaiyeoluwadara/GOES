@@ -73,9 +73,9 @@ function Nav() {
         </nav>
 
         {/* CTA Button */}
-        <div className="hidden sm:block">
+        {/* <div className="hidden sm:block">
           <Button title="Hire" otherStyles="bg-[#2B0184] text-white px-5 py-2" />
-        </div>
+        </div> */}
 
         {/* Mobile Menu Icon */}
         <div className="lg:hidden">
