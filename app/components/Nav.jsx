@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useGlobal } from "../Context";
 import { useParams } from "@/utils/params";
-import Button from "./Button";
 import { RiMenu2Fill } from "react-icons/ri";
 import logo from "../assets/head.png";
 import { usePathname } from "next/navigation";
@@ -22,9 +21,7 @@ function Nav() {
   }, []);
 
   const isActive = (route) => {
-    if (Array.isArray(route)) {
-      return route.includes(active);
-    }
+    if (Array.isArray(route)) return route.includes(active);
     return active === route;
   };
 
@@ -44,45 +41,44 @@ function Nav() {
   ];
 
   return (
-    <header className="w-full fixed top-0 z-50 bg-white shadow-md">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-12 flex items-center justify-between h-[80px] sm:h-[100px]">
+    <header className="fixed top-0 z-50 w-full bg-white shadow-sm transition-all duration-300">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-16 h-[80px] flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="block">
           <Image
             src={logo}
             alt="Logo"
-            className="object-cover w-[90px] sm:w-[220px]"
+            priority
+            className="w-[140px] sm:w-[180px] object-contain"
           />
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-6">
+        {/* Desktop Nav */}
+        <nav className="hidden lg:flex gap-10 items-center">
           {navLinks.map(({ href, label, match }) => (
             <Link key={href} href={href}>
               <span
-                className={`relative cursor-pointer text-primary text-sm sm:text-base font-medium transition duration-200 hover:text-[#2B0184] ${
-                  isActive(match || href)
-                    ? "after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-[#2B0184] font-semibold"
-                    : ""
-                }`}
+                className={`relative text-sm font-medium tracking-wide text-gray-800 hover:text-[#2B0184] transition-colors duration-300
+                  ${isActive(match || href) ? "text-[#2B0184] font-semibold" : ""}
+                `}
               >
                 {label}
+                <span
+                  className={`absolute left-0 -bottom-1 h-[2px] bg-[#2B0184] transition-all duration-300
+                    ${isActive(match || href) ? "w-full" : "w-0 group-hover:w-full"}
+                  `}
+                ></span>
               </span>
             </Link>
           ))}
         </nav>
-
-        {/* CTA Button */}
-        {/* <div className="hidden sm:block">
-          <Button title="Hire" otherStyles="bg-[#2B0184] text-white px-5 py-2" />
-        </div> */}
 
         {/* Mobile Menu Icon */}
         <div className="lg:hidden">
           <RiMenu2Fill
             onClick={() => setIsMenuOpen(true)}
             size={28}
-            className="cursor-pointer text-primary"
+            className="cursor-pointer text-[#2B0184]"
           />
         </div>
       </div>
