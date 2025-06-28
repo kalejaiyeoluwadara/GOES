@@ -5,11 +5,37 @@ import past from "@/app/assets/past.jpg";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Head from "next/head";
 
 function Page() {
 
 
   return (
+    <>
+    <Head>
+  {/* Page Title */}
+  <title>Our Projects – GOES LTD Construction Company in Nigeria</title>
+
+  {/* Meta Description */}
+  <meta name="description" content="Explore a portfolio of our construction projects across Nigeria – residential, commercial, and industrial builds. See what GOES LTD has accomplished." />
+
+  {/* Canonical URL */}
+  <link rel="canonical" href="https://goesltd.com/projects" />
+
+  {/* Open Graph (Social Sharing) */}
+  <meta property="og:title" content="Our Projects – GOES LTD Construction Company" />
+  <meta property="og:description" content="Browse through GOES LTD’s completed and ongoing construction projects showcasing quality, reliability, and innovation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://goesltd.com/projects" />
+  <meta property="og:image" content="https://goesltd.com/og-image.jpg" />
+
+  {/* Twitter Card */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Our Projects – GOES LTD Construction Company" />
+  <meta name="twitter:description" content="Browse through GOES LTD’s completed and ongoing construction projects showcasing quality, reliability, and innovation." />
+  <meta name="twitter:image" content="https://goesltd.com/og-image.jpg" />
+</Head>
+
     <div className="flex flex-col items-center gap-16 py-24 px-4 sm:px-10 min-h-screen bg-white">
       <h1 className="text-primary text-3xl sm:text-4xl font-bold text-center">
         Our Projects
@@ -76,6 +102,7 @@ function Page() {
         </div>
       </motion.div>
     </div>
+        </>
   );
 }
 

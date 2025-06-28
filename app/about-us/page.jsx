@@ -7,11 +7,29 @@ import { MdEmail } from "react-icons/md";
 import Footer from "../components/Footer";
 import Image from "next/image";
 import ongoing from "@/app/assets/ongoing.jpg";
+import Head from "next/head";
 
 
 function Page() {
   return (
     <>
+
+<Head>
+        {/* SEO & Share Info */}
+        <title>About GOES LTD – Trusted Construction Company in Nigeria</title>
+        <meta name="description" content="Learn more about GOES LTD, a leading construction company in Nigeria dedicated to quality, safety, and customer satisfaction. See how we build trust." />
+        <link rel="canonical" href="https://goesltd.com/about-us" />
+        <meta property="og:title" content="About GOES LTD – Trusted Construction Company in Nigeria" />
+        <meta property="og:description" content="Discover our story, mission, and values. GOES LTD delivers quality construction and renovation services across Nigeria." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://goesltd.com/about-us" />
+        <meta property="og:image" content="https://goesltd.com/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About GOES LTD – Trusted Construction Company in Nigeria" />
+        <meta name="twitter:description" content="Discover our story, mission, and values. GOES LTD delivers quality construction and renovation services across Nigeria." />
+        <meta name="twitter:image" content="https://goesltd.com/og-image.jpg" />
+      </Head>
+
       <div>
         <div className="h-[50vh] relative mb-8 w-screen bg-gray-300  ">
           <Image className="cover" src={ongoing} alt="" />
@@ -21,20 +39,11 @@ function Page() {
             About Us
           </h1>
           <p className="  sm:px-0 px-4 text-gray-500 ">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-            aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-            eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est,
-            qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
-            sed quia non numquam eius modi tempora incidunt ut labore et dolore
-            magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
-            nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
-            aliquid ex ea commodi consequatur? Quis autem vel eum iure
-            reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-            consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-            pariatur?
+          At GOES LTD, we’re more than builders — we’re partners in creating structures that stand the test of time. With years of experience in the Nigerian construction industry, we specialize in residential, commercial, and industrial projects. From design to delivery, we combine technical expertise, quality materials, and a commitment to excellence to bring our clients’ visions to life.
+
+We take pride in our reputation for reliability, transparency, and results. Whether you’re building from scratch, renovating, or planning ahead, GOES LTD is your trusted construction partner.
+
+
           </p>
 
           <div className="flex sm:flex-row flex-col w-full my-20 gap-10 justify-center items-center  ">
