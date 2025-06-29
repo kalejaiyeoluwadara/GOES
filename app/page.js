@@ -37,7 +37,7 @@ export default function Home() {
       {/*<Staffs />*/}
       <Preview />
       {/* <Testimonials /> */}
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

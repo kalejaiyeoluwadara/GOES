@@ -84,7 +84,7 @@ Whether you're starting a new project or need insight to improve an existing one
           </main>
         </div>
 
-        {/* <Footer /> */}
+        <Footer />
       </>
   );
 }

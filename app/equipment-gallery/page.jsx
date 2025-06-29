@@ -26,7 +26,7 @@ function Page() {
           <Grid styles={"h-[250px] w-auto sm:col-span-3"} />
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

@@ -1,22 +1,31 @@
-import Image from "next/image";
-import React from "react";
-import { IoSettingsOutline } from "react-icons/io5";
-import { CiBellOn } from "react-icons/ci";
-import { BsFillPersonFill } from "react-icons/bs";
-import logo from "../../../assets/logo.svg";
-import Link from "next/link";
+'use client'
+import React, { useEffect, useState } from "react";
+import { FiLogOut } from "react-icons/fi";
+
 function Nav() {
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    const storedName = localStorage.getItem("name");
+    if (storedName) {
+      setName(storedName);
+    }
+  }, []);
+
+  const logout = () => {
+    localStorage.removeItem("name");
+    localStorage.removeItem("email");
+    localStorage.removeItem("userId");
+    window.location.reload();
+  };
+
   return (
-    <div className="w-screen relative flex items-center justify-between px-8  h-[80px] bg-white shadow  z-40 ">
-      <Link href={"/admin"}>
-        <Image className=" h-[40px] w-[40px] " src={logo} alt="" />
-      </Link>
-      <div className="flex gap-8">
-        <IoSettingsOutline size={25} className="text-black" />
-        <CiBellOn size={25} className="text-black" />
-        <Link href={"/admin/dashboard/update"}>
-          <BsFillPersonFill size={25} className="text-black" />
-        </Link>
+    <div className="w-full flex items-center justify-end px-6 py-4 bg-white shadow z-40">
+      <div className="flex items-center gap-4">
+        <span className="text-gray-800 font-medium">{name}</span>
+        <button onClick={logout} title="Logout">
+          <FiLogOut size={22} className="text-red-500 hover:text-red-700 transition" />
+        </button>
       </div>
     </div>
   );

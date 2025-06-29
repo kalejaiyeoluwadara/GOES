@@ -60,7 +60,7 @@ export default function RootLayout({ children }) {
           <ToastContainer />
           <Menu />
           {children}
-          <Footer />
+          {/* <Footer /> */}
         </AppProvider>
       </body>
     </html>

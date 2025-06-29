@@ -2,20 +2,16 @@ import React from "react";
 import Form from "../components/Form";
 import Map from "../components/Map";
 import { FaLocationDot } from "react-icons/fa6";
-import { MdCall } from "react-icons/md";
-import { MdEmail } from "react-icons/md";
+import { MdCall, MdEmail } from "react-icons/md";
 import Footer from "../components/Footer";
 import Image from "next/image";
 import ongoing from "@/app/assets/ongoing.jpg";
 import Head from "next/head";
 
-
 function Page() {
   return (
     <>
-
-<Head>
-        {/* SEO & Share Info */}
+      <Head>
         <title>About GOES LTD – Trusted Construction Company in Nigeria</title>
         <meta name="description" content="Learn more about GOES LTD, a leading construction company in Nigeria dedicated to quality, safety, and customer satisfaction. See how we build trust." />
         <link rel="canonical" href="https://goesltd.com/about-us" />
@@ -31,59 +27,65 @@ function Page() {
       </Head>
 
       <div>
-        <div className="h-[50vh] relative mb-8 w-screen bg-gray-300  ">
-          <Image className="cover" src={ongoing} alt="" />
+        {/* Hero Image */}
+        <div className="relative h-[50vh] w-screen mb-12 overflow-hidden">
+          <Image src={ongoing} alt="About Us" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-black/30" />
         </div>
-        <main className="min-h-[140vh] pb-40 sm:px-20 flex  flex-col items-center justify-center w-screen ">
-          <h1 className="sm:my-10 my-2 text-[50px] text-primary font-bold ">
-            About Us
-          </h1>
-          <p className="  sm:px-0 px-4 text-gray-500 ">
-          At GOES LTD, we’re more than builders — we’re partners in creating structures that stand the test of time. With years of experience in the Nigerian construction industry, we specialize in residential, commercial, and industrial projects. From design to delivery, we combine technical expertise, quality materials, and a commitment to excellence to bring our clients’ visions to life.
 
-We take pride in our reputation for reliability, transparency, and results. Whether you’re building from scratch, renovating, or planning ahead, GOES LTD is your trusted construction partner.
+        {/* Main Section */}
+        <main className="sm:px-20 px-4 pb-40 w-full max-w-[1440px] mx-auto">
+          {/* Heading */}
+          <h1 className="text-primary text-4xl sm:text-5xl font-bold text-center mb-6">About Us</h1>
 
-
+          {/* Intro Text */}
+          <p className="text-gray-600 text-base sm:text-lg text-left smmax-w-3xl mx-auto leading-relaxed">
+            At GOES LTD, we’re more than builders — we’re partners in creating structures that stand the test of time. With years of experience in the Nigerian construction industry, we specialize in residential, commercial, and industrial projects. From design to delivery, we combine technical expertise, quality materials, and a commitment to excellence to bring our clients’ visions to life.
+            <br /><br />
+            We take pride in our reputation for reliability, transparency, and results. Whether you’re building from scratch, renovating, or planning ahead, GOES LTD is your trusted construction partner.
           </p>
 
-          <div className="flex sm:flex-row flex-col w-full my-20 gap-10 justify-center items-center  ">
-            <div className=" h-[600px] mb-4 sm:mb-0 flex flex-col gap-8 sm:px-0 px-4 sm:w-[50%]">
-              <div className=" ">
-                <FaLocationDot className="text-primary mb-1 " size={25} />
-                <h2 className=" text-primary font-semibold text-[20px]  ">
-                  Office Address
-                </h2>
-                <p className="text-gray-500">
-                  21A, Tunji Bello Street, Ikolaba Estate, Ibadan, Oyo state.
-                </p>
+          {/* Contact + Form Section */}
+          <div className="flex flex-col sm:flex-row justify-between gap-10 mt-20">
+            {/* Contact Info */}
+            <div className="sm:w-1/2 flex flex-col gap-8">
+              {/* Address */}
+              <div>
+                <FaLocationDot className="text-primary mb-1" size={24} />
+                <h2 className="text-primary font-semibold text-lg mb-1">Office Address</h2>
+                <p className="text-gray-600">21A, Tunji Bello Street, Ikolaba Estate, Ibadan, Oyo State.</p>
               </div>
 
-              <div className=" ">
-                <MdCall className="text-primary mb-1 " size={25} />
-                <h2 className=" text-primary font-semibold text-[20px]  ">
-                  Phone
-                </h2>
-                <p className="text-gray-500">(+234) 803 3244 038</p>
+              {/* Phone */}
+              <div>
+                <MdCall className="text-primary mb-1" size={24} />
+                <h2 className="text-primary font-semibold text-lg mb-1">Phone</h2>
+                <p className="text-gray-600">(+234) 803 3244 038</p>
               </div>
 
-              <div className=" ">
-                <MdEmail className="text-primary mb-1"  size={25} />
-                <h2 className=" text-primary font-semibold text-[20px]  ">
-                  e-Mail Address
-                </h2>
-                <p className="text-gray-500">goeslimited@gmail.com</p>
+              {/* Email */}
+              <div>
+                <MdEmail className="text-primary mb-1" size={24} />
+                <h2 className="text-primary font-semibold text-lg mb-1">e-Mail Address</h2>
+                <p className="text-gray-600">goeslimited@gmail.com</p>
               </div>
 
-              <Map />
+              {/* Map */}
+              <div className="mt-4">
+                <Map />
+              </div>
             </div>
 
-            <div className="h-[600px]  sm:mt-0 mt-[230px] sm:w-[50%] ">
+            {/* Form */}
+            <div className="sm:w-1/2 mt-10 sm:mt-0">
               <Form />
             </div>
           </div>
         </main>
+
+        {/* Footer */}
+        <Footer />
       </div>
-      {/* <Footer /> */}
     </>
   );
 }
