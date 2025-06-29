@@ -83,7 +83,7 @@ We take pride in our reputation for reliability, transparency, and results. Whet
           </div>
         </main>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

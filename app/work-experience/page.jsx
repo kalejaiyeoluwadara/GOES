@@ -48,7 +48,7 @@ function Page() {
 
       <Banner />
       <Form />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

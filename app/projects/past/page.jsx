@@ -38,7 +38,7 @@ const pastPage = () => {
 
 
     return (
-        <div className="mt-32 px-6 md:px-12">
+        <div className="mt-32 px-6 md:px-12 mb-20">
             <h1 className="text-2xl font-semibold mb-6">Past Projects</h1>
 
             {loading ? (
