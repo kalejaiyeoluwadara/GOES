@@ -2,7 +2,50 @@ import React from "react";
 import Image from "next/image";
 import prof from "@/app/assets/test2.jpg";
 import gani from "@/app/assets/gani.jpeg"
+import Head from "next/head";
+
 function Page() {
+
+  <Head>
+  {/* Page Title */}
+  <title>Director Profile – Mr. Jimoh Ganiyu Olalekan | GOES LTD</title>
+
+  {/* Meta Description */}
+  <meta
+    name="description"
+    content="Meet Mr. Jimoh Ganiyu Olalekan, CEO of GOES LTD – a visionary leader in Nigeria’s construction industry with over 20 years of excellence and innovation."
+  />
+
+  {/* Keywords */}
+  <meta
+    name="keywords"
+    content="Jimoh Ganiyu Olalekan, GOES LTD CEO, Gani-Ola Engineering, Nigerian construction, registered builder Nigeria, MNIOB, CORBON, director profile"
+  />
+
+  {/* Canonical */}
+  <link rel="canonical" href="https://goesltd.com/director" />
+
+  {/* Open Graph */}
+  <meta property="og:title" content="Director Profile – Jimoh Ganiyu Olalekan | GOES LTD" />
+  <meta
+    property="og:description"
+    content="Explore the background, vision, and achievements of Mr. Jimoh Ganiyu Olalekan, the Chief Executive Officer of GOES LTD."
+  />
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" content="https://goesltd.com/director" />
+  <meta property="og:image" content="https://goesltd.com/og-director.jpg" />
+
+  {/* Twitter Card */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Meet the CEO – Jimoh Ganiyu Olalekan | GOES LTD" />
+  <meta
+    name="twitter:description"
+    content="Learn more about the leadership and career of Mr. Jimoh Ganiyu Olalekan, Director and CEO of GOES LTD."
+  />
+  <meta name="twitter:image" content="https://goesltd.com/og-director.jpg" />
+</Head>
+
+
   return (
     <div className="sm:px-20 px-8 flex flex-col items-center justify-center py-40 ">
       <h1 className="text-primary mb-12 font-medium ">Director Profile</h1>
