@@ -53,7 +53,7 @@ function Page() {
         <Image className="cover" src={gani} alt="" />
       </div>
       <h1 className="text-primary sm:text-start text-center mt-2 font-medium ">
-        Mr. Jimoh Ganiyu Olalekan
+        BLDR (Dr). Jimoh Ganiyu Olalekan
       </h1>
       <p className="h5 sm:text-start text-center ">
         CEO, Gani-Ola Engineering Services Limited.

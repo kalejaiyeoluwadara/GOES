@@ -47,7 +47,7 @@ const OngoingPage = () => {
                 <p className="text-gray-500">No ongoing projects found.</p>
             ) : (
                 <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    {ongoingProjects.map((project, index) => (
+                    {ongoingProjects.slice().reverse().map((project, index) => ( // Added .slice().reverse() to map projects from last to first
                         <div onClick={()=>router.push(`/projects/ongoing/${project._id}`)}
                             key={index}
                             className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 flex flex-col gap-4 hover:shadow-md transition-all duration-300"
