@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://goesltd.com/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /api/
+
+# Allow important pages
+Allow: /about-us
+Allow: /projects
+Allow: /consultancy
+Allow: /work-experience
+Allow: /staff
+Allow: /equipment-gallery
+Allow: /director
