@@ -44,12 +44,12 @@ function Page() {
       <div>
         {/* Hero Section */}
         <div className="relative w-full h-[50vh] mb-12">
-          <Image
+          {/* <Image
             src={personCalling}
             alt="Contact Hero"
             className="w-full h-full object-cover object-center"
             priority
-          />
+          /> */}
           <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
             <h1 className="text-white text-3xl sm:text-4xl font-semibold">
               Get In Touch
