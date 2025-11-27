@@ -14,24 +14,24 @@ function Hero() {
       <div className="absolute inset-0 z-0">
         {/* Mobile Background */}
         <div className="sm:hidden">
-          <Image
+          {/* <Image
             src={mobileBg}
             alt="Mobile background"
             className="w-full h-full object-cover"
             priority
             fill
-          />
+          /> */}
         </div>
 
         {/* Desktop Background */}
         <div className="hidden sm:block">
-          <Image
+          {/* <Image
             src={hero}
             alt="Hero background"
             className="w-full h-full object-cover object-top"
             priority
             fill
-          />
+          /> */}
         </div>
 
         {/* Overlay */}

@@ -8,12 +8,12 @@ function Explore() {
     return (
         <section className="relative w-full min-h-[500px] flex items-center justify-center overflow-hidden mb-10 group">
             {/* Background Image */}
-            <Image
+            {/* <Image
                 src={explore}
                 alt="Equipment Gallery"
                 placeholder="blur"
                 className="absolute inset-0 w-full h-full object-cover object-center z-0 transition-all duration-500 group-hover:grayscale-[40%]"
-            />
+            /> */}
 
             {/* Overlay */}
             <div className="absolute inset-0 bg-black bg-opacity-60 z-10" />

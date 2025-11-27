@@ -91,7 +91,7 @@ function Services() {
                 {service.desc}
               </p>
               <div className="cover bg-black z-20 bg-opacity-60 " />
-              <Image className="cover z-10 " alt="" src={service.image} />
+              {/* <Image className="cover z-10 " alt="" src={service.image} /> */}
             </div>
           );
         })}

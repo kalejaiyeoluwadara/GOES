@@ -20,12 +20,12 @@ function ProjectContent() {
         transition={{ duration: 0.6 }}
         className="relative group w-full max-w-5xl h-[300px] sm:h-[400px] overflow-hidden rounded-2xl shadow-lg"
       >
-        <Image
+        {/* <Image
           src={finished}
           alt="Ongoing Projects"
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
-        />
+        /> */}
         <div className="absolute inset-0 bg-black bg-opacity-50 z-10" />
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-white text-center">
           <h2 className="text-2xl sm:text-3xl font-semibold mb-2">
@@ -52,12 +52,12 @@ function ProjectContent() {
         transition={{ duration: 0.6, delay: 0.2 }}
         className="relative group w-full max-w-5xl h-[300px] sm:h-[400px] overflow-hidden rounded-2xl shadow-lg"
       >
-        <Image
+        {/* <Image
           src={past}
           alt="Past Projects"
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
-        />
+        /> */}
         <div className="absolute inset-0 bg-black bg-opacity-50 z-10" />
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-white text-center">
           <h2 className="text-2xl sm:text-3xl font-semibold mb-2">

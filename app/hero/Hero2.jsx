@@ -94,13 +94,13 @@ function Hero2() {
 
         {/* Right Side - Image */}
         <div className="h-[400px] w-full relative rounded-2xl overflow-hidden shadow-lg">
-          <Image
+          {/* <Image
             src={ab}
             alt="About Gani-Ola Engineering"
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 50vw"
-          />
+          /> */}
         </div>
       </div>
 

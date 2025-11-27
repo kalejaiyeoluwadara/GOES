@@ -76,11 +76,11 @@ function Page() {
 
   return (
     <div className="relative min-h-screen bg-gray-100 flex items-center justify-center overflow-hidden">
-      <Image
+      {/* <Image
         src={explore}
         alt="background"
         className="absolute inset-0 w-full h-full object-cover opacity-10"
-      />
+      /> */}
       <div className="relative z-10 bg-white rounded-2xl shadow-lg p-8 w-[90%] max-w-md">
         <div className="flex flex-col items-center gap mb-6 justify-center">
           <Image src={companyLogo} alt="logo" width={100} height={100} />
