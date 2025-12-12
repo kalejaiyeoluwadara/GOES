@@ -8,7 +8,7 @@ function Banner() {
         placeholder="blur"
         className="cover object-bottom  "
         alt=""
-        src={finished}
+        src={}
       />
       <div className="cover bg-black bg-opacity-15  " />
       <h1 className="sm:text-[50px] text-[40px] font-bold  sm:text-start text-center font-600 relative z-40 text-white ">

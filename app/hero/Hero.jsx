@@ -56,22 +56,13 @@ function Hero() {
         </Link>
 
         {/* Clients */}
-        <div className="flex mt-8 bg-white shadow-sm pl-4 py-2 rounded-xl items-center gap-1">
-          <div className="flex">
-            {[test1, test2, test3].map((img, i) => (
-              <div
-                key={i}
-                className={`h-10 w-10 rounded-full border-[3px] border-primary bg-white overflow-hidden ${
-                  i !== 0 ? `-translate-x-${i * 4}` : ""
-                }`}
-              >
-                <Image src={img} alt={`Client ${i + 1}`} className="object-cover w-full h-full" />
-              </div>
-            ))}
-          </div>
-          <p className="text-primary font-medium text-sm -translate-x-6 whitespace-nowrap">
-            20+ Satisfied Clients
-          </p>
+        <div className="flex items-center gap-3 mt-8 px-6 py-3 bg-gradient-to-r from-primary/10 via-white to-primary/10 rounded-full shadow-md border border-primary/10">
+          <span className="inline-flex items-center justify-center bg-primary text-white font-bold text-lg w-10 h-10 rounded-full shadow">
+            20+
+          </span>
+          <span className="text-primary font-semibold text-base tracking-wide">
+            Satisfied Clients
+          </span>
         </div>
 
         {/* Stats */}

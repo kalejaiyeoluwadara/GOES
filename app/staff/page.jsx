@@ -5,9 +5,11 @@ import Footer from "../components/Footer";
 function Page() {
   return (
     <>
-      <Banner />
+      {/* <Banner />
       <Staff1 />
-      <Footer />
+      <Footer /> */}
+      <p>coming soon
+      </p>
     </>
   );
 }
